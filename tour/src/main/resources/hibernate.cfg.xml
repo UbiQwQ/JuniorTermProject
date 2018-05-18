@@ -6,11 +6,7 @@
     <session-factory>
         <!-- 1.必填连接数据库参数 (不可省略)-->
         <property name="hibernate.connection.driver_class">com.mysql.jdbc.Driver</property>
-        <property name="hibernate.connection.url">
-            jdbc:mysql://localhost:3306/trip?useUnicode=true&amp;characterEncoding=utf-8
-        </property>
-        <property name="hibernate.connection.username">root</property>
-        <property name="hibernate.connection.password">1230</property>
+        <property name="hibernate.connection.url">jdbc:mysql://localhost:3306/trip</property>
 
 
         <!-- Hibernate整合C3P0连接池  (不可省略)-->
@@ -35,6 +31,7 @@
         <property name="hibernate.format_sql">true</property>
         <!-- 自动维护表 指定自动生成数据表的策略 -->
         <property name="hibernate.hbm2ddl.auto">update</property>
+        <mapping class="com.innovation.entity.UserEntity"/>
 
         <!-- 3.映射文件路径 （不可省略）-->
         <!--<mapping resource="com/niit/entity/User.hbm.xml" />-->
