@@ -16,7 +16,7 @@
 
 
     <!-- dao对象 -->
-    <bean id="userDao" class="com.innovation.dao.UserDao">
+    <bean id="userDao" class="com.innovation.dao.impl.UserDao">
     </bean>
 
     <!-- service对象 -->
