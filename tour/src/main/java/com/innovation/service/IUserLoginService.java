@@ -6,7 +6,7 @@ package com.innovation.service;
  * @Vison: 1.0
  * @Description:
  */
-public interface UserLoginService {
+public interface IUserLoginService {
     /**
      * 功能描述: 
      * @param: email    用来登录的邮箱

@@ -8,7 +8,7 @@ import com.innovation.entity.UserEntity;
  * @Vison: 1.0
  * @Description:
  */
-public interface UserRegService {
+public interface IUserRegService {
     /**
      * 功能描述: 
      *
