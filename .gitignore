@@ -8,7 +8,6 @@ tour/target/tour/META-INF/MANIFEST.MF
 # Reference: https://intellij-support.jetbrains.com/hc/en-us/articles/206544839
 
 # User-specific stuff
-tour/.idea/**/workspace.xml
 tour/.idea/**/tasks.xml
 tour/.idea/**/dictionaries
 tour/.idea/**/shelf
@@ -83,7 +82,7 @@ tour/.idea/httpRequests
 hs_err_pid*
 
 #Maven
-target/
+tour/target/
 pom.xml.tag
 pom.xml.releaseBackup
 pom.xml.versionsBackup
@@ -96,3 +95,5 @@ buildNumber.properties
 # Avoid ignoring Maven wrapper jar file (.jar files are usually ignored)
 !/.mvn/wrapper/maven-wrapper.jar
 
+tour/.idea/workspace.xml
+tour/target/tour/META-INF/MANIFEST.MF
