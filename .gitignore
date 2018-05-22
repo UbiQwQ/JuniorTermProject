@@ -96,3 +96,4 @@ tour/target/classes/spring/spring-mvc.xml
 tour/target/tour/WEB-INF/classes/com/innovation/dao/UserDao.class
 tour/target/tour/WEB-INF/classes/com/innovation/service/UserService.class
 tour/target/tour/WEB-INF/classes/spring/spring-mvc.xml
+tour/target/tour/WEB-INF/classes/com/innovation/service/UserService.class
