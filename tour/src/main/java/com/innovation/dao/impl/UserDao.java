@@ -1,7 +1,7 @@
 package com.innovation.dao.impl;
 
 import com.innovation.dao.IUserDao;
-import com.innovation.entity.UserEntity;
+import com.innovation.entity.User;
 
 /**
  * @Auther: Innovation
@@ -11,27 +11,27 @@ import com.innovation.entity.UserEntity;
  */
 public class UserDao implements IUserDao {
     @Override
-    public UserEntity findUserById(int id) throws Exception {
+    public User findUserById(int id) throws Exception {
         return null;
     }
 
     @Override
-    public UserEntity findUserByUserName(String userName) throws Exception {
+    public User findUserByUserName(String userName) throws Exception {
         return null;
     }
 
     @Override
-    public UserEntity findUserByEmail(String email) throws Exception {
+    public User findUserByEmail(String email) throws Exception {
         return null;
     }
 
     @Override
-    public UserEntity findUserByPhone(String phone) throws Exception {
+    public User findUserByPhone(String phone) throws Exception {
         return null;
     }
 
     @Override
-    public int insertUser(UserEntity user) throws Exception {
+    public int insertUser(User user) throws Exception {
         return 0;
     }
 

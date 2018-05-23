@@ -1,6 +1,6 @@
 package com.innovation.dao;
 
-import com.innovation.entity.UserEntity;
+import com.innovation.entity.User;
 
 /**
  * @Auther: Innovation
@@ -11,13 +11,13 @@ import com.innovation.entity.UserEntity;
 public interface IUserDao {
 
     //查找用户
-    public UserEntity findUserById(int id) throws Exception;
-    public UserEntity findUserByUserName(String userName) throws Exception;
-    public UserEntity findUserByEmail(String email) throws Exception;
-    public UserEntity findUserByPhone(String phone) throws Exception;
+    public User findUserById(int id) throws Exception;
+    public User findUserByUserName(String userName) throws Exception;
+    public User findUserByEmail(String email) throws Exception;
+    public User findUserByPhone(String phone) throws Exception;
 
     //插入更新和删除
-    public int insertUser(UserEntity user) throws Exception;
+    public int insertUser(User user) throws Exception;
     public void deleteUser(int id) throws Exception;
 
 

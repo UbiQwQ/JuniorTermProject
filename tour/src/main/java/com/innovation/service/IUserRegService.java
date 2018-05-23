@@ -1,6 +1,6 @@
 package com.innovation.service;
 
-import com.innovation.entity.UserEntity;
+import com.innovation.entity.User;
 
 /**
  * @Auther: Innovation
@@ -17,5 +17,5 @@ public interface IUserRegService {
      * @auther: Innovation
      * @date: 2018/5/20 12:09
      */
-    public void reg(UserEntity user) throws Exception;
+    public void reg(User user) throws Exception;
 }

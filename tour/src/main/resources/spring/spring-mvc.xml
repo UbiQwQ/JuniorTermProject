@@ -19,8 +19,16 @@
     <bean id="userDao" class="com.innovation.dao.impl.UserDao">
     </bean>
 
+    <!-- userService对象 -->
+    <bean id="userService" class="com.innovation.service.impl.UserService">
+    </bean>
+
+    <!-- userLoginService对象 -->
+    <bean id="userLoginService" class="com.innovation.service.impl.UserLoginService">
+    </bean>
+
     <!-- service对象 -->
-    <bean id="userService" class="com.innovation.service.UserService">
+    <bean id="userRegService" class="com.innovation.service.impl.UserRegService">
     </bean>
 
 </beans>

@@ -1,7 +1,6 @@
 package com.innovation.service.impl;
 
-import com.innovation.entity.UserEntity;
-import com.innovation.service.IUserLoginService;
+import com.innovation.entity.User;
 import com.innovation.service.IUserRegService;
 
 /**
@@ -12,7 +11,7 @@ import com.innovation.service.IUserRegService;
  */
 public class UserRegService implements IUserRegService {
     @Override
-    public void reg(UserEntity user) throws Exception {
+    public void reg(User user) throws Exception {
 
     }
 }

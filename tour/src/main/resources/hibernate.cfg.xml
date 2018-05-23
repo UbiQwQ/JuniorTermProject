@@ -32,6 +32,7 @@
         <!-- 自动维护表 指定自动生成数据表的策略 -->
         <property name="hibernate.hbm2ddl.auto">update</property>
         <mapping class="com.innovation.entity.UserEntity"/>
+        <mapping class="com.innovation.entity.User"/>
 
         <!-- 3.映射文件路径 （不可省略）-->
         <!--<mapping resource="com/niit/entity/User.hbm.xml" />-->
