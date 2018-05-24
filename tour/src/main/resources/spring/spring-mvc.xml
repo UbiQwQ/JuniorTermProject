@@ -1,34 +1,35 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <beans xmlns="http://www.springframework.org/schema/beans"
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-       xmlns:context="http://www.springframework.org/schema/context"
        xmlns:aop="http://www.springframework.org/schema/aop"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:mvc="http://www.springframework.org/schema/mvc"
        xmlns:tx="http://www.springframework.org/schema/tx"
        xsi:schemaLocation="http://www.springframework.org/schema/beans
-	http://www.springframework.org/schema/beans/spring-beans.xsd
-	http://www.springframework.org/schema/context
-	http://www.springframework.org/schema/context/spring-context.xsd
-	http://www.springframework.org/schema/aop
-	http://www.springframework.org/schema/aop/spring-aop.xsd
-	http://www.springframework.org/schema/tx
-	http://www.springframework.org/schema/tx/spring-tx.xsd">
+        http://www.springframework.org/schema/beans/spring-beans.xsd
+        http://www.springframework.org/schema/aop
+        http://www.springframework.org/schema/aop/spring-aop-3.2.xsd
+        http://www.springframework.org/schema/context
+        http://www.springframework.org/schema/context/spring-context-3.2.xsd
+        http://www.springframework.org/schema/mvc
+        http://www.springframework.org/schema/mvc/spring-mvc-3.2.xsd
+        http://www.springframework.org/schema/tx
+        http://www.springframework.org/schema/tx/spring-tx-3.2.xsd">
 
 
+    <!--controller组件扫描器-->
+    <context:component-scan base-package="com.innovation"/>
 
-    <!-- dao对象 -->
-    <bean id="userDao" class="com.innovation.dao.impl.UserDao">
-    </bean>
+    <!-- 配置映射器和适配器驱动 -->
+    <mvc:annotation-driven />
 
-    <!-- userService对象 -->
-    <bean id="userService" class="com.innovation.service.impl.UserService">
-    </bean>
+    <!-- 静态资源默认servlet配置 加入对静态资源的处理：js，csss，gif，png 允许使用"/"做整体映射 -->
+    <mvc:default-servlet-handler />
 
-    <!-- userLoginService对象 -->
-    <bean id="userLoginService" class="com.innovation.service.impl.UserLoginService">
-    </bean>
-
-    <!-- service对象 -->
-    <bean id="userRegService" class="com.innovation.service.impl.UserRegService">
+    <!-- 配置JSP视图解析器 显示ViewResolver -->
+    <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+        <property name="prefix" value="/WEB-INF/jsp/"></property>
+        <property name="suffix" value=".jsp"></property>
     </bean>
 
 </beans>

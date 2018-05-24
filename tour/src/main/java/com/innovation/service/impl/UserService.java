@@ -1,6 +1,7 @@
 package com.innovation.service.impl;
 
 import com.innovation.service.IUserService;
+import org.springframework.stereotype.Service;
 
 /**
  * @Auther: Innovation
@@ -8,6 +9,7 @@ import com.innovation.service.IUserService;
  * @Vison: 1.0
  * @Description:
  */
+@Service
 public class UserService implements IUserService {
 
     @Override

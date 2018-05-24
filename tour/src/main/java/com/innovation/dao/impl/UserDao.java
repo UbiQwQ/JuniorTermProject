@@ -2,6 +2,7 @@ package com.innovation.dao.impl;
 
 import com.innovation.dao.IUserDao;
 import com.innovation.entity.User;
+import org.springframework.stereotype.Repository;
 
 /**
  * @Auther: Innovation
@@ -9,6 +10,7 @@ import com.innovation.entity.User;
  * @Vison: 1.0
  * @Description:
  */
+@Repository
 public class UserDao implements IUserDao {
     @Override
     public User findUserById(int id) throws Exception {

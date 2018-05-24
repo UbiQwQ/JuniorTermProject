@@ -2,6 +2,7 @@ package com.innovation.service.impl;
 
 import com.innovation.entity.User;
 import com.innovation.service.IUserRegService;
+import org.springframework.stereotype.Service;
 
 /**
  * @Auther: Innovation
@@ -9,6 +10,7 @@ import com.innovation.service.IUserRegService;
  * @Vison: 1.0
  * @Description:
  */
+@Service
 public class UserRegService implements IUserRegService {
     @Override
     public void reg(User user) throws Exception {
