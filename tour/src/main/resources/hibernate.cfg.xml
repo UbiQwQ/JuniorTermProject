@@ -3,10 +3,15 @@
         "-//Hibernate/Hibernate Configuration DTD 3.0//EN"
         "http://www.hibernate.org/dtd/hibernate-configuration-3.0.dtd">
 <hibernate-configuration>
+
     <session-factory>
         <!-- 1.必填连接数据库参数 (不可省略)-->
         <property name="hibernate.connection.driver_class">com.mysql.jdbc.Driver</property>
-        <property name="hibernate.connection.url">jdbc:mysql://localhost:3306/trip</property>
+        <property name="hibernate.connection.url">
+            jdbc:mysql://localhost:3306/trip?useUnicode=true&amp;characterEncoding=utf-8
+        </property>
+        <property name="hibernate.connection.username">root</property>
+        <property name="hibernate.connection.password">1230</property>
 
 
         <!-- Hibernate整合C3P0连接池  (不可省略)-->

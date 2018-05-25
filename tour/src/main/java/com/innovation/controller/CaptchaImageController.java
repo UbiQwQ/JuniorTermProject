@@ -23,7 +23,6 @@ import java.io.IOException;
  * @Description:
  */
 @Controller
-@RequestMapping("/captcha")
 public class CaptchaImageController {
 
     private Logger logger = LoggerFactory.getLogger(getClass());
@@ -31,7 +30,7 @@ public class CaptchaImageController {
     @Autowired
     private ImageCaptchaService imageCaptchaService;
 
-    @RequestMapping
+    @RequestMapping("/captcha")
     public void handleRequest(HttpServletRequest request, HttpServletResponse response) {
         try {
             ByteArrayOutputStream jpegOutputStream = new ByteArrayOutputStream();
@@ -52,6 +51,17 @@ public class CaptchaImageController {
             respOs.close();
         } catch (IOException e) {
             logger.error("generate captcha image error: {}", e.getMessage());
+        }
+    }
+
+    @RequestMapping("/checkCaptcha")
+    public @ResponseBody int checkCaptcha(String captcha, HttpServletRequest request) throws Exception {
+        Boolean isResponseCorrect = imageCaptchaService.validateResponseForID(request.getSession().getId(), captcha);
+
+        if (isResponseCorrect == false) {
+            return 0;
+        } else {
+            return 1;
         }
     }
 }

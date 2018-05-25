@@ -2,6 +2,7 @@ package com.innovation.dao.impl;
 
 import com.innovation.dao.IUserDao;
 import com.innovation.entity.User;
+import org.springframework.orm.hibernate5.HibernateTemplate;
 import org.springframework.stereotype.Repository;
 
 /**
@@ -12,6 +13,9 @@ import org.springframework.stereotype.Repository;
  */
 @Repository
 public class UserDao implements IUserDao {
+
+    private HibernateTemplate ht;
+
     @Override
     public User findUserById(int id) throws Exception {
         return null;
@@ -32,9 +36,17 @@ public class UserDao implements IUserDao {
         return null;
     }
 
+    /**
+     * 功能描述: 向数据库中插入user数据
+     *
+     * @param: user
+     * @return:
+     * @auther: Innovation
+     * @date: 2018/5/25 16:53
+     */
     @Override
-    public int insertUser(User user) throws Exception {
-        return 0;
+    public void insertUser(User user) throws Exception {
+        ht.save(user);
     }
 
     @Override

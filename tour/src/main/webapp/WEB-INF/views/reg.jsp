@@ -63,7 +63,7 @@
             </div>
             <div class="controls">
                 <input type="text" id="captcha" name="captcha" required>
-                <img id="captchaPicture" src="captcha" />
+                <img id="captchaPicture" src="captcha"/>
                 ${info}
             </div>
         </div>
@@ -78,14 +78,14 @@
     </form>
 
 
-    <script src="js/jquery-1.9.1.js" type="text/javascript"></script>
-    <script src="js/bootstrap.min.js" type="text/javascript"></script>
-    <script src="js/user.js" type="text/javascript"></script>
+    <script src="js/jquery-3.3.1.js" type="text/javascript"></script>
+    <%--<script src="js/bootstrap.min.js" type="text/javascript"></script>--%>
+    <%--<script src="js/user.js" type="text/javascript"></script>--%>
 
     <script type="text/javascript">
         $("#captchaPicture").click(
             function(){
-                $(this).attr("src","<%=request.getContextPath() %>/captcha");
+                $(this).attr("src","<%=request.getContextPath()%>/captcha");
                 $("#captcha").val("");
             }
         );
