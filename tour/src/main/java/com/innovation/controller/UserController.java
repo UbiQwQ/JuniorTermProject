@@ -75,10 +75,9 @@ public class UserController {
         userRegService.reg(user);
 
         // 设置传到前台的信息和视图名称
-
-        // 设置session
         modelAndView.setViewName("redirect:index.jsp");
 
+        // 设置session
         httpSession.setAttribute("status",user.getStatus());
         httpSession.setAttribute("userName",userName);
         httpSession.setAttribute("email",email);

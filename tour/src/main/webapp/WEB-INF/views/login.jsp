@@ -22,7 +22,7 @@
                 <div id="btn_area">
                     <input type="text" id="VerificationCode" name="VerificationCode"  placeholder="请输入验证码" class="verify">
                     <a href="javascript:void(0);" onclick="VerificationCode()">
-                        <img id="randCodeImage" alt="验证码"  src="VerificationCode/generate.action" width="100" height="40"/>
+                        <img id="randCodeImage" alt="验证码"  src="/captcha" width="100" height="40"/>
                     </a>
                 </div>
                 <div style="float:left;">
