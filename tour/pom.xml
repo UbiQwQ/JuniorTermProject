@@ -66,7 +66,7 @@
     </dependency>
 
 
-
+    <!--文件上传-->
     <!-- https://mvnrepository.com/artifact/commons-fileupload/commons-fileupload -->
     <dependency>
       <groupId>commons-fileupload</groupId>
@@ -82,6 +82,16 @@
       <artifactId>mysql-connector-java</artifactId>
       <version>5.1.38</version>
     </dependency>
+
+    <!--MySQL驱动包-->
+    <!-- https://mvnrepository.com/artifact/mysql/mysql-connector-java -->
+    <dependency>
+      <groupId>mysql</groupId>
+      <artifactId>mysql-connector-java</artifactId>
+      <version>8.0.11</version>
+    </dependency>
+
+
 
     <!--spring相关包-->
     <dependency>
@@ -112,7 +122,7 @@
       <version>${spring.version}</version>
     </dependency>
 
-    <!-- 关系型数据库整合时需配置 Hibernate -->
+    <!-- 关系型数据库整合时需配置 ORM-->
     <dependency>
       <groupId>org.springframework</groupId>
       <artifactId>spring-orm</artifactId>
@@ -150,6 +160,7 @@
       <version>${spring.version}</version>
     </dependency>
 
+
     <!-- Hibernate -->
     <dependency>
       <groupId>org.hibernate</groupId>
@@ -162,12 +173,6 @@
       <artifactId>hibernate-entitymanager</artifactId>
       <version>${hibernate.version}</version>
     </dependency>
-    <!-- https://mvnrepository.com/artifact/org.hibernate/hibernate-c3p0 -->
-    <dependency>
-      <groupId>org.hibernate</groupId>
-      <artifactId>hibernate-c3p0</artifactId>
-      <version>5.2.10.Final</version>
-    </dependency>
 
     <!--second-level-cache-->
     <dependency>
@@ -175,6 +180,30 @@
       <artifactId>hibernate-ehcache</artifactId>
       <version>${hibernate.version}</version>
     </dependency>
+
+
+    <!-- https://mvnrepository.com/artifact/org.hibernate/hibernate-c3p0 -->
+    <dependency>
+      <groupId>org.hibernate</groupId>
+      <artifactId>hibernate-c3p0</artifactId>
+      <version>5.2.10.Final</version>
+    </dependency>
+
+    <!-- https://mvnrepository.com/artifact/com.mchange/c3p0 -->
+    <dependency>
+      <groupId>com.mchange</groupId>
+      <artifactId>c3p0</artifactId>
+      <version>0.9.5.2</version>
+    </dependency>
+
+    <!-- https://mvnrepository.com/artifact/com.mchange/mchange-commons-java -->
+    <dependency>
+      <groupId>com.mchange</groupId>
+      <artifactId>mchange-commons-java</artifactId>
+      <version>0.2.11</version>
+    </dependency>
+
+
 
 
     <!-- Aop -->
