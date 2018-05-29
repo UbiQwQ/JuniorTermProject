@@ -87,4 +87,18 @@ public class UserController {
         return modelAndView;
     }
 
+    /**
+     * 功能描述: 管理员界面测试
+     *
+     * @param:
+     * @return:
+     * @auther: Administrators
+     * @date: 2018/5/29 17:04
+     */
+    @RequestMapping(value="/gotoadmin")
+    public String goToAdmin(){
+        System.out.println("-gotoadmin-");
+        return "admin";
+    }
+
 }

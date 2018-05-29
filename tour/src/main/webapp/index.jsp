@@ -50,6 +50,7 @@
 
             <div id="navbar" class="navbar-collapse navbar-right collapse hover-effect">
                 <ul class="nav navbar-nav">
+                    <li><a href="${pageContext.request.contextPath }/gotoadmin">测试admin</a></li>
                     <li><a href="#about">关于</a></li>
                     <li><a href="#services">服务</a></li>
                     <li><a href="#gallery">GALLERY</a></li>
