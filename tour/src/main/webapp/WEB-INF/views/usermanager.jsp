@@ -69,7 +69,7 @@
         <div class="sidebar-scroll">
             <nav>
                 <ul class="nav">
-                    <li><a href="${pageContext.request.contextPath }/usermanager" class=""><i class="lnr lnr-user"></i> <span>管理用户</span></a></li>
+                    <li><a href="#" class=""><i class="lnr lnr-user"></i> <span>管理用户</span></a></li>
                     <li><a href="#" class=""><i class="lnr lnr-pencil"></i> <span>修改密码</span></a></li>
                     <li><a href="#" class=""><i class="lnr lnr-chart-bars"></i> <span>管理游记</span></a></li>
                     <li><a href="#" class=""><i class="lnr lnr-cog"></i> <span>管理网站信息</span></a></li>
@@ -83,36 +83,46 @@
     </div>
     <!-- END LEFT SIDEBAR -->
     <!-- MAIN -->
-        <!-- MAIN CONTENT -->
+    <!-- MAIN CONTENT -->
 
     <div class="main">
-        <div class="main-text" style="margin-top: 60px;">
-            <h2 style="text-align: center;">This page for administrators</h2><br/>
-            <div class="jumbotron">
-                <p style="font-size: 20px;margin-left: 180px;">
-                    用户管理：对用户增、删、改、查<br/>
-                    修改密码：修改管理员密码<br/>
-                    管理游记：对举报的游记进行删除<br/>
-                    管理网站信息：管理景点、酒店、美食店信息，对这些信息进行增删改查<br />
-                    审核团游申请：审核组团游申请，管理员批准后，其他旅游爱好者才能参与该组团游活动<br />
-                    查询功能：检索美食店、景点、酒店信息，检索游记，检索用户,查询被举报的信息，查看组团游申请<br />
-                    注销：功能区注销 or 点击管理员头像注销
-                </p>
-            </div>
-
+        <div class="table-responsive">
+            <table
+                    class="table table-bordered table-striped table-hover table-condensed">
+                <tr>
+                    <td>用户id</td>
+                    <td>用户名</td>
+                    <td>邮箱</td>
+                    <td>手机号</td>
+                    <td>年龄</td>
+                    <td>注册时间</td>
+                    <td>状态码</td>
+                    <td>可执行操作</td>
+                </tr>
+                <!-- items要进行迭代的集合，var迭代参数的名称 -->
+                <c:forEach items="${users}" var="user">
+                    <tr>
+                        <td><c:out value="${user.id}" /></td>
+                        <td><c:out value="${user.userName}" /></td>
+                        <td><c:out value="${user.email}" /></td>
+                        <td><c:out value="${user.phone}" /></td>
+                        <td><c:out value="${user.age}" /></td>
+                        <td><c:out value="${user.regTime}" /></td>
+                        <td><c:out value="${user.status}" /></td>
+                        <td>
+                            <a href="./servlet/DeleteServlet?id=${user.id}"/><input type="button" value="删除" class="btn btn-default"/></a>
+                            <input type="button" value="修改" class="btn btn-default" onclick="test(${user.id})"/>
+                        </td>
+                    </tr>
+                </c:forEach>
+            </table>
         </div>
-
-
-
     </div>
-
-
 </div>
 <!-- END WRAPPER -->
 <!-- Javascript -->
 <script src="../../statics/js/jquery.min.js"></script>
 <script src="../../statics/js/bootstrap.min.js"></script>
-
 </body>
 
 </html>

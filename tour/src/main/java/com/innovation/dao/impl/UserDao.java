@@ -2,8 +2,11 @@ package com.innovation.dao.impl;
 
 import com.innovation.dao.IUserDao;
 import com.innovation.entity.User;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.orm.hibernate5.HibernateTemplate;
 import org.springframework.stereotype.Repository;
+
+import java.util.List;
 
 /**
  * @Auther: Innovation
@@ -14,7 +17,13 @@ import org.springframework.stereotype.Repository;
 @Repository
 public class UserDao implements IUserDao {
 
+    @Autowired
     private HibernateTemplate ht;
+
+    @Override
+    public List<User> findAll() {
+        return (List<User>)ht.find("from com.innovation.entity.User ");
+    }
 
     @Override
     public User findUserById(int id) throws Exception {
