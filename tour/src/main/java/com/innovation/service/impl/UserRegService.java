@@ -27,8 +27,7 @@ public class UserRegService implements IUserRegService {
      * @date: 2018/5/25 16:49
      */
     @Override
-    public void reg(User user) throws Exception {
-        userDao = new UserDao();
-        userDao.insertUser(user);
+    public void saveUser(User user) throws Exception {
+        userDao.saveUser(user);
     }
 }

@@ -1,2 +1,5 @@
 idea javax.servlet.http.HttpServletRequest; ²»´æÔÚ
+
 com.mysql.jdbc.exceptions.jdbc4.MySQLNonTransientConnectionException: Could not create connection to database server.
+
+Write operations are not allowed in read-only mode (FlushMode.NEVER/MANUAL): Turn your Session

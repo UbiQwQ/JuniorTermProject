@@ -17,7 +17,7 @@ public interface IUserDao {
     public User findUserByPhone(String phone) throws Exception;
 
     //插入更新和删除
-    public void insertUser(User user) throws Exception;
+    public void saveUser(User user) throws Exception;
     public void deleteUser(int id) throws Exception;
 
 

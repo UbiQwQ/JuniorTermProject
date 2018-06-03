@@ -17,5 +17,5 @@ public interface IUserRegService {
      * @auther: Innovation
      * @date: 2018/5/20 12:09
      */
-    public void reg(User user) throws Exception;
+    public void saveUser(User user) throws Exception;
 }

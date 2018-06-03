@@ -20,16 +20,10 @@
     <aop:aspectj-autoproxy proxy-target-class="true"/>
     <!-- 数据源配置 -->
     <bean id="dataSource" class="com.mchange.v2.c3p0.ComboPooledDataSource">
-        <!--<property name="driverClass" value="com.mysql.jdbc.Driver"></property>-->
-        <!--<property name="jdbcUrl" value="jdbc:mysql://localhost:3306/trip"></property>-->
-        <!--<property name="user" value="root"></property>-->
-        <!--&lt;!&ndash;<property name="password" value="1230"></property>&ndash;&gt;-->
-        <!--<property name="password" value="etoak"></property>-->
 
         <property name="driverClass" value="${jdbc.driverClass}"></property>
         <property name="jdbcUrl" value="${jdbc.jdbcUrl}"></property>
         <property name="user" value="${jdbc.user}"></property>
-        <!--<property name="password" value="1230"></property>-->
         <property name="password" value="${jdbc.password}"></property>
 
         <property name="initialPoolSize" value="3"></property>
@@ -50,7 +44,14 @@
                 <prop key="hibernate.dialect">org.hibernate.dialect.MySQLDialect</prop>
                 <prop key="hibernate.show_sql">true</prop>
                 <prop key="hibernate.hbm2ddl.auto">update</prop>
+                <prop key="hibernate.connection.url">jdbc:mysql://localhost:3306/trip</prop>
+                <prop key="hibernate.connection.driver_class">com.mysql.jdbc.Driver</prop>
             </props>
+        </property>
+        <property name="annotatedClasses">
+            <list>
+                <value>com.innovation.entity.User</value>
+            </list>
         </property>
 
         <!--Hibernate加载映射文件,映射到具体位置-->

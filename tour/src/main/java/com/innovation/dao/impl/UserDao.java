@@ -2,6 +2,7 @@ package com.innovation.dao.impl;
 
 import com.innovation.dao.IUserDao;
 import com.innovation.entity.User;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.orm.hibernate5.HibernateTemplate;
 import org.springframework.stereotype.Repository;
 
@@ -14,11 +15,13 @@ import org.springframework.stereotype.Repository;
 @Repository
 public class UserDao implements IUserDao {
 
+    @Autowired
     private HibernateTemplate ht;
 
     @Override
     public User findUserById(int id) throws Exception {
-        return null;
+        User user = ht.get(User.class,id);
+        return user;
     }
 
     @Override
@@ -45,7 +48,7 @@ public class UserDao implements IUserDao {
      * @date: 2018/5/25 16:53
      */
     @Override
-    public void insertUser(User user) throws Exception {
+    public void saveUser(User user) throws Exception {
         ht.save(user);
     }
 
