@@ -64,7 +64,7 @@ public class UserDao implements IUserDao {
      * @date: 2018/5/25 16:53
      */
     @Override
-    public void insertUser(User user) throws Exception {
+    public void saveUser(User user) throws Exception {
         ht.save(user);
     }
     /** 
