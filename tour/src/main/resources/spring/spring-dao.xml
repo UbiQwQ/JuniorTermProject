@@ -60,6 +60,12 @@
                 <!--<value></value>-->
             <!--</list>-->
         <!--</property>-->
+        <!-- 实体类写好之后，需要在spring容器中加载-->
+        <property name="annotatedClasses">
+            <list>
+                <value>com.innovation.entity.User</value>
+            </list>
+        </property>
 
     </bean>
 

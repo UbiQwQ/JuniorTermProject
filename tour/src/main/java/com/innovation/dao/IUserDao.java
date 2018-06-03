@@ -2,6 +2,8 @@ package com.innovation.dao;
 
 import com.innovation.entity.User;
 
+import java.util.List;
+
 /**
  * @Auther: Innovation
  * @Date: 2018/5/19 16:19
@@ -11,6 +13,7 @@ import com.innovation.entity.User;
 public interface IUserDao {
 
     //查找用户
+    public List<User> findAll();
     public User findUserById(int id) throws Exception;
     public User findUserByUserName(String userName) throws Exception;
     public User findUserByEmail(String email) throws Exception;

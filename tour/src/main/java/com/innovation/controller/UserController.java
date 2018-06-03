@@ -58,7 +58,6 @@ public class UserController {
         UserController.isCaptcha = isCaptcha;
     }
 
-
     /**
      * 功能描述: 用户注册
      *
@@ -104,7 +103,6 @@ public class UserController {
 
         return modelAndView;
     }
-
     /**
      * 功能描述: 生成验证码
      *
