@@ -78,9 +78,7 @@
     </form>
 
 
-    <script src="js/jquery-3.3.1.js" type="text/javascript"></script>
-    <%--<script src="js/bootstrap.min.js" type="text/javascript"></script>--%>
-    <%--<script src="js/user.js" type="text/javascript"></script>--%>
+    <script src="statics/js/jquery-3.3.1.js" type="text/javascript"></script>
 
     <script type="text/javascript">
         $("#captchaPicture").click(

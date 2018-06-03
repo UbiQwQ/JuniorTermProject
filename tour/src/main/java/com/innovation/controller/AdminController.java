@@ -1,50 +1,50 @@
 package com.innovation.controller;
 
-import com.innovation.dao.impl.UserDao;
 import com.innovation.entity.User;
 import com.innovation.service.impl.AdminService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.ui.Model;
-import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.servlet.ModelAndView;
 
 import java.util.List;
 
 /**
- * @Auther: Administrators
- * @Date: 2018/5/31 11:50
- * @Description:
+ * @ClassName: AdminController
+ * @Description: adminController
+ * @Author: li
+ * @Date: 2018/6/2 16:10
+ * @Version: 1.0
  */
 @Controller
 public class AdminController {
 
     @Autowired
     private AdminService adminService;
+
     /**
-     * 功能描述: 管理员界面测试
-     *
-     * @param:
-     * @return:
-     * @auther: Administrators
-     * @date: 2018/5/29 17:04
+     * @description: 跳转到admin.jsp
+     * @author: li
+     * @date: 2018/6/2 16:13
+     * @param: []
+     * @return: java.lang.String
      */
-    @RequestMapping(value="/gotoadmin")
+    @RequestMapping(value = "/gotoadmin")
     public String goToAdmin() {
         System.out.println("-gotoadmin-");
 
         return "admin";
     }
+
     /**
-     * 功能描述:跳转用户管理界面
-     *
-     * @param:
-     * @return:
-     * @auther: Administrators
-     * @date: 2018/5/31 22:18
+     * @description: 跳转到usermanager.jsp
+     * @author: li
+     * @date: 2018/6/2 16:12
+     * @param: [model]
+     * @return: java.lang.String
      */
-    @RequestMapping(value="/usermanager")
+    @RequestMapping(value = "/usermanager")
     public String userManager(Model model) {
         List<User> userList = adminService.findAll();
         if (userList != null) {
@@ -52,4 +52,19 @@ public class AdminController {
         }
         return "usermanager";
     }
+
+    /**
+     * @description: 根据id删除用户
+     * @author: li
+     * @date: 2018/6/2 16:12
+     * @param: [user]
+     * @return: void
+     */
+    @RequestMapping(value = "/deleteById")
+    public String deleteById(User user) {
+        System.out.println(user.getId());
+        adminService.deleteUserById(user.getId());
+        return "usermanager";
+    }
+
 }

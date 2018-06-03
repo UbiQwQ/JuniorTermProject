@@ -30,38 +30,33 @@ public class CaptchaImageController {
     @Autowired
     private ImageCaptchaService imageCaptchaService;
 
-    @RequestMapping("/captcha")
-    public void handleRequest(HttpServletRequest request, HttpServletResponse response) {
-        try {
-            ByteArrayOutputStream jpegOutputStream = new ByteArrayOutputStream();
-            String captchaId = request.getSession().getId();
-            BufferedImage challenge = imageCaptchaService.getImageChallengeForID(captchaId, request.getLocale());
+//    @RequestMapping("/captcha")
+//    public void handleRequest(HttpServletRequest request, HttpServletResponse response) {
+//        try {
+//            ByteArrayOutputStream jpegOutputStream = new ByteArrayOutputStream();
+//            String captchaId = request.getSession().getId();
+//            BufferedImage challenge = imageCaptchaService.getImageChallengeForID(captchaId, request.getLocale());
+//
+//            response.setHeader("Cache-Control", "no-store");
+//            response.setHeader("Pragma", "no-cache");
+//            response.setDateHeader("Expires", 0L);
+//            response.setContentType("image/jpeg");
+//
+//            ImageIO.write(challenge, "jpeg", jpegOutputStream);
+//            byte[] captchaChallengeAsJpeg = jpegOutputStream.toByteArray();
+//
+//            ServletOutputStream respOs = response.getOutputStream();
+//            respOs.write(captchaChallengeAsJpeg);
+//            respOs.flush();
+//            respOs.close();
+//        } catch (IOException e) {
+//            logger.error("generate captcha image error: {}", e.getMessage());
+//        }
+//
+//        UserController.setIsCaptcha(Boolean.FALSE);
+//    }
 
-            response.setHeader("Cache-Control", "no-store");
-            response.setHeader("Pragma", "no-cache");
-            response.setDateHeader("Expires", 0L);
-            response.setContentType("image/jpeg");
 
-            ImageIO.write(challenge, "jpeg", jpegOutputStream);
-            byte[] captchaChallengeAsJpeg = jpegOutputStream.toByteArray();
 
-            ServletOutputStream respOs = response.getOutputStream();
-            respOs.write(captchaChallengeAsJpeg);
-            respOs.flush();
-            respOs.close();
-        } catch (IOException e) {
-            logger.error("generate captcha image error: {}", e.getMessage());
-        }
-    }
 
-    @RequestMapping("/checkCaptcha")
-    public @ResponseBody int checkCaptcha(String captcha, HttpServletRequest request) throws Exception {
-        Boolean isResponseCorrect = imageCaptchaService.validateResponseForID(request.getSession().getId(), captcha);
-
-        if (isResponseCorrect == false) {
-            return 0;
-        } else {
-            return 1;
-        }
-    }
 }

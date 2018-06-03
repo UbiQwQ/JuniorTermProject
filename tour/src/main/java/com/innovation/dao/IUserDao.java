@@ -21,7 +21,7 @@ public interface IUserDao {
 
     //插入更新和删除
     public void insertUser(User user) throws Exception;
-    public void deleteUser(int id) throws Exception;
+    public String deleteUserById(int id) throws Exception;
 
 
     //更改用户密码

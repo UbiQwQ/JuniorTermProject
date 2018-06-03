@@ -87,7 +87,7 @@
 
     <div class="main">
         <div class="main-text" style="margin-top: 60px;">
-            <h2 style="text-align: center;">This page for administrators</h2><br/>
+            <h2 style="text-align: center;">This page for Administrators</h2><br/>
             <div class="jumbotron">
                 <p style="font-size: 20px;margin-left: 180px;">
                     用户管理：对用户增、删、改、查<br/>

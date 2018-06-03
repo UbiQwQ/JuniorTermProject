@@ -110,7 +110,7 @@
                         <td><c:out value="${user.regTime}" /></td>
                         <td><c:out value="${user.status}" /></td>
                         <td>
-                            <a href="./servlet/DeleteServlet?id=${user.id}"/><input type="button" value="删除" class="btn btn-default"/></a>
+                            <a href="${pageContext.request.contextPath}/deleteById?id=${user.id}"/><input type="button" value="删除" class="btn btn-default"/></a>
                             <input type="button" value="修改" class="btn btn-default" onclick="test(${user.id})"/>
                         </td>
                     </tr>

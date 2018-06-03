@@ -4,6 +4,7 @@ import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import java.sql.Timestamp;
 import javax.persistence.Table;
 import java.util.Date;
 
@@ -25,6 +26,10 @@ public class User {
     private Byte age;
     private Date regTime;
     private Short status;
+
+    public void setRegTime(Timestamp regTime) {
+        this.regTime = regTime;
+    }
 
     @Id
     @Column(name = "id")

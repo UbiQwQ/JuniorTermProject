@@ -1,4 +1,4 @@
-package com.innovation.utils;
+package com.innovation.util;
 
 /**
  * @Auther: Innovation

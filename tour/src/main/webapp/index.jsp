@@ -58,8 +58,8 @@
                     <li><a href="#faq">FAQs</a></li>
                     <li><a href="#team">团队</a></li>
                     <li><a href="#contact">联系</a></li>
-                    <li><a href="#"><img src="statics/images/signup.png" alt="sign up"></a></li>
-                    <li><a href="#"><img src="statics/images/signin.png" alt="sign in"></a></li>
+                    <li><a href="/reg"><img src="statics/images/signup.png" alt="sign up"></a></li>
+                    <li><a href="/login"><img src="statics/images/signin.png" alt="sign in"></a></li>
                 </ul>
             </div>
         </div>
