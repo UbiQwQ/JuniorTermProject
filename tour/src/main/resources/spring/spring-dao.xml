@@ -48,11 +48,6 @@
                 <prop key="hibernate.connection.driver_class">com.mysql.jdbc.Driver</prop>
             </props>
         </property>
-        <property name="annotatedClasses">
-            <list>
-                <value>com.innovation.entity.User</value>
-            </list>
-        </property>
 
         <!--Hibernate加载映射文件,映射到具体位置-->
         <!--<property name="mappingLocations">-->
