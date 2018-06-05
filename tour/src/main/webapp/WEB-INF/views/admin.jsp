@@ -69,7 +69,7 @@
         <div class="sidebar-scroll">
             <nav>
                 <ul class="nav">
-                    <li><a href="${pageContext.request.contextPath }/usermanager" class=""><i class="lnr lnr-user"></i> <span>管理用户</span></a></li>
+                    <li><a href="${pageContext.request.contextPath }/gotousermanager" class=""><i class="lnr lnr-user"></i> <span>管理用户</span></a></li>
                     <li><a href="#" class=""><i class="lnr lnr-pencil"></i> <span>修改密码</span></a></li>
                     <li><a href="#" class=""><i class="lnr lnr-chart-bars"></i> <span>管理游记</span></a></li>
                     <li><a href="#" class=""><i class="lnr lnr-cog"></i> <span>管理网站信息</span></a></li>

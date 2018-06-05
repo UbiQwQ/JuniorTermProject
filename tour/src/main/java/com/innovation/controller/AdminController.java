@@ -7,6 +7,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 
 import java.util.List;
 
@@ -44,10 +45,11 @@ public class AdminController {
      * @param: [model]
      * @return: java.lang.String
      */
-    @RequestMapping(value = "/usermanager")
+    @RequestMapping(value = "/gotousermanager")
     public String userManager(Model model) {
         List<User> userList = adminService.findAll();
         if (userList != null) {
+            //"users" 是jsp页面中foreach中的items要进行迭代的集合
             model.addAttribute("users", userList);
         }
         return "usermanager";
@@ -62,9 +64,9 @@ public class AdminController {
      */
     @RequestMapping(value = "/deleteById")
     public String deleteById(User user) {
-        System.out.println(user.getId());
         adminService.deleteUserById(user.getId());
-        return "usermanager";
+        //重定向到usermanager，会重新查询数据
+        return "redirect:/gotousermanager";
     }
 
 }

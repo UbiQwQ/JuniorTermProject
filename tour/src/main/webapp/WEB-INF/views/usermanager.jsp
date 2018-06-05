@@ -110,12 +110,32 @@
                         <td><c:out value="${user.regTime}" /></td>
                         <td><c:out value="${user.status}" /></td>
                         <td>
-                            <a href="${pageContext.request.contextPath}/deleteById?id=${user.id}"/><input type="button" value="删除" class="btn btn-default"/></a>
+                            <a class="btn btn-primary" onClick="delcfm('${pageContext.request.contextPath}/deleteById?id=${user.id}')">删除</a>
                             <input type="button" value="修改" class="btn btn-default" onclick="test(${user.id})"/>
                         </td>
                     </tr>
                 </c:forEach>
             </table>
+            <!-- bootstrap模态框组件  -->
+            <!--  aria-hidden="true"属性用于将模态框隐藏 -->
+            <div class="modal fade" id="delcfmModel">
+                <div class="modal-dialog">
+                    <div class="modal-content message_align">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+                            <h4 class="modal-title">提示信息</h4>
+                        </div>
+                        <div class="modal-body">
+                            <p>您确认要删除此用户吗？</p>
+                        </div>
+                        <div class="modal-footer">
+                            <input type="hidden" id="url"/>
+                            <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+                            <a  onclick="urlSubmit()" class="btn btn-success" data-dismiss="modal">确定</a>
+                        </div>
+                    </div><!-- /.modal-content -->
+                </div><!-- /.modal-dialog -->
+            </div><!-- /.modal -->
         </div>
     </div>
 </div>
@@ -123,6 +143,21 @@
 <!-- Javascript -->
 <script src="../../statics/js/jquery.min.js"></script>
 <script src="../../statics/js/bootstrap.min.js"></script>
+<!--bootstrap模态框触发器(按钮点击触发) -->
+<script>
+    function delcfm(url) {
+        <!-- 给会话中的隐藏属性URL赋值 -->
+        $('#url').val(url);
+        <!-- 调用id为delcfmModel的模态框-->
+        $('#delcfmModel').modal();
+    }
+    function urlSubmit(){
+        <!-- 获取会话中的隐藏属性URL -->
+        var url=$.trim($("#url").val());
+        <!--定位到新的页面 -->
+        window.location.href=url;
+    }
+</script>
 </body>
 
 </html>
