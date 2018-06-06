@@ -2,13 +2,14 @@ package com.innovation.dao.impl;
 
 import com.innovation.dao.IUserDao;
 import com.innovation.entity.User;
-import org.hibernate.FlushMode;
+import org.hibernate.HibernateException;
 import org.hibernate.Session;
+import org.hibernate.query.Query;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.orm.hibernate5.HibernateCallback;
 import org.springframework.orm.hibernate5.HibernateTemplate;
 import org.springframework.stereotype.Repository;
 
-import javax.persistence.FlushModeType;
 import java.util.List;
 
 /**
@@ -22,6 +23,23 @@ public class UserDao implements IUserDao {
 
     @Autowired
     private HibernateTemplate ht;
+
+    /** 
+     * @description: user表总行数
+     * @author: li  
+     * @date: 2018/6/6 19:13  
+     * @param: []  
+     * @return: int
+     */ 
+    public int queryUserRows() {
+        String hql = "select count(*) from User as user";
+        Session session = ht.getSessionFactory().openSession();
+        Query query = session.createQuery(hql);
+        int count = ((Long) query.iterate().next()).intValue();
+        session.close();
+        return count;
+    }
+
     /**
      * @description: 查询所有用户
      * @author: li
@@ -30,8 +48,19 @@ public class UserDao implements IUserDao {
      * @return: java.util.List<com.innovation.entity.User>
      */
     @Override
-    public List<User> findAll() {
-        return (List<User>)ht.find("from com.innovation.entity.User ");
+    public List<User> findAll(final int offset, final int length) {
+            /* hql分页显示所采用的方法*/
+            List<User> list = (List<User>) ht.execute(new HibernateCallback() {
+                public Object doInHibernate(Session session)
+                        throws HibernateException {
+                    Query query = session.createQuery("from com.innovation.entity.User ");
+                    query.setFirstResult(offset);
+                    query.setMaxResults(length);
+                    List list = query.list();
+                    return list;
+                }
+            });
+            return list;
     }
 
     @Override
@@ -76,6 +105,7 @@ public class UserDao implements IUserDao {
      */
     @Override
     public String deleteUserById(int id) throws Exception {
+        //book为标记
         String book = "Ok";
         User user = ht.get(User.class,id);
         if (user != null) {

@@ -86,7 +86,7 @@
     <!-- MAIN CONTENT -->
 
     <div class="main">
-        <div class="table-responsive">
+        <div class="table-responsive" style="margin-top: 10px;margin-left: 10px;">
             <table
                     class="table table-bordered table-striped table-hover table-condensed">
                 <tr>
@@ -110,12 +110,25 @@
                         <td><c:out value="${user.regTime}" /></td>
                         <td><c:out value="${user.status}" /></td>
                         <td>
-                            <a class="btn btn-primary" onClick="delcfm('${pageContext.request.contextPath}/deleteById?id=${user.id}')">删除</a>
+                            <a class="btn btn-primary" onClick="delcfm('${pageContext.request.contextPath}/deleteById?id=${user.id}&page=${page}')">删除</a>
                             <input type="button" value="修改" class="btn btn-default" onclick="test(${user.id})"/>
                         </td>
                     </tr>
                 </c:forEach>
             </table>
+            <div class="pager">
+                <center>
+                    <span class="text-muted" style="margin-left:-65px;">总共有${allPage}页&nbsp,&nbsp当前是第${page}页</span>
+                    <a href="${pageContext.request.contextPath}/admin/usermanager?page=1"><span>首页</span></a>
+                    <a href="${pageContext.request.contextPath}/admin/usermanager?page=${page-1}"
+                       onclick="return frontPageCheck()"><span>上一页</span>
+                    </a>
+                    <a href="${pageContext.request.contextPath}/admin/usermanager?page=${page+1}"
+                       onclick="return backPageCheck()"><span>下一页</span>
+                    </a>
+                    <a href="${pageContext.request.contextPath}/admin/usermanager?page=${allPage}"><span>末页</span>
+                </center>
+            </div>
             <!-- bootstrap模态框组件  -->
             <!--  aria-hidden="true"属性用于将模态框隐藏 -->
             <div class="modal fade" id="delcfmModel">
@@ -123,9 +136,9 @@
                     <div class="modal-content message_align">
                         <div class="modal-header">
                             <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
-                            <h4 class="modal-title">提示信息</h4>
+                            <h4 class="modal-title text-danger">提示信息</h4>
                         </div>
-                        <div class="modal-body">
+                        <div class="modal-body text-danger">
                             <p>您确认要删除此用户吗？</p>
                         </div>
                         <div class="modal-footer">
@@ -156,6 +169,24 @@
         var url=$.trim($("#url").val());
         <!--定位到新的页面 -->
         window.location.href=url;
+    }
+    <!-- 上一页链接限制条件(页数小于1禁止行为) -->
+    function frontPageCheck()
+    {
+        if(${page}-1>0)
+        {
+            return true;
+        }
+        return false;
+    }
+    <!-- 下一页链接限制条件(超过总页数禁止行为) -->
+    function backPageCheck()
+    {
+        if(${page}<${allPage})
+        {
+            return true;
+        }
+        return false;
     }
 </script>
 </body>
