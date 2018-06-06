@@ -59,6 +59,11 @@
         <property name="annotatedClasses">
             <list>
                 <value>com.innovation.entity.User</value>
+                <value>com.innovation.entity.Manager</value>
+                <value>com.innovation.entity.City</value>
+                <value>com.innovation.entity.Food</value>
+                <value>com.innovation.entity.Hotel</value>
+                <value>com.innovation.entity.Travels</value>
             </list>
         </property>
 
