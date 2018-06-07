@@ -1,7 +1,6 @@
 package com.innovation.dao;
 
 import com.innovation.entity.User;
-
 import java.util.List;
 
 /**
@@ -12,8 +11,10 @@ import java.util.List;
  */
 public interface IUserDao {
 
+    //查询user表总行数
+    public int queryUserRows();
     //查找用户
-    public List<User> findAll();
+    public List<User> findAll(final int offset, final int length);
     public User findUserById(int id) throws Exception;
     public User findUserByUserName(String userName) throws Exception;
     public User findUserByEmail(String email) throws Exception;

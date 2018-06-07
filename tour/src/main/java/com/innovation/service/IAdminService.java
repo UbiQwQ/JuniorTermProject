@@ -20,7 +20,7 @@ public interface IAdminService {
      * @param: []  
      * @return: java.util.List<com.innovation.entity.User>  
      */ 
-    List<User> findAll();
+    List<User> findAll(int offset, int pageSize);
     /** 
      * @description: 
      * @author: li  
@@ -29,4 +29,12 @@ public interface IAdminService {
      * @return: void  
      */  
     void deleteUserById(int id);
+    /** 
+     * @description: 
+     * @author: li  
+     * @date: 2018/6/6 19:14  
+     * @param: []  
+     * @return: java.lang.Integer  
+     */
+    int queryUserRows();
 }

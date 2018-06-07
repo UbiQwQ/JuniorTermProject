@@ -69,12 +69,12 @@
         <div class="sidebar-scroll">
             <nav>
                 <ul class="nav">
-                    <li><a href="#" class=""><i class="lnr lnr-user"></i> <span>管理用户</span></a></li>
+                    <li><a href="${pageContext.request.contextPath }/admin/usermanager?page=1" class=""><i class="lnr lnr-user"></i> <span>管理用户</span></a></li>
                     <li><a href="#" class=""><i class="lnr lnr-pencil"></i> <span>修改密码</span></a></li>
                     <li><a href="#" class=""><i class="lnr lnr-chart-bars"></i> <span>管理游记</span></a></li>
                     <li><a href="#" class=""><i class="lnr lnr-cog"></i> <span>管理网站信息</span></a></li>
                     <li><a href="#" class=""><i class="lnr lnr-alarm"></i> <span>审核团游申请</span></a></li>
-                    <li><a href="#" class=""><i class="lnr lnr-dice"></i> <span>查询功能</span></a></li>
+                    <li><a href="${pageContext.request.contextPath}/admin/query" class=""><i class="lnr lnr-dice"></i> <span>查询功能</span></a></li>
                     <li><a href="#" class=""><i class="lnr lnr-pointer-right"></i> <span>解冻用户</span></a></li>
                     <li><a href="#" class=""><i class="lnr lnr-exit"></i> <span>注销</span></a></li>
                 </ul>
@@ -86,36 +86,50 @@
     <!-- MAIN CONTENT -->
 
     <div class="main">
-        <div class="table-responsive">
-            <table
-                    class="table table-bordered table-striped table-hover table-condensed">
-                <tr>
-                    <td>用户id</td>
-                    <td>用户名</td>
-                    <td>邮箱</td>
-                    <td>手机号</td>
-                    <td>年龄</td>
-                    <td>注册时间</td>
-                    <td>状态码</td>
-                    <td>可执行操作</td>
-                </tr>
-                <!-- items要进行迭代的集合，var迭代参数的名称 -->
-                <c:forEach items="${users}" var="user">
+        <div class="table-responsive" style="margin-left: 10px;margin-top: 15px;">
+            <div style="height: 460px;">
+                <table class="table table-bordered table-striped table-hover table-condensed">
                     <tr>
-                        <td><c:out value="${user.id}" /></td>
-                        <td><c:out value="${user.userName}" /></td>
-                        <td><c:out value="${user.email}" /></td>
-                        <td><c:out value="${user.phone}" /></td>
-                        <td><c:out value="${user.age}" /></td>
-                        <td><c:out value="${user.regTime}" /></td>
-                        <td><c:out value="${user.status}" /></td>
-                        <td>
-                            <a class="btn btn-primary" onClick="delcfm('${pageContext.request.contextPath}/deleteById?id=${user.id}')">删除</a>
-                            <input type="button" value="修改" class="btn btn-default" onclick="test(${user.id})"/>
-                        </td>
+                        <td>用户id</td>
+                        <td>用户名</td>
+                        <td>邮箱</td>
+                        <td>手机号</td>
+                        <td>年龄</td>
+                        <td>注册时间</td>
+                        <td>状态码</td>
+                        <td>可执行操作</td>
                     </tr>
-                </c:forEach>
-            </table>
+                    <!-- items要进行迭代的集合，var迭代参数的名称 -->
+                    <c:forEach items="${users}" var="user">
+                        <tr>
+                            <td><c:out value="${user.id}" /></td>
+                            <td><c:out value="${user.userName}" /></td>
+                            <td><c:out value="${user.email}" /></td>
+                            <td><c:out value="${user.phone}" /></td>
+                            <td><c:out value="${user.age}" /></td>
+                            <td><c:out value="${user.regTime}" /></td>
+                            <td><c:out value="${user.status}" /></td>
+                            <td>
+                                <a class="btn btn-primary" onClick="delcfm('${pageContext.request.contextPath}/deleteById?id=${user.id}&page=${page}')">删除</a>
+                                <input type="button" value="修改" class="btn btn-default" onclick="test(${user.id})"/>
+                            </td>
+                        </tr>
+                    </c:forEach>
+                </table>
+            </div>
+            <div class="pager" style="width:100%;position: fixed;">
+                <center>
+                    <span class="text-muted" style="position:absolute;left: 310px;">总共有&nbsp${allPage}&nbsp页&nbsp,&nbsp当前是第&nbsp${page}&nbsp页</span>
+                    <a href="${pageContext.request.contextPath}/admin/usermanager?page=1"><span style="position:absolute;left: 490px;">首页</span></a>
+                    <a href="${pageContext.request.contextPath}/admin/usermanager?page=${page-1}"
+                       onclick="return frontPageCheck()"><span style="position:absolute;left: 530px;">上一页</span>
+                    </a>
+                    <a href="${pageContext.request.contextPath}/admin/usermanager?page=${page+1}"
+                       onclick="return backPageCheck()"><span style="position:absolute;left: 580px;">下一页</span>
+                    </a>
+                    <a href="${pageContext.request.contextPath}/admin/usermanager?page=${allPage}"><span style="position:absolute;left: 630px;">末页</span>
+                </center>
+            </div>
             <!-- bootstrap模态框组件  -->
             <!--  aria-hidden="true"属性用于将模态框隐藏 -->
             <div class="modal fade" id="delcfmModel">
@@ -123,9 +137,9 @@
                     <div class="modal-content message_align">
                         <div class="modal-header">
                             <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
-                            <h4 class="modal-title">提示信息</h4>
+                            <h4 class="modal-title text-danger">提示信息</h4>
                         </div>
-                        <div class="modal-body">
+                        <div class="modal-body text-danger">
                             <p>您确认要删除此用户吗？</p>
                         </div>
                         <div class="modal-footer">
@@ -156,6 +170,24 @@
         var url=$.trim($("#url").val());
         <!--定位到新的页面 -->
         window.location.href=url;
+    }
+    <!-- 上一页链接限制条件(页数小于1禁止行为) -->
+    function frontPageCheck()
+    {
+        if(${page}-1>0)
+        {
+            return true;
+        }
+        return false;
+    }
+    <!-- 下一页链接限制条件(超过总页数禁止行为) -->
+    function backPageCheck()
+    {
+        if(${page}<${allPage})
+        {
+            return true;
+        }
+        return false;
     }
 </script>
 </body>

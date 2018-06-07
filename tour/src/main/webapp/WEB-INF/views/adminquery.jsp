@@ -1,8 +1,8 @@
 <%--
   Created by IntelliJ IDEA.
   User: Administrator
-  Date: 2018/5/29
-  Time: 16:52
+  Date: 2018/6/6
+  Time: 17:39
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
@@ -69,12 +69,12 @@
         <div class="sidebar-scroll">
             <nav>
                 <ul class="nav">
-                    <li><a href="${pageContext.request.contextPath }/admin/usermanager?page=1"><i class="lnr lnr-user"></i> <span>管理用户</span></a></li>
+                    <li><a href="${pageContext.request.contextPath }/admin/usermanager?page=1" class=""><i class="lnr lnr-user"></i> <span>管理用户</span></a></li>
                     <li><a href="#" class=""><i class="lnr lnr-pencil"></i> <span>修改密码</span></a></li>
                     <li><a href="#" class=""><i class="lnr lnr-chart-bars"></i> <span>管理游记</span></a></li>
                     <li><a href="#" class=""><i class="lnr lnr-cog"></i> <span>管理网站信息</span></a></li>
                     <li><a href="#" class=""><i class="lnr lnr-alarm"></i> <span>审核团游申请</span></a></li>
-                    <li><a href="${pageContext.request.contextPath}/admin/query" class=""><i class="lnr lnr-dice"></i> <span>查询功能</span></a></li>
+                    <li><a href="#" class=""><i class="lnr lnr-dice"></i> <span>查询功能</span></a></li>
                     <li><a href="#" class=""><i class="lnr lnr-pointer-right"></i> <span>解冻用户</span></a></li>
                     <li><a href="${pageContext.request.contextPath}/admin/logout" class=""><i class="lnr lnr-exit"></i> <span>注销</span></a></li>
                 </ul>
@@ -83,27 +83,29 @@
     </div>
     <!-- END LEFT SIDEBAR -->
     <!-- MAIN -->
-        <!-- MAIN CONTENT -->
-
+    <!-- MAIN CONTENT -->
+    <!-- 输入游记标题关键字 -->
     <div class="main">
-        <div class="main-text" style="margin-top: 60px;">
-            <h2 style="text-align: center;">This page for Administrators</h2><br/>
-            <div class="jumbotron">
-                <p style="font-size: 20px;margin-left: 180px;">
-                    用户管理：对用户增、删、改、查<br/>
-                    修改密码：修改管理员密码<br/>
-                    管理游记：对举报的游记进行删除<br/>
-                    管理网站信息：管理景点、酒店、美食店信息，对这些信息进行增删改查<br />
-                    审核团游申请：审核组团游申请，管理员批准后，其他旅游爱好者才能参与该组团游活动<br />
-                    查询功能：检索美食店、景点、酒店信息，检索游记，检索用户,查询被举报的信息，查看组团游申请<br />
-                    注销：功能区注销 or 点击管理员头像注销
-                </p>
-            </div>
-
+        <div class="input-group col-md-4" style="margin-top: 20px;margin-left: 30px">
+            <input type="text" class="form-control" placeholder="输入游记标题关键字" />
+            <span class="input-group-btn">
+               <button class="btn btn-info btn-search">查找</button>
+            </span>
         </div>
-
-
-
+        <!-- 输入用户名 -->
+        <div class="input-group col-md-4" style="margin-top: 20px;margin-left: 30px">
+            <input type="text" class="form-control" placeholder="输入用户名" />
+            <span class="input-group-btn">
+               <button class="btn btn-info btn-search">查找</button>
+            </span>
+        </div>
+        <!-- 输入景点关键字 -->
+        <div class="input-group col-md-4" style="margin-top: 20px;margin-left: 30px">
+            <input type="text" class="form-control" placeholder="输入景点关键字" />
+            <span class="input-group-btn">
+               <button class="btn btn-info btn-search">查找</button>
+            </span>
+        </div>
     </div>
 
 

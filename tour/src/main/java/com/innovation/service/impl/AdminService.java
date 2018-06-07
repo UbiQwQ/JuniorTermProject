@@ -28,8 +28,11 @@ public class AdminService implements IAdminService {
      */
 
     @Override
-    public List<User> findAll() {
-        return userDao.findAll();
+    public List<User> findAll(int offset, int pageSize) {
+        return userDao.findAll(offset,pageSize);
+    }
+    public int queryUserRows() {
+        return userDao.queryUserRows();
     }
     /**
      * @description: 根据 user.id 删除用户
