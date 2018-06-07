@@ -51,11 +51,11 @@
             <div id="navbar" class="navbar-collapse navbar-right collapse hover-effect">
                 <ul class="nav navbar-nav">
                     <li><a href="${pageContext.request.contextPath }/gotoadmin">测试admin</a></li>
-                    <li><a href="#about">关于</a></li>
-                    <li><a href="#services">服务</a></li>
-                    <li><a href="#gallery">GALLERY</a></li>
-                    <li><a href="#plans">计划</a></li>
-                    <li><a href="#faq">FAQs</a></li>
+                    <li><a href="/destination">目的地</a></li>
+                    <li><a href="/hotel">酒店</a></li>
+                    <li><a href="#gallery">景点</a></li>
+                    <li><a href="/food">美食</a></li>
+                    <li><a href="/travels">游记</a></li>
                     <li><a href="#team">团队</a></li>
                     <li><a href="#contact">联系</a></li>
                     <li><a href="/reg"><img src="statics/images/signup.png" alt="sign up"></a></li>
