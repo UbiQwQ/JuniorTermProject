@@ -51,5 +51,83 @@ public class HomeController {
         //返回login.jsp视图
         return "reg";
     }
+
+    /**
+     * 功能描述: 跳转到目的地页面
+     *
+     * @return: Stirng "destination"
+     * @auther: Innovation
+     * @date: 2018/6/6 22:04
+     */
+    @RequestMapping("/destination")
+    public String destination(){
+        //输出日志
+        logger.info("the destination.jsp page");
+        //返回login.jsp视图
+        return "destination";
+    }
+
+    /**
+     * 功能描述:跳转到酒店页面
+     *
+     * @param:
+     * @return:
+     * @auther: Innovation
+     * @date: 2018/6/6 22:18
+     */
+    @RequestMapping("/hotel")
+    public String hotel(){
+        //输出日志
+        logger.info("the hotel.jsp page");
+        //返回login.jsp视图
+        return "hotel";
+    }
+
+    /**
+     * 功能描述: 跳转到美食页面
+     *
+     * @param:
+     * @return:
+     * @auther: Innovation
+     * @date: 2018/6/6 22:18
+     */
+    @RequestMapping("/food")
+    public String food(){
+        //输出日志
+        logger.info("the food.jsp page");
+        //返回login.jsp视图
+        return "food";
+    }
+
+    /**
+     * 功能描述: 跳转到游记页面
+     *
+     * @param:
+     * @return:
+     * @auther: Innovation
+     * @date: 2018/6/6 22:18
+     */
+    @RequestMapping("/travels")
+    public String travels(){
+        //输出日志
+        logger.info("the travels.jsp page");
+        //返回login.jsp视图
+        return "travels";
+    }
+
+    /**
+     * 功能描述: 跳转到城市信息页面
+     * @param:
+     * @return:
+     * @auther: Innovation
+     * @date: 2018/6/7 11:45
+     */
+    @RequestMapping("/city")
+    public String city(){
+        //输出日志
+        logger.info("the city.jsp page");
+        //返回city.jsp视图
+        return "city";
+    }
     
 }
