@@ -36,6 +36,7 @@ public class UserDao implements IUserDao {
         Session session = ht.getSessionFactory().openSession();
         Query query = session.createQuery(hql);
         int count = ((Long) query.iterate().next()).intValue();
+        //用完session一定要关闭
         session.close();
         return count;
     }
@@ -49,18 +50,25 @@ public class UserDao implements IUserDao {
      */
     @Override
     public List<User> findAll(final int offset, final int length) {
-            /* hql分页显示所采用的方法*/
-            List<User> list = (List<User>) ht.execute(new HibernateCallback() {
-                public Object doInHibernate(Session session)
-                        throws HibernateException {
-                    Query query = session.createQuery("from com.innovation.entity.User ");
-                    query.setFirstResult(offset);
-                    query.setMaxResults(length);
-                    List list = query.list();
-                    return list;
-                }
-            });
+       /*
+        *  hql分页显示所采用的方法
+        *  回调函数 执行execute的同时也要执行HibernateCallback中的方法
+        *  使用了HibernateTemplate的情况下，仍然需要直接访问Session的需求而来的
+        *  它提供了在HibernateTemplate里面直接访问Session的能力
+        *  这个就是为什么要使用HibernateCallback.
+        *
+        **/
+        List<User> list = (List<User>) ht.execute(new HibernateCallback() {
+            public Object doInHibernate(Session session)
+                    throws HibernateException {
+            Query query = session.createQuery("from com.innovation.entity.User ");
+            query.setFirstResult(offset);
+            query.setMaxResults(length);
+            List list = query.list();
             return list;
+            }
+        });
+        return list;
     }
 
     @Override

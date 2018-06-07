@@ -48,7 +48,7 @@ public class AdminController {
         //总共有多少页
         int allPage;
         //页面显示用户数量
-        int pageSize = 7;
+        int pageSize = 9;
         //数据记录总行数
         int allRows;
         //第一条记录的索引
