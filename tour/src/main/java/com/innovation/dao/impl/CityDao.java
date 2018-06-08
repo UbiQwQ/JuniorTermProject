@@ -4,6 +4,7 @@ import com.innovation.dao.ICityDao;
 import com.innovation.entity.City;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.orm.hibernate5.HibernateTemplate;
+import org.springframework.stereotype.Repository;
 
 import java.util.List;
 
@@ -13,6 +14,7 @@ import java.util.List;
  * @Vison: 1.0
  * @Description:
  */
+@Repository
 public class CityDao implements ICityDao {
 
     @Autowired
@@ -40,8 +42,8 @@ public class CityDao implements ICityDao {
 
     @Override
     public int findCityIdByName(String cityName) throws Exception {
-        City city = ht.get(City.class,cityName);
-        int cityId = city.getId();
+        List<City> cityList = (List<City>) ht.find("from City where name=?", cityName);
+        int cityId = cityList.get(0).getId();
         return cityId;
     }
 

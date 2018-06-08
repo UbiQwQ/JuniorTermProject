@@ -3,6 +3,7 @@ package com.innovation.service.impl;
 import com.innovation.dao.impl.CityDao;
 import com.innovation.service.ICityService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 /**
  * @Auther: Innovation
@@ -10,6 +11,7 @@ import org.springframework.beans.factory.annotation.Autowired;
  * @Vison: 1.0
  * @Description:
  */
+@Service
 public class CityService implements ICityService {
 
     @Autowired

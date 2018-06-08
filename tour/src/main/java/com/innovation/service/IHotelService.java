@@ -15,7 +15,7 @@ public interface IHotelService {
     public int queryRows();
     //查找酒店
     public List<Hotel> findAll(final int offset, final int length);
-    public Hotel findHotelById(int id) throws Exception;
+    public List<Hotel> findHotelById(int id) throws Exception;
     public Hotel findHotelByName(String hotelName) throws Exception;
     public List<Hotel> findHotelByCityID(int cityId);
 

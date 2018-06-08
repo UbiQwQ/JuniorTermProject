@@ -20,6 +20,8 @@
             <c:out value="${weather}"></c:out>
         </c:forEach>
     </c:if>
+    <br>
+    <p>Hotel:${hotel}</p>
 
 
 </body>

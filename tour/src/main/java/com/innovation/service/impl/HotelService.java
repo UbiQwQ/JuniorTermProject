@@ -1,9 +1,11 @@
 package com.innovation.service.impl;
 
+import com.innovation.dao.impl.HotelDao;
 import com.innovation.entity.Hotel;
 import com.innovation.service.IHotelService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.orm.hibernate5.HibernateTemplate;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 
@@ -13,7 +15,11 @@ import java.util.List;
  * @Vison: 1.0
  * @Description:
  */
+@Service
 public class HotelService implements IHotelService {
+
+    @Autowired
+    HotelDao hotelDao;
 
     @Autowired
     HibernateTemplate ht;
@@ -29,7 +35,7 @@ public class HotelService implements IHotelService {
     }
 
     @Override
-    public Hotel findHotelById(int id) throws Exception {
+    public List<Hotel> findHotelById(int id) throws Exception {
         return null;
     }
 
@@ -40,7 +46,8 @@ public class HotelService implements IHotelService {
 
     @Override
     public List<Hotel> findHotelByCityID(int cityId) {
-        return null;
+        List<Hotel> hotelList = hotelDao.findHotelByCityID(cityId);
+        return hotelList;
     }
 
     @Override

@@ -2,6 +2,9 @@ package com.innovation.dao.impl;
 
 import com.innovation.dao.IHotelDao;
 import com.innovation.entity.Hotel;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.orm.hibernate5.HibernateTemplate;
+import org.springframework.stereotype.Repository;
 
 import java.util.List;
 
@@ -11,7 +14,11 @@ import java.util.List;
  * @Vison: 1.0
  * @Description:
  */
+@Repository
 public class HotelDao implements IHotelDao {
+
+    @Autowired
+    HibernateTemplate ht;
 
     @Override
     public int queryRows() {
@@ -29,13 +36,15 @@ public class HotelDao implements IHotelDao {
     }
 
     @Override
-    public Hotel findHotelByName(String hotelName) throws Exception {
-        return null;
+    public List<Hotel> findHotelByName(String hotelName) throws Exception {
+        List<Hotel> hotelList = (List<Hotel>) ht.find("from Hotel where name=?", hotelName);
+        return hotelList;
     }
 
     @Override
     public List<Hotel> findHotelByCityID(int cityId) {
-        return null;
+        List<Hotel> hotelList = (List<Hotel>) ht.find("from Hotel where cityId=?", cityId);
+        return hotelList;
     }
 
     @Override

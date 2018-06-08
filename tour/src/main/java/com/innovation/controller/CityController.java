@@ -1,9 +1,14 @@
 package com.innovation.controller;
 
+import com.innovation.entity.Hotel;
+import com.innovation.service.impl.CityService;
+import com.innovation.service.impl.FoodService;
+import com.innovation.service.impl.HotelService;
 import com.innovation.util.JsonUtilImpl;
 import com.innovation.util.NetUtilImpl;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
@@ -19,6 +24,13 @@ import java.util.List;
  */
 @Controller
 public class CityController {
+
+    @Autowired
+    CityService cityService;
+    @Autowired
+    HotelService hotelService;
+    @Autowired
+    FoodService foodService;
 
     NetUtilImpl netUtilImpl = new NetUtilImpl();
     JsonUtilImpl jsonUtilImpl = new JsonUtilImpl();
@@ -73,7 +85,7 @@ public class CityController {
 
 
     @RequestMapping("/search")
-    public ModelAndView search(String city) throws IOException {
+    public ModelAndView search(String city) throws Exception {
         ModelAndView modelAndView = new ModelAndView();
         String url = "https://api.seniverse.com/v3/weather/now.json?key=mtpmwyecaphmrzwc&location="+city+"&language=zh-Hans&unit=c";
         String data = netUtilImpl.getJson(url);
@@ -81,10 +93,18 @@ public class CityController {
         List<String> weatherList = jsonUtilImpl.getData(data);
 //        System.out.println(weatherList);
 
+        int cityId = cityService.findCityIdByName("青岛");
+        //根据cityId查询hotel
+        List<Hotel> hotelList = hotelService.findHotelByCityID(cityId);
+        //Hotel数目
+        int hotelCount = hotelList.size();
+
+
         // 设置传到cityPage的信息和视图名称
         modelAndView.setViewName("/city");
         modelAndView.addObject("cityName",city);
         modelAndView.addObject("weather",weatherList);
+        modelAndView.addObject("hotel",hotelCount);
 
         //输出日志文件
         logger.info("the city jsp pages");

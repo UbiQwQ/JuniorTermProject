@@ -4,6 +4,7 @@ import com.innovation.entity.Food;
 import com.innovation.service.IFoodService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.orm.hibernate5.HibernateTemplate;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 
@@ -13,6 +14,7 @@ import java.util.List;
  * @Vison: 1.0
  * @Description:
  */
+@Service
 public class FoodService implements IFoodService {
 
     @Autowired
