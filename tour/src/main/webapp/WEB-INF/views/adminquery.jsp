@@ -9,12 +9,6 @@
 <%@ page import="com.innovation.entity.User"%>
 <jsp:useBean id="user" class="com.innovation.entity.User" scope="application"/>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-<%
-    String path = request.getContextPath();
-    String basePath = request.getScheme() + "://"
-            + request.getServerName() + ":" + request.getServerPort()
-            + path + "/";
-%>
 <html>
 
 <head>

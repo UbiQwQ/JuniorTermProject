@@ -20,7 +20,10 @@ a {
 
 th {
   font-weight: 600; }
-
+.table-responsive th,td{
+  vertical-align: middle;
+  text-align: center;
+}
 .page-title {
   margin-top: 0;
   margin-bottom: 30px;

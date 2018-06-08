@@ -1,9 +1,11 @@
 package com.innovation.service.impl;
 
+import com.innovation.dao.impl.TravelsDao;
 import com.innovation.entity.Travels;
 import com.innovation.service.ITravelsService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.orm.hibernate5.HibernateTemplate;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 
@@ -13,19 +15,26 @@ import java.util.List;
  * @Vison: 1.0
  * @Description:
  */
+@Service
 public class TravelsService implements ITravelsService {
-
     @Autowired
-    HibernateTemplate ht;
+    private TravelsDao travelsDao;
 
     @Override
-    public int queryRows() {
-        return 0;
+    public int queryTravelsRows() {
+        return travelsDao.queryTravelsRows();
     }
-
+    
+    /** 
+     * @description: findAllTravels
+     * @author: li  
+     * @date: 2018/6/8 11:45
+     * @param: [offset, length]  
+     * @return: java.util.List<com.innovation.entity.Travels>  
+     */ 
     @Override
-    public List<Travels> findAll(int offset, int length) {
-        return null;
+    public List<Travels> findAllTravels(int offset, int length) {
+        return travelsDao.findAllTravels(offset,length);
     }
 
     @Override
@@ -47,10 +56,22 @@ public class TravelsService implements ITravelsService {
     public boolean saveTravels(Travels travels) throws Exception {
         return false;
     }
-
+    /** 
+     * @description: 
+     * @author: li  
+     * @date: 2018/6/8 12:42
+     * @param: [id]  
+     * @return: void  
+     */ 
     @Override
-    public String deleteTravelsById(int id) throws Exception {
-        return null;
+    public void deleteTravelsById(int id) throws Exception {
+        try {
+            if (travelsDao.deleteTravelsById(id).equals("Ok")) {
+                travelsDao.deleteTravelsById(id);
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
     @Override

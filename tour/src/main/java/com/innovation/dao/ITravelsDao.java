@@ -12,9 +12,9 @@ import java.util.List;
  */
 public interface ITravelsDao {
     //查询Travels表总行数
-    public int queryRows();
+    public int queryTravelsRows();
     //查找游记
-    public List<Travels> findAll(final int offset, final int length);
+    public List<Travels> findAllTravels(final int offset, final int length);
     public Travels findTravelsById(int id) throws Exception;
     public Travels findTravelsByName(String travelsName) throws Exception;
     public List<Travels> findTravelsByCityID(int cityId);

@@ -9,12 +9,6 @@
 <%@ page import="com.innovation.entity.User"%>
 <jsp:useBean id="user" class="com.innovation.entity.User" scope="application"/>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-<%
-    String path = request.getContextPath();
-    String basePath = request.getScheme() + "://"
-            + request.getServerName() + ":" + request.getServerPort()
-            + path + "/";
-%>
 <html>
 
 <head>
@@ -69,9 +63,16 @@
         <div class="sidebar-scroll">
             <nav>
                 <ul class="nav">
-                    <li><a href="${pageContext.request.contextPath }/admin/usermanager?page=1"><i class="lnr lnr-user"></i> <span>管理用户</span></a></li>
+                    <li>
+                        <a href="#subPages" data-toggle="collapse" class="collapsed"><i class="lnr lnr-user"></i> <span>管理功能</span> <i class="icon-submenu lnr lnr-chevron-left"></i></a>
+                        <div id="subPages" class="collapse ">
+                            <ul class="nav">
+                                <li><a href="${pageContext.request.contextPath }/admin/usermanager?page=1" class="">管理用户</a></li>
+                                <li><a href="${pageContext.request.contextPath }/admin/travelsmanager?page=1"><span>管理游记</span></a></li>
+                            </ul>
+                        </div>
+                    </li>
                     <li><a href="#" class=""><i class="lnr lnr-pencil"></i> <span>修改密码</span></a></li>
-                    <li><a href="#" class=""><i class="lnr lnr-chart-bars"></i> <span>管理游记</span></a></li>
                     <li><a href="#" class=""><i class="lnr lnr-cog"></i> <span>管理网站信息</span></a></li>
                     <li><a href="#" class=""><i class="lnr lnr-alarm"></i> <span>审核团游申请</span></a></li>
                     <li><a href="${pageContext.request.contextPath}/admin/query" class=""><i class="lnr lnr-dice"></i> <span>查询功能</span></a></li>

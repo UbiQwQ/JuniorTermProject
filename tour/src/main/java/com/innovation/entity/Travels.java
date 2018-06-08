@@ -1,10 +1,12 @@
 package com.innovation.entity;
 
+
 import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import java.sql.Timestamp;
+import javax.persistence.Table;
 
 /**
  * @Auther: Innovation
@@ -13,6 +15,7 @@ import java.sql.Timestamp;
  * @Description:
  */
 @Entity
+@Table(name = "travels")
 public class Travels {
     private int travelsId;
     private String title;

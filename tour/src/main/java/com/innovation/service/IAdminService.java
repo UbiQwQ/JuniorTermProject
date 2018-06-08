@@ -20,7 +20,7 @@ public interface IAdminService {
      * @param: []  
      * @return: java.util.List<com.innovation.entity.User>  
      */ 
-    List<User> findAll(int offset, int pageSize);
+    List<User> findAllUser(int offset, int pageSize);
     /** 
      * @description: 
      * @author: li  

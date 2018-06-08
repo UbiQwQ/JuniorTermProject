@@ -26,14 +26,22 @@ public class AdminService implements IAdminService {
      * @param: []
      * @return: java.util.List<com.innovation.entity.User>
      */
-
     @Override
-    public List<User> findAll(int offset, int pageSize) {
-        return userDao.findAll(offset,pageSize);
+    public List<User> findAllUser(int offset, int pageSize) {
+        return userDao.findAllUser(offset,pageSize);
     }
+
+    /**
+     * @description:
+     * @author: li
+     * @date: 2018/6/8 10:52
+     * @param: []
+     * @return: int
+     */
     public int queryUserRows() {
         return userDao.queryUserRows();
     }
+
     /**
      * @description: 根据 user.id 删除用户
      * @author: li

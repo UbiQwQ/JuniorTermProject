@@ -49,7 +49,7 @@ public class UserDao implements IUserDao {
      * @return: java.util.List<com.innovation.entity.User>
      */
     @Override
-    public List<User> findAll(final int offset, final int length) {
+    public List<User> findAllUser(final int offset, final int length) {
        /*
         *  hql分页显示所采用的方法
         *  回调函数 执行execute的同时也要执行HibernateCallback中的方法

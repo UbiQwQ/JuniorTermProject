@@ -1,7 +1,9 @@
 package com.innovation.controller;
 
+import com.innovation.entity.Travels;
 import com.innovation.entity.User;
 import com.innovation.service.impl.AdminService;
+import com.innovation.service.impl.TravelsService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -22,6 +24,16 @@ public class AdminController {
 
     @Autowired
     private AdminService adminService;
+
+    @Autowired
+    private TravelsService travelsService;
+
+    //数据库中总数量
+    private int allRows;
+    //总共有多少页
+    int allPage;
+    //第一条记录的索引
+    int offset;
 
     /**
      * @description: 跳转到admin.jsp
@@ -45,16 +57,44 @@ public class AdminController {
      */
     @RequestMapping(value = "/admin/usermanager")
     public String userManager(int page, Model model) {
-        //总共有多少页
-        int allPage;
-        //页面显示用户数量
+        //每页的记录数量
         int pageSize = 9;
-        //数据记录总行数
-        int allRows;
-        //第一条记录的索引
-        int offset;
-        //查询记录总行数
         allRows = adminService.queryUserRows();
+        int[] params = pagingParam(page,allRows,pageSize);
+        //查询用户列表
+        List<User> userList = adminService.findAllUser(params[0], pageSize);
+        model.addAttribute("users", userList);
+        model.addAttribute("allPage",params[1]);
+        model.addAttribute("page", page);
+        if (userList != null) {
+            return "usermanager";
+        }
+        return "error";
+    }
+
+    @RequestMapping(value = "admin/travelsmanager")
+    public String travelsManager(int page, Model model) {
+        int pageSize = 5;
+        allRows = travelsService.queryTravelsRows();
+        int[] params = pagingParam(page,allRows,pageSize);
+        List<Travels> travelslist = travelsService.findAllTravels(params[0], pageSize);
+        model.addAttribute("travels", travelslist);
+        model.addAttribute("allPage",params[1]);
+        model.addAttribute("page", page);
+        if (travelslist != null) {
+            return "travelsmanager";
+        }
+        return "error";
+    }
+
+    /**
+     * @description: return offset , allPage
+     * @author: li
+     * @date: 2018/6/8 10:53
+     * @param: [page, allRows]
+     * @return: int[]
+     */
+    public int[] pagingParam(int page,int allRows,int pageSize) {
         if (page==1) {
             offset = 0;
         } else {
@@ -66,15 +106,8 @@ public class AdminController {
         } else {
             allPage = allRows / pageSize + 1;
         }
-        //查询用户列表
-        List<User> userList = adminService.findAll(offset, pageSize);
-        model.addAttribute("users", userList);
-        model.addAttribute("allPage",allPage);
-        model.addAttribute("page", page);
-        if (userList != null) {
-            return "usermanager";
-        }
-        return "error";
+        int[] params = {offset,allPage};
+        return params;
     }
 
     /**
@@ -84,12 +117,27 @@ public class AdminController {
      * @param: [user]
      * @return: void
      */
-    @RequestMapping(value = "/deleteById")
-    public String deleteById(User user,int page) {
+    @RequestMapping(value = "/deleteByUserId")
+    public String deleteByUserId(User user,int page) {
         adminService.deleteUserById(user.getId());
         //重定向到usermanager，会重新查询数据
         //重定向到删除时所在的page数
         return "redirect:/admin/usermanager?page="+page;
+    }
+    
+    /** 
+     * @description: 
+     * @author: li  
+     * @date: 2018/6/8 12:26
+     * @param: [travel, page]  
+     * @return: java.lang.String  
+     */ 
+    @RequestMapping(value = "/deleteByTravelId")
+    public String deleteByTravelId(int id,int page) throws Exception {
+        travelsService.deleteTravelsById(id);
+        //travelsmanager，会重新查询数据
+        //重定向到删除时所在的page数
+        return "redirect:/admin/travelsmanager?page="+page;
     }
 
     /**
