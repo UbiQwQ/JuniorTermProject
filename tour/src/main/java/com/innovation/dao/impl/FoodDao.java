@@ -54,7 +54,7 @@ public class FoodDao implements IFoodDao {
     }
 
     @Override
-    public boolean updateFoodr(Food food) throws Exception {
+    public boolean updateFood(Food food) throws Exception {
         return false;
     }
 }

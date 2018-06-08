@@ -23,5 +23,5 @@ public interface IFoodDao {
     //插入更新和删除
     public boolean saveFood(Food food) throws Exception;
     public String deleteFoodById(int id) throws Exception;
-    public boolean updateFoodr(Food food) throws Exception;
+    public boolean updateFood(Food food) throws Exception;
 }
