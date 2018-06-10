@@ -1,2 +1,2 @@
 # JuniorTermProject
-Spring+SpringMVC+Hibernate 物流管理
+Spring+SpringMVC+Hibernate 旅行网
