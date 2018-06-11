@@ -3,3 +3,5 @@ idea javax.servlet.http.HttpServletRequest; ²»´æÔÚ
 com.mysql.jdbc.exceptions.jdbc4.MySQLNonTransientConnectionException: Could not create connection to database server.
 
 Write operations are not allowed in read-only mode (FlushMode.NEVER/MANUAL): Turn your Session
+
+ALTER TABLE causes auto_increment resequencing, resulting in duplicate entry ¡¯1

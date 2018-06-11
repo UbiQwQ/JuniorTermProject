@@ -11,6 +11,7 @@ import com.innovation.entity.User;
 import com.innovation.service.impl.UserLoginService;
 import com.innovation.service.impl.UserRegService;
 import com.innovation.service.impl.UserService;
+import org.apache.commons.codec.digest.DigestUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -84,7 +85,7 @@ public class UserController {
         User user = new User();
         user.setUserName(userName);
         user.setEmail(email);
-        user.setPassword(password);
+        user.setPassword(DigestUtils.md5Hex(password));
         user.setRegTime(new Date());
         user.setStatus((short) 1);
 
@@ -103,6 +104,59 @@ public class UserController {
 
         return modelAndView;
     }
+
+
+    @RequestMapping("/login")
+    public ModelAndView login (String email, String password, HttpSession httpSession) throws Exception {
+
+        ModelAndView modelAndView = new ModelAndView();
+        // 登录用户，并将登录后的状态码返回，如果是0用户不存在，如果是1那么密码错误，如果是2那么密码正确
+        int result = userLoginService.login(email, password);
+
+        // 查找这个用户
+        User user = userDao.findUserByEmail(email);
+
+        if (result == 2) {
+            // 如果是2，那么登录成功，返回index
+            modelAndView.setViewName("redirect:index.jsp");
+
+            // 设置session
+            httpSession.setAttribute("user",user);
+            httpSession.setAttribute("userName",user.getUserName());
+            httpSession.setAttribute("status", user.getStatus());
+            httpSession.setAttribute("userName", user.getUserName());
+            httpSession.setAttribute("email", email);
+            httpSession.setAttribute("phone", user.getPhone());
+            httpSession.setAttribute("regTime", user.getRegTime());
+
+        } else if (result == 1) {
+            // 如果是1，那么密码错误，返回login
+            modelAndView.addObject("info", "<span class='help-inline' style='color: #ff0000'>密码错误！</span>");
+            modelAndView.setViewName("login");
+        } else {
+            // 否则用户名不存在，返回login
+            modelAndView.addObject("info", "<span class='help-inline' style='color: #ff0000'>用户不存在！</span>");
+            modelAndView.addObject("info", 0);
+            modelAndView.setViewName("login");
+        }
+
+        return modelAndView;
+    }
+
+
+    @RequestMapping("/loginOff")
+    public @ResponseBody int loginOff(HttpServletRequest httpServletRequest) {
+        try {
+            HttpSession httpSession = httpServletRequest.getSession();
+            httpSession.invalidate();
+            return 1;
+        } catch (Exception e) {
+            return 0;
+        }
+    }
+
+
+
     /**
      * 功能描述: 生成验证码
      *

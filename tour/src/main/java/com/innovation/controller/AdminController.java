@@ -160,7 +160,7 @@ public class AdminController {
     public String adminLogout(HttpSession httpSession) {
         //设置session失效
         httpSession.invalidate();
-        return "login";
+        return "login_manager";
     }
 
     /**

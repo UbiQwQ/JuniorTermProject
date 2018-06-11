@@ -30,12 +30,20 @@ public class HomeController {
      * @auther: Innovation
      * @date: 2018/5/24 22:30
      */
-    @RequestMapping("/login")
+    @RequestMapping("/loginpage")
     public String login(){
         //输出日志
         logger.info("the login.jsp page");
         //返回login.jsp视图
         return "login";
+    }
+
+    @RequestMapping("/loginManager")
+    public String loginManager(){
+        //输出日志
+        logger.info("the login.jsp page");
+        //返回login.jsp视图
+        return "login_manager";
     }
 
     /**
@@ -128,6 +136,21 @@ public class HomeController {
         logger.info("the city.jsp page");
         //返回city.jsp视图
         return "city";
+    }
+
+    /**
+     * 功能描述: 跳转到个人信息页面
+     * @param:
+     * @return:
+     * @auther: Innovation
+     * @date: 2018/6/11 22:41
+     */
+    @RequestMapping("/personal")
+    public String personal(){
+        //输出日志
+        logger.info("the personal.jsp page");
+        //返回personal.jsp视图
+        return "personal";
     }
     
 }

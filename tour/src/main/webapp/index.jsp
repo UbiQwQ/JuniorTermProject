@@ -1,4 +1,5 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <html>
 
 <!-- Head -->
@@ -50,7 +51,6 @@
 
             <div id="navbar" class="navbar-collapse navbar-right collapse hover-effect">
                 <ul class="nav navbar-nav">
-                    <li><a href="${pageContext.request.contextPath }/gotoadmin">测试admin</a></li>
                     <li><a href="/destination">目的地</a></li>
                     <li><a href="/hotel">酒店</a></li>
                     <li><a href="#gallery">景点</a></li>
@@ -58,8 +58,14 @@
                     <li><a href="/travels">游记</a></li>
                     <li><a href="#team">团队</a></li>
                     <li><a href="#contact">联系</a></li>
-                    <li><a href="/reg"><img src="statics/images/signup.png" alt="sign up"></a></li>
-                    <li><a href="/login"><img src="statics/images/signin.png" alt="sign in"></a></li>
+                    <c:if test="${empty user}">
+                        <li><a href="/reg"><img src="statics/images/signup.png" alt="sign up"></a></li>
+                        <li><a href="/loginpage"><img src="statics/images/signin.png" alt="sign in"></a></li>
+                        <li><a href="${pageContext.request.contextPath }/gotoadmin">测试admin</a></li>
+                    </c:if>
+                    <c:if test="${!empty userName}">
+                        <li><a href="/personal"><img src="" alt="userAvatar"></a></li>
+                    </c:if>
                 </ul>
             </div>
         </div>

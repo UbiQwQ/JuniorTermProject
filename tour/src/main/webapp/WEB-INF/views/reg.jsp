@@ -12,7 +12,10 @@
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <title>注册新用户</title>
-    <link href="css/bootstrap.min.css" rel="stylesheet" type="text/css">
+    <!-- Main-CSS -->
+    <link rel="stylesheet" href="../../statics/css/main.css" type="text/css" media="all">
+    <!-- Register-CSS -->
+    <link rel="stylesheet" href="../../statics/css/register.css" type="text/css" media="all">
     <style>
         body {
             padding-top: 40px;
@@ -22,59 +25,43 @@
     </style>
 </head>
 <body>
-    <form class="form-horizontal container form-actions" method="post" action="signin">
-        <h2 class="text-center page-header text-info">注册新用户</h2>
+    <form class="form-horizontal container form-actions" method="post" action="/signin">
+        <ul>
+            <li>
+                <h2>用户注册</h2>
+            </li>
+            <li>
+                <label for="user">用户名:</label>
+                <input type="text"  name="user" id="user" placeholder="Innovation" required pattern="^[a-zA-Z][0-9a-zA-Z_]{3,11}"/>
+                <span class="form_hint">正确格式为：4~12个字符，可使用字母、数字、下划线，需以字母开头</span>
+            </li>
 
-        <div class="control-group">
-            <div class="control-label">
-                <label for="userName">用户名</label>
-            </div>
-            <div class="controls">
-                <input type="text" id="userName" name="userName" required>
-            </div>
-        </div>
-        <div class="control-group ">
-            <div class="control-label">
-                <label for="regEmail">电子邮箱</label>
-            </div>
-            <div class="controls">
-                <input type="email" id="regEmail" name="email" required>
-            </div>
-        </div>
-        <div class="control-group">
-            <div class="control-label">
-                <label for="passWord">密码</label>
-            </div>
-            <div class="controls">
-                <input type="password" id="passWord" name="passWord" required>
-            </div>
-        </div>
-        <div class="control-group">
-            <div class="control-label">
-                <label for="rePassWord">重复密码</label>
-            </div>
-            <div class="controls">
-                <input type="password" id="rePassWord" required>
-            </div>
-        </div>
-        <div class="control-group">
-            <div class="control-label">
-                <label for="captcha">验证码</label>
-            </div>
-            <div class="controls">
-                <input type="text" id="captcha" name="captcha" required>
+            <li>
+                <label for="email">电子邮件:</label>
+                <input type="email" name="email" id="email" placeholder="1234567890@gmail.com" required pattern="^[\w-]+(\.[\w-]+)*@[\w-]+(\.[\w-]+)+$"/>
+                <span class="form_hint">正确格式为：sayingforever@163.com</span>
+            </li>
+            <li>
+                <label for="pasword">密码:</label>
+                <input type="password" name="password" id="pasword" placeholder="*******" required pattern="^[0-9a-zA-Z!@#$^]{6,18}$"/>
+                <span class="form_hint">正确格式为：6~18个字符</span>
+            </li>
+            <li>
+                <label for="rePassWord">确认密码:</label>
+                <input type="password"  id="rePassWord" placeholder="*******" required pattern="^[0-9a-zA-Z!@#$^]{6,18}$"/>
+                <span class="form_hint">正确格式为：6~18个字符</span>
+            </li>
+            <li>
+                <label for="captcha">验证码:</label>
+                <input type="text" name="captcha" id="captcha" required/>
                 <img id="captchaPicture" src="captcha"/>
                 ${info}
-            </div>
-        </div>
-        <div class="control-group">
-            <div class="controls">
-                <button class="btn btn-info" type="submit">注册</button>
+            </li>
+            <li>
+                <input class="submit" type="submit" value="注册">
                 <a class="help-inline" href="login">我已经有账号，现在登录</a>
-            </div>
-        </div>
-        <hr/>
-
+            </li>
+        </ul>
     </form>
 
 
