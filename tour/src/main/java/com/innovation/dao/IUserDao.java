@@ -13,7 +13,9 @@ public interface IUserDao {
 
     //查询user表总行数
     public int queryUserRows();
+    public int queryBlockingUserRows();
     //查找用户
+    public List<User> findBlockingUser(final int offset, final int length);
     public List<User> findAllUser(final int offset, final int length);
     public User findUserById(int id) throws Exception;
     public User findUserByUserName(String userName) throws Exception;
@@ -23,7 +25,8 @@ public interface IUserDao {
     //插入更新和删除
     public void saveUser(User user) throws Exception;
     public String deleteUserById(int id) throws Exception;
-
+    //
+    public void updateUserStatus(int id);
 
 
     //更改用户密码
