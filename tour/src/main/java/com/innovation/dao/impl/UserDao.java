@@ -84,7 +84,8 @@ public class UserDao implements IUserDao {
 
     @Override
     public User findUserByEmail(String email) throws Exception {
-        return null;
+        List<User> userList = (List<User>) ht.find("from User where email=?", email);
+        return userList.get(0);
     }
 
     @Override
