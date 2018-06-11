@@ -1,13 +1,20 @@
 <%--
   Created by IntelliJ IDEA.
   User: Administrator
-  Date: 2018/6/8
-  Time: 11:34
+  Date: 2018/6/11
+  Time: 16:32
+  To change this template use File | Settings | File Templates.
+--%>
+<%--
+  Created by IntelliJ IDEA.
+  User: Administrator
+  Date: 2018/5/29
+  Time: 16:52
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<%@ page import="com.innovation.entity.Travels"%>
-<jsp:useBean id="travel" class="com.innovation.entity.Travels" scope="application"/>
+<%@ page import="com.innovation.entity.User"%>
+<%--<jsp:useBean id="user" class="com.innovation.entity.User" scope="application"/>--%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <html>
 
@@ -91,22 +98,28 @@
             <div style="height: 460px;">
                 <table class="table table-bordered table-striped table-hover table-condensed">
                     <tr>
-                        <th style="width: 55px;">游记id</th>
-                        <th style="width: 100px;">游记标题</th>
-                        <th style="width: 600px;">游记内容</th>
-                        <th>发布时间</th>
+                        <th>用户id</th>
+                        <th>用户名</th>
+                        <th>邮箱</th>
+                        <th>手机号</th>
+                        <th>年龄</th>
+                        <th>注册时间</th>
+                        <th>状态码</th>
                         <th>可执行操作</th>
                     </tr>
                     <!-- items要进行迭代的集合，var迭代参数的名称 -->
-                    <c:forEach items="${travels}" var="travel">
+                    <c:forEach items="${users}" var="user">
                         <tr>
-                            <td><c:out value="${travel.travelsId}" /></td>
-                            <td><c:out value="${travel.title}" /></td>
-                            <td><c:out value="${travel.content}" /></td>
-                            <td><c:out value="${travel.postTime}" /></td>
+                            <td><c:out value="${user.id}" /></td>
+                            <td><c:out value="${user.userName}" /></td>
+                            <td><c:out value="${user.email}" /></td>
+                            <td><c:out value="${user.phone}" /></td>
+                            <td><c:out value="${user.age}" /></td>
+                            <td><c:out value="${user.regTime}" /></td>
+                            <td><c:out value="${user.status}" /></td>
                             <td>
-                                <a class="btn btn-primary" onClick="delcfm('${pageContext.request.contextPath}/deleteByTravelId?id=${travel.travelsId}&page=${page}')">删除</a>
-                                <input type="button" value="修改" class="btn btn-default" onclick="test(${travel.travelsId})"/>
+                                <a class="btn btn-primary" onClick="delcfm('${pageContext.request.contextPath}/admindeblocking?id=${user.id}&page=${page}')">解冻用户</a>
+                                <input type="button" value="修改" class="btn btn-default" onclick="test(${user.id})"/>
                             </td>
                         </tr>
                     </c:forEach>
@@ -115,14 +128,14 @@
             <div class="pager" style="width:100%;position: fixed;">
                 <center>
                     <span class="text-muted" style="position:absolute;left: 310px;">总共有&nbsp${allPage}&nbsp页&nbsp,&nbsp当前是第&nbsp${page}&nbsp页</span>
-                    <a href="${pageContext.request.contextPath}/admin/travelsmanager?page=1"><span style="position:absolute;left: 490px;">首页</span></a>
-                    <a href="${pageContext.request.contextPath}/admin/travelsmanager?page=${page-1}"
+                    <a href="${pageContext.request.contextPath}/admin/admindeblocking?page=1"><span style="position:absolute;left: 490px;">首页</span></a>
+                    <a href="${pageContext.request.contextPath}/admin/admindeblocking?page=${page-1}"
                        onclick="return frontPageCheck()"><span style="position:absolute;left: 530px;">上一页</span>
                     </a>
-                    <a href="${pageContext.request.contextPath}/admin/travelsmanager?page=${page+1}"
+                    <a href="${pageContext.request.contextPath}/admin/admindeblocking?page=${page+1}"
                        onclick="return backPageCheck()"><span style="position:absolute;left: 580px;">下一页</span>
                     </a>
-                    <a href="${pageContext.request.contextPath}/admin/travelsmanager?page=${allPage}"><span style="position:absolute;left: 630px;">末页</span>
+                    <a href="${pageContext.request.contextPath}/admin/admindeblocking?page=${allPage}"><span style="position:absolute;left: 630px;">末页</span>
                 </center>
             </div>
             <!-- bootstrap模态框组件  -->
@@ -135,7 +148,7 @@
                             <h4 class="modal-title text-danger">提示信息</h4>
                         </div>
                         <div class="modal-body text-danger">
-                            <p>您确认要删除此游记吗？</p>
+                            <p>您确认要解冻此用户吗？</p>
                         </div>
                         <div class="modal-footer">
                             <input type="hidden" id="url"/>
@@ -188,5 +201,4 @@
 </body>
 
 </html>
-
 

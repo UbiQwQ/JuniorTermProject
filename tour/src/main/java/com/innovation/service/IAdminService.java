@@ -21,6 +21,18 @@ public interface IAdminService {
      * @return: java.util.List<com.innovation.entity.User>  
      */ 
     List<User> findAllUser(int offset, int pageSize);
+
+
+    /** 
+     * @description: 
+     * @author: li  
+     * @date: 2018/6/11 17:09
+     * @param: [offset, pageSize]  
+     * @return: java.util.List<com.innovation.entity.User>  
+     */ 
+    List<User> findBlockingUser(int offset, int pageSize);
+
+
     /** 
      * @description: 
      * @author: li  
@@ -29,6 +41,8 @@ public interface IAdminService {
      * @return: void  
      */  
     void deleteUserById(int id);
+
+
     /** 
      * @description: 
      * @author: li  
@@ -37,4 +51,24 @@ public interface IAdminService {
      * @return: java.lang.Integer  
      */
     int queryUserRows();
+
+
+    /** 
+     * @description: 
+     * @author: li  
+     * @date: 2018/6/11 17:10
+     * @param: []  
+     * @return: int  
+     */ 
+    int queryBlockingUserRows();
+
+
+    /**
+     * @description: updateUserStatus
+     * @author: li
+     * @date: 2018/6/11 20:31
+     * @param: []
+     * @return: void
+     */
+    void updateUserStatus(int id);
 }

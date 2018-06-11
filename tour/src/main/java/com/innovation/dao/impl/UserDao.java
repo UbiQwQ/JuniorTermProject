@@ -24,6 +24,7 @@ public class UserDao implements IUserDao {
     @Autowired
     private HibernateTemplate ht;
 
+
     /** 
      * @description: user表总行数
      * @author: li  
@@ -40,6 +41,49 @@ public class UserDao implements IUserDao {
         session.close();
         return count;
     }
+
+
+    /**
+     * @description: 异常用户总记录数
+     * @author: li
+     * @date: 2018/6/11 17:08
+     * @param: []
+     * @return: int
+     */
+    @Override
+    public int queryBlockingUserRows() {
+        String hql = "select count(*) from User as user where user.status = 0";
+        Session session = ht.getSessionFactory().openSession();
+        Query query = session.createQuery(hql);
+        int count = ((Long) query.iterate().next()).intValue();
+        //用完session一定要关闭
+        session.close();
+        return count;
+    }
+
+
+    /**
+     * @description: 查找状态异常的所有用户
+     * @author: li
+     * @date: 2018/6/11 17:03
+     * @param: [offset, length]
+     * @return: java.util.List<com.innovation.entity.User>
+     */
+    @Override
+    public List<User> findBlockingUser(final int offset,final int length) {
+        List<User> list = (List<User>) ht.execute(new HibernateCallback() {
+            public Object doInHibernate(Session session)
+                    throws HibernateException {
+                Query query = session.createQuery("from com.innovation.entity.User user where user.status = 0");
+                query.setFirstResult(offset);
+                query.setMaxResults(length);
+                List list = query.list();
+                return list;
+            }
+        });
+        return list;
+    }
+
 
     /**
      * @description: 查询所有用户
@@ -71,6 +115,7 @@ public class UserDao implements IUserDao {
         return list;
     }
 
+
     @Override
     public User findUserById(int id) throws Exception {
         User user = ht.get(User.class,id);
@@ -93,6 +138,7 @@ public class UserDao implements IUserDao {
         return null;
     }
 
+
     /**
      * 功能描述: 向数据库中插入user数据
      *
@@ -105,8 +151,10 @@ public class UserDao implements IUserDao {
     public void saveUser(User user) throws Exception {
         ht.save(user);
     }
+
+
     /** 
-     * @description: 
+     * @description: 根据userid删除用户
      * @author: li  
      * @date: 2018/6/2 17:01
      * @param: [id]  
@@ -124,6 +172,23 @@ public class UserDao implements IUserDao {
         }
         return book;
     }
+
+
+    /**
+     * @description: 解冻用户
+     * @author: li
+     * @date: 2018/6/11 20:23
+     * @param: [id]
+     * @return: void
+     */
+    @Override
+    public void updateUserStatus(int id) {
+        short i = 1;
+        User user = ht.get(User.class,id);
+        user.setStatus(i);
+        ht.update(user);
+    }
+
 
     @Override
     public int midifyPassWord(String userName, String newPassWord) throws Exception {

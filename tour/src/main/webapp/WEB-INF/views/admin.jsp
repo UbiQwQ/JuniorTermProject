@@ -48,7 +48,7 @@
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown"><img src="../../statics/images/cat.jpg" class="img-circle" alt="Avatar"> <span>Inverseli</span> <i class="icon-submenu lnr lnr-chevron-down"></i></a>
                         <ul class="dropdown-menu">
                             <li><a href="#"><i class="lnr lnr-user"></i> <span>我的信息</span></a></li>
-                            <li><a href="#"><i class="lnr lnr-envelope"></i> <span>我的邮件</span></a></li>
+                            <li><a href="${pageContext.request.contextPath}/admin/email"><i class="lnr lnr-envelope"></i> <span>我的邮件</span></a></li>
                             <li><a href="#"><i class="lnr lnr-cog"></i> <span>设置</span></a></li>
                             <li><a href="${pageContext.request.contextPath}/admin/logout"><i class="lnr lnr-exit"></i> <span>注销</span></a></li>
                         </ul>
@@ -73,10 +73,10 @@
                         </div>
                     </li>
                     <li><a href="#" class=""><i class="lnr lnr-pencil"></i> <span>修改密码</span></a></li>
-                    <li><a href="#" class=""><i class="lnr lnr-cog"></i> <span>管理网站信息</span></a></li>
+                    <li><a href="${pageContext.request.contextPath}/admin/block" class=""><i class="lnr lnr-cog"></i> <span>test管理网站信息</span></a></li>
                     <li><a href="#" class=""><i class="lnr lnr-alarm"></i> <span>审核团游申请</span></a></li>
                     <li><a href="${pageContext.request.contextPath}/admin/query" class=""><i class="lnr lnr-dice"></i> <span>查询功能</span></a></li>
-                    <li><a href="#" class=""><i class="lnr lnr-pointer-right"></i> <span>解冻用户</span></a></li>
+                    <li><a href="${pageContext.request.contextPath}/admin/admindeblocking?page=1" class=""><i class="lnr lnr-pointer-right"></i> <span>解冻用户</span></a></li>
                     <li><a href="${pageContext.request.contextPath}/admin/logout" class=""><i class="lnr lnr-exit"></i> <span>注销</span></a></li>
                 </ul>
             </nav>
@@ -95,6 +95,7 @@
                     修改密码：修改管理员密码<br/>
                     管理游记：对举报的游记进行删除<br/>
                     管理网站信息：管理景点、酒店、美食店信息，对这些信息进行增删改查<br />
+                    解冻用户：对发布不良信息的而被举报封冻的用户账号进行解冻<br />
                     审核团游申请：审核组团游申请，管理员批准后，其他旅游爱好者才能参与该组团游活动<br />
                     查询功能：检索美食店、景点、酒店信息，检索游记，检索用户,查询被举报的信息，查看组团游申请<br />
                     注销：功能区注销 or 点击管理员头像注销

@@ -1,8 +1,8 @@
 <%--
   Created by IntelliJ IDEA.
   User: Administrator
-  Date: 2018/6/6
-  Time: 17:39
+  Date: 2018/6/10
+  Time: 22:13
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
@@ -48,7 +48,7 @@
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown"><img src="../../statics/images/cat.jpg" class="img-circle" alt="Avatar"> <span>Inverseli</span> <i class="icon-submenu lnr lnr-chevron-down"></i></a>
                         <ul class="dropdown-menu">
                             <li><a href="#"><i class="lnr lnr-user"></i> <span>我的信息</span></a></li>
-                            <li><a href="#"><i class="lnr lnr-envelope"></i> <span>我的邮件</span></a></li>
+                            <li><a href="${pageContext.request.contextPath}/admin/email"><i class="lnr lnr-envelope"></i> <span>我的邮件</span></a></li>
                             <li><a href="#"><i class="lnr lnr-cog"></i> <span>设置</span></a></li>
                             <li><a href="${pageContext.request.contextPath}/admin/logout"><i class="lnr lnr-exit"></i> <span>注销</span></a></li>
                         </ul>
@@ -67,16 +67,16 @@
                         <a href="#subPages" data-toggle="collapse" class="collapsed"><i class="lnr lnr-user"></i> <span>管理功能</span> <i class="icon-submenu lnr lnr-chevron-left"></i></a>
                         <div id="subPages" class="collapse ">
                             <ul class="nav">
-                                <li><a href="${pageContext.request.contextPath }/admin/usermanager?page=1">管理用户</a></li>
+                                <li><a href="${pageContext.request.contextPath }/admin/usermanager?page=1" class="">管理用户</a></li>
                                 <li><a href="${pageContext.request.contextPath }/admin/travelsmanager?page=1"><span>管理游记</span></a></li>
                             </ul>
                         </div>
                     </li>
                     <li><a href="#" class=""><i class="lnr lnr-pencil"></i> <span>修改密码</span></a></li>
-                    <li><a href="#" class=""><i class="lnr lnr-cog"></i> <span>管理网站信息</span></a></li>
+                    <li><a href="${pageContext.request.contextPath}/admin/jiedong" class=""><i class="lnr lnr-cog"></i> <span>test管理网站信息</span></a></li>
                     <li><a href="#" class=""><i class="lnr lnr-alarm"></i> <span>审核团游申请</span></a></li>
                     <li><a href="${pageContext.request.contextPath}/admin/query" class=""><i class="lnr lnr-dice"></i> <span>查询功能</span></a></li>
-                    <li><a href="${pageContext.request.contextPath}/admin/admindeblocking?page=1" class=""><i class="lnr lnr-pointer-right"></i> <span>解冻用户</span></a></li>
+                    <li><a href="#" class=""><i class="lnr lnr-pointer-right"></i> <span>解冻用户</span></a></li>
                     <li><a href="${pageContext.request.contextPath}/admin/logout" class=""><i class="lnr lnr-exit"></i> <span>注销</span></a></li>
                 </ul>
             </nav>
@@ -85,28 +85,15 @@
     <!-- END LEFT SIDEBAR -->
     <!-- MAIN -->
     <!-- MAIN CONTENT -->
-    <!-- 输入游记标题关键字 -->
+
     <div class="main">
-        <div class="input-group col-md-4" style="margin-top: 20px;margin-left: 30px">
-            <input type="text" class="form-control" placeholder="输入游记标题关键字" />
-            <span class="input-group-btn">
-               <button class="btn btn-info btn-search">查找</button>
-            </span>
-        </div>
-        <!-- 输入用户名 -->
-        <div class="input-group col-md-4" style="margin-top: 20px;margin-left: 30px">
-            <input type="text" class="form-control" placeholder="输入用户名" />
-            <span class="input-group-btn">
-               <button class="btn btn-info btn-search">查找</button>
-            </span>
-        </div>
-        <!-- 输入景点关键字 -->
-        <div class="input-group col-md-4" style="margin-top: 20px;margin-left: 30px">
-            <input type="text" class="form-control" placeholder="输入景点关键字" />
-            <span class="input-group-btn">
-               <button class="btn btn-info btn-search">查找</button>
-            </span>
-        </div>
+        <c:forEach items="${messagelist}" var="message">
+            <tr>
+                <td>
+                    ${message}
+                </td>
+            </tr>
+        </c:forEach>
     </div>
 
 
@@ -119,4 +106,5 @@
 </body>
 
 </html>
+
 
