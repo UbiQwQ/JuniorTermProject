@@ -16,6 +16,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
@@ -96,11 +97,13 @@ public class UserController {
         modelAndView.setViewName("redirect:index.jsp");
 
         // 设置session
-        httpSession.setAttribute("status",user.getStatus());
-        httpSession.setAttribute("userName",userName);
-        httpSession.setAttribute("email",email);
-        httpSession.setAttribute("phone",user.getPhone());
-        httpSession.setAttribute("regTime",user.getRegTime());
+        httpSession.setAttribute("user",user);
+        httpSession.setAttribute("userName",user.getUserName());
+        httpSession.setAttribute("status", user.getStatus());
+        httpSession.setAttribute("userName", user.getUserName());
+        httpSession.setAttribute("email", email);
+        httpSession.setAttribute("phone", user.getPhone());
+        httpSession.setAttribute("regTime", user.getRegTime());
 
         return modelAndView;
     }
@@ -143,6 +146,12 @@ public class UserController {
         return modelAndView;
     }
 
+
+    @RequestMapping("/logout")
+    public String loginOut(HttpSession session){
+        session.invalidate();
+        return "redirect:index.jsp";
+    }
 
     @RequestMapping("/loginOff")
     public @ResponseBody int loginOff(HttpServletRequest httpServletRequest) {

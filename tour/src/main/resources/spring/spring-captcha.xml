@@ -50,11 +50,11 @@
     <bean id="fontGenRandom" class="com.octo.captcha.component.image.fontgenerator.RandomFontGenerator">
         <!--最小字体-->
         <constructor-arg index="0">
-            <value>26</value>
+            <value>22</value>
         </constructor-arg>
         <!--最大字体-->
         <constructor-arg index="1">
-            <value>34</value>
+            <value>26</value>
         </constructor-arg>
         <constructor-arg index="2">
             <list>
@@ -69,11 +69,11 @@
     <bean id="backGenUni" class="com.octo.captcha.component.image.backgroundgenerator.UniColorBackgroundGenerator">
         <!--背景宽度-->
         <constructor-arg index="0">
-            <value>110</value>
+            <value>90</value>
         </constructor-arg>
         <!--背景高度-->
         <constructor-arg index="1">
-            <value>50</value>
+            <value>40</value>
         </constructor-arg>
     </bean>
 

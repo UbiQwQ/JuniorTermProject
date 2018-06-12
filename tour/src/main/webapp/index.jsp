@@ -59,12 +59,13 @@
                     <li><a href="#team">团队</a></li>
                     <li><a href="#contact">联系</a></li>
                     <c:if test="${empty user}">
-                        <li><a href="/reg"><img src="statics/images/signup.png" alt="sign up"></a></li>
-                        <li><a href="/loginpage"><img src="statics/images/signin.png" alt="sign in"></a></li>
-                        <li><a href="${pageContext.request.contextPath }/gotoadmin">测试admin</a></li>
+                        <li><a href="/reg">signup</a></li>
+                        <li><a href="/loginpage">signin</a></li>
+                        <li><a href="${pageContext.request.contextPath }/gotoadmin">Admin</a></li>
                     </c:if>
-                    <c:if test="${!empty userName}">
-                        <li><a href="/personal"><img src="" alt="userAvatar"></a></li>
+                    <c:if test="${!empty user}">
+                        <li><a href="/personal">${user.userName}</a></li>
+                        <li><a href="/logout">注销</a></li>
                     </c:if>
                 </ul>
             </div>

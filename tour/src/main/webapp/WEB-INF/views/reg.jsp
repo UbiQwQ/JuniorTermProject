@@ -16,23 +16,24 @@
     <link rel="stylesheet" href="../../statics/css/main.css" type="text/css" media="all">
     <!-- Register-CSS -->
     <link rel="stylesheet" href="../../statics/css/register.css" type="text/css" media="all">
-    <style>
-        body {
-            padding-top: 40px;
-            padding-bottom: 40px;
-            background-color: #eee;
-        }
-    </style>
+    <%--<style>--%>
+        <%--body {--%>
+            <%--padding-top: 40px;--%>
+            <%--padding-bottom: 40px;--%>
+            <%--background-color: #eee;--%>
+        <%--}--%>
+    <%--</style>--%>
 </head>
 <body>
-    <form class="form-horizontal container form-actions" method="post" action="/signin">
+<div class="contact">
+    <form class="contact_form" method="post" action="/signin">
         <ul>
             <li>
                 <h2>用户注册</h2>
             </li>
             <li>
                 <label for="user">用户名:</label>
-                <input type="text"  name="user" id="user" placeholder="Innovation" required pattern="^[a-zA-Z][0-9a-zA-Z_]{3,11}"/>
+                <input type="text"  name="userName" id="user" placeholder="Innovation" required pattern="^[a-zA-Z][0-9a-zA-Z_]{3,11}"/>
                 <span class="form_hint">正确格式为：4~12个字符，可使用字母、数字、下划线，需以字母开头</span>
             </li>
 
@@ -57,13 +58,13 @@
                 <img id="captchaPicture" src="captcha"/>
                 ${info}
             </li>
-            <li>
+            <li >
                 <input class="submit" type="submit" value="注册">
                 <a class="help-inline" href="login">我已经有账号，现在登录</a>
             </li>
         </ul>
     </form>
-
+</div>
 
     <script src="statics/js/jquery-3.3.1.js" type="text/javascript"></script>
 
