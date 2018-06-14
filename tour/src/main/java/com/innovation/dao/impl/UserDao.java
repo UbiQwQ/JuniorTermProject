@@ -193,6 +193,21 @@ public class UserDao implements IUserDao {
         user.setStatus(i);
         ht.update(user);
     }
+    
+    /** 
+     * @description: 禁用账户
+     * @author: li  
+     * @date: 2018/6/14 21:02
+     * @param: [id]  
+     * @return: void  
+     */ 
+    @Override
+    public void blockByUserId(int id) {
+        short i = 0;
+        User user = ht.get(User.class,id);
+        user.setStatus(i);
+        ht.update(user);
+    }
 
 
     @Override

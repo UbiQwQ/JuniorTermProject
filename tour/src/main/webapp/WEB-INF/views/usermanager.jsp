@@ -112,7 +112,7 @@
                             <td><c:out value="${user.status}" /></td>
                             <td>
                                 <a class="btn btn-primary" onClick="delcfm('${pageContext.request.contextPath}/deleteByUserId?id=${user.id}&page=${page}')">删除</a>
-                                <input type="button" value="修改" class="btn btn-default" onclick="test(${user.id})"/>
+                                <a class="btn btn-default" onClick="delcfmblock('${pageContext.request.contextPath}/blockByUserId?id=${user.id}&page=${page}')">禁用</a>
                             </td>
                         </tr>
                     </c:forEach>
@@ -151,6 +151,27 @@
                     </div><!-- /.modal-content -->
                 </div><!-- /.modal-dialog -->
             </div><!-- /.modal -->
+
+            <!-- bootstrap模态框组件  -->
+            <!--  aria-hidden="true"属性用于将模态框隐藏 -->
+            <div class="modal fade" id="delcfmModel1">
+                <div class="modal-dialog">
+                    <div class="modal-content message_align">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+                            <h4 class="modal-title text-danger">提示信息</h4>
+                        </div>
+                        <div class="modal-body text-danger">
+                            <p>您确认要禁用此用户吗？</p>
+                        </div>
+                        <div class="modal-footer">
+                            <input type="hidden" id="url1"/>
+                            <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+                            <a  onclick="urlSubmitblock()" class="btn btn-success" data-dismiss="modal">确定</a>
+                        </div>
+                    </div><!-- /.modal-content -->
+                </div><!-- /.modal-dialog -->
+            </div><!-- /.modal -->
         </div>
     </div>
 </div>
@@ -169,6 +190,19 @@
     function urlSubmit(){
         <!-- 获取会话中的隐藏属性URL -->
         var url=$.trim($("#url").val());
+        <!--定位到新的页面 -->
+        window.location.href=url;
+    }
+
+    function delcfmblock(url) {
+        <!-- 给会话中的隐藏属性URL赋值 -->
+        $('#url1').val(url);
+        <!-- 调用id为delcfmModel的模态框-->
+        $('#delcfmModel1').modal();
+    }
+    function urlSubmitblock(){
+        <!-- 获取会话中的隐藏属性URL -->
+        var url=$.trim($("#url1").val());
         <!--定位到新的页面 -->
         window.location.href=url;
     }

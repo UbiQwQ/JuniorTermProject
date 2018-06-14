@@ -119,7 +119,6 @@
                             <td><c:out value="${user.status}" /></td>
                             <td>
                                 <a class="btn btn-primary" onClick="delcfm('${pageContext.request.contextPath}/admindeblocking?id=${user.id}&page=${page}')">解冻用户</a>
-                                <input type="button" value="修改" class="btn btn-default" onclick="test(${user.id})"/>
                             </td>
                         </tr>
                     </c:forEach>

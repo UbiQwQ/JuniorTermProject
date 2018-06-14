@@ -87,7 +87,7 @@ public class AdminController {
      * @param: [page, model]  
      * @return: java.lang.String  
      */ 
-    @RequestMapping(value = "admin/travelsmanager")
+    @RequestMapping(value = "/admin/travelsmanager")
     public String travelsManager(int page, Model model) {
         int pageSize = 5;
         allRows = travelsService.queryTravelsRows();

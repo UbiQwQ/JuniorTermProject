@@ -25,8 +25,9 @@ public interface IUserDao {
     //插入更新和删除
     public void saveUser(User user) throws Exception;
     public String deleteUserById(int id) throws Exception;
-    //
+    //更改用户状态
     public void updateUserStatus(int id);
+    public void blockByUserId(int id);
 
 
     //更改用户密码

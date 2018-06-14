@@ -106,7 +106,6 @@
                             <td><c:out value="${travel.postTime}" /></td>
                             <td>
                                 <a class="btn btn-primary" onClick="delcfm('${pageContext.request.contextPath}/deleteByTravelId?id=${travel.travelsId}&page=${page}')">删除</a>
-                                <input type="button" value="修改" class="btn btn-default" onclick="test(${travel.travelsId})"/>
                             </td>
                         </tr>
                     </c:forEach>
