@@ -16,9 +16,9 @@
     <link href="css/bootstrap.min.css" rel="stylesheet" type="text/css">
 </head>
 <body>
-    <p>${user.avatar}</p>
-    <img src="pic/"+${user.avatar}>
+    <p>${sessionUser.avatar}</p>
+    <img src=${sessionUser.avatar}>
     <%--<img src="pic/test.jpg">--%>
-    <p>${user.userName}</p>
+    <p>${sessionUser.userName}</p>
 </body>
 </html>

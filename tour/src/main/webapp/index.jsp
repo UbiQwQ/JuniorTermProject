@@ -58,13 +58,13 @@
                     <li><a href="/travels">游记</a></li>
                     <li><a href="#team">团队</a></li>
                     <li><a href="#contact">联系</a></li>
-                    <c:if test="${empty user}">
+                    <c:if test="${empty sessionUser}">
                         <li><a href="/reg">signup</a></li>
                         <li><a href="/loginpage">signin</a></li>
                         <li><a href="/managerloginpage">Admin</a></li>
                     </c:if>
-                    <c:if test="${!empty user}">
-                        <li><a href="/personal">${user.userName}</a></li>
+                    <c:if test="${not empty sessionUser}">
+                        <li><a href="/personal">${sessionUser.userName}</a></li>
                         <li><a href="/logout">注销</a></li>
                     </c:if>
                 </ul>

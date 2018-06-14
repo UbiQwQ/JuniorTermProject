@@ -124,7 +124,7 @@ public class UserController {
             modelAndView.setViewName("redirect:index.jsp");
 
             // 设置session
-            httpSession.setAttribute("user",user);
+            httpSession.setAttribute("sessionUser",user);
             httpSession.setAttribute("userName",user.getUserName());
             httpSession.setAttribute("status", user.getStatus());
             httpSession.setAttribute("userName", user.getUserName());

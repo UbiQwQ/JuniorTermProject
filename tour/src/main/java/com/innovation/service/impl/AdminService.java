@@ -111,7 +111,7 @@ public class AdminService implements IAdminService {
 
     @Override
     public void blockByUserId(int id) {
-        userDao.blockByUserId(id);
+
     }
 
 
