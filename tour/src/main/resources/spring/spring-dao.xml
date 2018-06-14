@@ -64,6 +64,9 @@
                 <value>com.innovation.entity.Food</value>
                 <value>com.innovation.entity.Hotel</value>
                 <value>com.innovation.entity.Travels</value>
+                <value>com.innovation.entity.Book</value>
+                <value>com.innovation.entity.Collect</value>
+                <value>com.innovation.entity.Comment</value>
             </list>
         </property>
 

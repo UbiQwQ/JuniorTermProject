@@ -23,17 +23,17 @@
         <div class="span4">
         </div>
         <div class="span4">
-            <form class="form-horizontal" action="/loginManager" method="post">
+            <form class="form-horizontal" action="/managerlogin" method="post">
                 <div class="control-group">
                     <label class="control-label" for="inputEmail">用户名</label>
                     <div class="controls">
-                        <input id="inputEmail" type="text" name="managerName" />
+                        <input id="inputEmail" type="text" name="managerName" />${userErro}
                     </div>
                 </div>
                 <div class="control-group">
                     <label class="control-label" for="inputPassword">密码</label>
                     <div class="controls">
-                        <input id="inputPassword" type="password" name="password" />
+                        <input id="inputPassword" type="password" name="password" />${pswErro}
                     </div>
                 </div>
                 <div class="control-group">

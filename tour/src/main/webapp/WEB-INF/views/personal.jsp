@@ -16,6 +16,9 @@
     <link href="css/bootstrap.min.css" rel="stylesheet" type="text/css">
 </head>
 <body>
-    <img src="/pic/test.jpg">
+    <p>${user.avatar}</p>
+    <img src="pic/"+${user.avatar}>
+    <%--<img src="pic/test.jpg">--%>
+    <p>${user.userName}</p>
 </body>
 </html>
