@@ -109,6 +109,11 @@ public class AdminService implements IAdminService {
         userDao.updateUserStatus(id);
     }
 
+    @Override
+    public void blockByUserId(int id) {
+        userDao.blockByUserId(id);
+    }
+
 
     /**
      * @description: 根据 user.id 删除用户
