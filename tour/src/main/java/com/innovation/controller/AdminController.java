@@ -303,5 +303,20 @@ public class AdminController {
 
         return modelAndView;
     }
+    
+    /** 
+     * @description: 禁用用户账号
+     * @author: li  
+     * @date: 2018/6/14 21:07
+     * @param: [user, page]  
+     * @return: java.lang.String  
+     */ 
+    @RequestMapping(value = "/blockByUserId")
+    public String blockByUserId(User user,int page) {
+        adminService.blockByUserId(user.getId());
+        //重定向到usermanager，会重新查询数据
+        //重定向到删除时所在的page数
+        return "redirect:/admin/usermanager?page="+page;
+    }
 
 }

@@ -73,4 +73,15 @@ public interface IAdminService {
      * @return: void
      */
     void updateUserStatus(int id);
+
+
+    /**
+     * @description: blockByUserId
+     * @author: li
+     * @date: 2018/6/14 21:05
+     * @param: [id]
+     * @return: void
+     */
+    void blockByUserId(int id);
 }
+

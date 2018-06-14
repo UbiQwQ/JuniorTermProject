@@ -101,4 +101,14 @@
         <aop:advisor advice-ref="txAdivce" pointcut-ref="myPt"/>
     </aop:config>
 
+    <!-- interceptors -->
+    <mvc:interceptors >
+        <mvc:interceptor>
+            <mvc:mapping path="/admin/*"/>
+            <mvc:mapping path="/delete*"/>
+            <mvc:mapping path="/admin*"/>
+            <bean class="com.innovation.util.SessionInterceptor"></bean>
+        </mvc:interceptor>
+    </mvc:interceptors>
+
 </beans>
