@@ -1,5 +1,7 @@
 package com.innovation.controller;
 
+import com.innovation.dao.impl.ManagerDao;
+import com.innovation.entity.Manager;
 import com.innovation.entity.Travels;
 import com.innovation.entity.User;
 import com.innovation.service.impl.AdminService;
@@ -10,6 +12,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.http.HttpSession;
 import java.util.List;
@@ -26,6 +29,9 @@ public class AdminController {
 
     @Autowired
     private AdminService adminService;
+
+    @Autowired
+    private ManagerDao managerDao;
 
     @Autowired
     private TravelsService travelsService;
@@ -47,7 +53,7 @@ public class AdminController {
     @RequestMapping(value = "/gotoadmin")
     public String goToAdmin() {
         System.out.println("-gotoadmin-");
-        return "admin";
+        return "login_manager";
     }
 
     /**
@@ -264,6 +270,38 @@ public class AdminController {
     public String adminJieDong(int id,int page) {
         adminService.updateUserStatus(id);
         return "redirect:/admin/admindeblocking?page="+page;
+    }
+
+
+    @RequestMapping("/managerlogin")
+    public ModelAndView managerLogin (String managerName, String password, HttpSession httpSession) throws Exception {
+
+        ModelAndView modelAndView = new ModelAndView();
+        // 登录用户，并将登录后的状态码返回，如果是0用户不存在，如果是1那么密码错误，如果是2那么密码正确
+        int result = adminService.login(managerName, password);
+
+        // 查找这个用户
+        Manager manager = managerDao.findUserByEmail(managerName);
+
+        if (result == 2) {
+            // 如果是2，那么登录成功，返回index
+            modelAndView.setViewName("redirect:admin.jsp");
+
+            // 设置session
+            httpSession.setAttribute("manager",manager);
+
+        } else if (result == 1) {
+            // 如果是1，那么密码错误，返回login
+            modelAndView.addObject("info", "<span class='help-inline' style='color: #ff0000'>密码错误！</span>");
+            modelAndView.setViewName("login");
+        } else {
+            // 否则用户名不存在，返回login
+            modelAndView.addObject("info", "<span class='help-inline' style='color: #ff0000'>用户不存在！</span>");
+            modelAndView.addObject("info", 0);
+            modelAndView.setViewName("login");
+        }
+
+        return modelAndView;
     }
 
 }

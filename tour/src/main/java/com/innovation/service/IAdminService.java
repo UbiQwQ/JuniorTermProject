@@ -12,8 +12,10 @@ import java.util.List;
  * @Version: 1.0
  */
 public interface IAdminService {
-    
-    /** 
+
+    int login(String email, String password) throws Exception;
+
+    /**
      * @description: 
      * @author: li  
      * @date: 2018/6/2 16:14  

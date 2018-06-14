@@ -152,5 +152,19 @@ public class HomeController {
         //返回personal.jsp视图
         return "personal";
     }
+    /**
+     * 功能描述:跳转到管理员登录页面
+     * @param:
+     * @return:
+     * @auther: Innovation
+     * @date: 2018/6/13 9:39
+     */
+    @RequestMapping("/managerloginpage")
+    public String managerLogin(){
+        //输出日志
+        logger.info("the managerlogin.jsp page");
+        //返回managerlogin.jsp视图
+        return "login_manager";
+    }
     
 }

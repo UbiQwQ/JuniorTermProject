@@ -1,8 +1,11 @@
 package com.innovation.service.impl;
 
+import com.innovation.dao.impl.ManagerDao;
 import com.innovation.dao.impl.UserDao;
+import com.innovation.entity.Manager;
 import com.innovation.entity.User;
 import com.innovation.service.IAdminService;
+import org.apache.commons.codec.digest.DigestUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -19,7 +22,30 @@ public class AdminService implements IAdminService {
 
     @Autowired
     private UserDao userDao;
+    @Autowired
+    private ManagerDao managerDao;
 
+
+    /**
+     * 功能描述: 管理员登录
+     * @param:
+     * @return:
+     * @auther: Innovation
+     * @date: 2018/6/13 11:32
+     */
+    @Override
+    public int login(String name, String password) throws Exception {
+        Manager manager = managerDao.findUserByEmail(name);
+        if(manager==null){
+            return 0;		//用户不存在     返回0
+        }else{
+            if(password.equals(manager.getPassword())){
+                return 2;	//用户密码正确    返回2
+            }else{
+                return 1;	//用户密码错误    返回1
+            }
+        }
+    }
 
     /**
      * @description: 查询所有用户

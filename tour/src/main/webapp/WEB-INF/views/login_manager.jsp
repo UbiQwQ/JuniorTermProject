@@ -9,31 +9,44 @@
 <html>
 <head>
     <title>login</title>
+    <!-- Bootstrap-CSS -->
+    <link rel="stylesheet" href="../../statics/css/bootstrap3/bootstrap.min.css" type="text/css">
+    <link rel="stylesheet" href="../../statics/css/bootstrap3/bootstrap-theme.min.css" type="text/css">
+    <!-- Bootstrap-JS -->
+    <script type="text/javascript" src="../../statics/js/bootstrap3/bootstrap.js"></script>
+    <script type="text/javascript" src="../../statics/js/jquery-3.3.1.js"></script>
 </head>
-<body>
-    <div id="login" align="center">
-        <div class="nav">
-            <form>
-                <div id="login_tip">
-                    管理员登录
+<body style="background: url(/statics/images/adminBg.jpg)">
+
+<div class="container-fluid" style="width: 400px;margin: 200px auto;">
+    <div class="row-fluid">
+        <div class="span4">
+        </div>
+        <div class="span4">
+            <form class="form-horizontal" action="/loginManager" method="post">
+                <div class="control-group">
+                    <label class="control-label" for="inputEmail">用户名</label>
+                    <div class="controls">
+                        <input id="inputEmail" type="text" name="managerName" />
+                    </div>
                 </div>
-                <div><input type="text" id="user_code" name="user_code" class="username" placeholder="请输入账号"></div>
-                <div><input type="password" id="user_account" name="user_account" class="pwd" placeholder="请输入密码"></div>
-                <div id="btn_area">
-                    <input type="text" id="VerificationCode" name="VerificationCode"  placeholder="请输入验证码" class="verify">
-                    <a href="javascript:void(0);" onclick="VerificationCode()">
-                        <img id="randCodeImage" alt="验证码"  src="/captcha" width="100" height="40"/>
-                    </a>
+                <div class="control-group">
+                    <label class="control-label" for="inputPassword">密码</label>
+                    <div class="controls">
+                        <input id="inputPassword" type="password" name="password" />
+                    </div>
                 </div>
-                <div style="float:left;">
-                    <input type="button" name="button" id="sub_btn" onclick="login()" value="登录"/>
+                <div class="control-group">
+                    <div class="controls">
+                        <button type="submit" class="btn">登陆</button>
+                    </div>
                 </div>
-                <div id="verification_Code"><b></b></div>
             </form>
-            <!--提示信息-->
-            <div id= "error"></div>
+        </div>
+        <div class="span4">
         </div>
     </div>
+</div>
 
 </body>
 

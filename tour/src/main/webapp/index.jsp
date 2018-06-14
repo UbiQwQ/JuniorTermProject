@@ -61,7 +61,7 @@
                     <c:if test="${empty user}">
                         <li><a href="/reg">signup</a></li>
                         <li><a href="/loginpage">signin</a></li>
-                        <li><a href="${pageContext.request.contextPath }/gotoadmin">Admin</a></li>
+                        <li><a href="/managerloginpage">Admin</a></li>
                     </c:if>
                     <c:if test="${!empty user}">
                         <li><a href="/personal">${user.userName}</a></li>
