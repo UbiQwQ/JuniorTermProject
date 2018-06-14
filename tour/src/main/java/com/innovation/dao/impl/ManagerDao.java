@@ -21,13 +21,15 @@ public class ManagerDao implements IManagerDao {
     HibernateTemplate ht;
 
     @Override
-    public Manager findUserByEmail(String name) throws Exception {
-        Manager manager;
-        List<Manager> userList = (List<Manager>) ht.find("from Manager where name=?", name);
-        if(userList != null){
-            manager = userList.get(0);
-            return manager;
-        }
-        return null;
+    public Manager findManagerByName(String name) throws Exception {
+//        Manager manager;
+//        List<Manager> managerList = (List<Manager>) ht.find("from Manager where name=?", name);
+//        if(managerList != null){
+//            manager = managerList.get(0);
+//            return manager;
+//        }
+//        return null;
+        Manager manager = ht.get(Manager.class,name);
+        return manager;
     }
 }

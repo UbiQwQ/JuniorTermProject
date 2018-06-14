@@ -35,7 +35,7 @@ public class AdminService implements IAdminService {
      */
     @Override
     public int login(String name, String password) throws Exception {
-        Manager manager = managerDao.findUserByEmail(name);
+        Manager manager = managerDao.findManagerByName(name);
         if(manager==null){
             return 0;		//用户不存在     返回0
         }else{

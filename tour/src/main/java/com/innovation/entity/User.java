@@ -26,6 +26,7 @@ public class User {
     private Byte age;
     private Date regTime;
     private Short status;
+    private String avatar;
 
     public void setRegTime(Timestamp regTime) {
         this.regTime = regTime;
@@ -143,4 +144,13 @@ public class User {
         return result;
     }
 
+    @Basic
+    @Column(name = "avatar")
+    public String getAvatar() {
+        return avatar;
+    }
+
+    public void setAvatar(String avatar) {
+        this.avatar = avatar;
+    }
 }

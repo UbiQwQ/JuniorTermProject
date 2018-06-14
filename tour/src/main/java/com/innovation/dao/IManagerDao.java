@@ -11,5 +11,5 @@ import com.innovation.entity.User;
  */
 public interface IManagerDao {
 
-    Manager findUserByEmail(String name) throws Exception;
+    Manager findManagerByName(String name) throws Exception;
 }

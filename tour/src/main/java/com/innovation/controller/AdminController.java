@@ -281,24 +281,22 @@ public class AdminController {
         int result = adminService.login(managerName, password);
 
         // 查找这个用户
-        Manager manager = managerDao.findUserByEmail(managerName);
-
+        Manager manager = managerDao.findManagerByName(managerName);
         if (result == 2) {
-            // 如果是2，那么登录成功，返回index
-            modelAndView.setViewName("redirect:admin.jsp");
+            // 如果是2，那么登录成功，返回admin
+            modelAndView.setViewName("admin");
 
             // 设置session
             httpSession.setAttribute("manager",manager);
 
         } else if (result == 1) {
             // 如果是1，那么密码错误，返回login
-            modelAndView.addObject("info", "<span class='help-inline' style='color: #ff0000'>密码错误！</span>");
-            modelAndView.setViewName("login");
+            modelAndView.addObject("pswErro", "<span class='help-inline' style='color: #ff0000'>密码错误！</span>");
+            modelAndView.setViewName("login_manager");
         } else {
             // 否则用户名不存在，返回login
-            modelAndView.addObject("info", "<span class='help-inline' style='color: #ff0000'>用户不存在！</span>");
-            modelAndView.addObject("info", 0);
-            modelAndView.setViewName("login");
+            modelAndView.addObject("userErro", "<span class='help-inline' style='color: #ff0000'>用户不存在！</span>");
+            modelAndView.setViewName("login_manager");
         }
 
         return modelAndView;
