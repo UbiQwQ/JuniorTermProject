@@ -111,9 +111,7 @@
             <mvc:mapping path="/delete*"/>
             <mvc:mapping path="/admin*"/>
             <mvc:mapping path="/block*"/>
-            <mvc:mapping path="/manager*"/>
             <bean class="com.innovation.util.SessionInterceptor"></bean>
         </mvc:interceptor>
     </mvc:interceptors>
-
 </beans>

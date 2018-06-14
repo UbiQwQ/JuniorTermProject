@@ -25,7 +25,7 @@ public class SessionInterceptor implements HandlerInterceptor {
     public boolean preHandle(HttpServletRequest hsr, HttpServletResponse hsr1, Object o) throws Exception {
         Manager manager=(Manager) hsr.getSession().getAttribute("manager");
         if(manager==null){
-            logger.log(Level.INFO, "user not login");
+            logger.log(Level.INFO, "admin not login");
             //请求WEB-INF的受限资源
             hsr.getRequestDispatcher("/WEB-INF/views/login_manager.jsp").forward(hsr,hsr1);
             return false;
