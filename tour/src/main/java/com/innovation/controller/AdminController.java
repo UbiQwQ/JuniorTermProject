@@ -317,10 +317,45 @@ public class AdminController {
         return "redirect:/admin/usermanager?page="+page;
     }
 
-
+    /**
+     * @description: 跳转到修改密码界面
+     * @author: li
+     * @date: 2018/6/15 21:46
+     * @param: []
+     * @return: java.lang.String
+     */
     @RequestMapping(value = "/adminpass")
-    public String alteradminpass() {
+    public String goToAdminAlterPass() {
         return "alteradminpass";
+    }
+
+
+    /**
+     * @description: 修改管理员密码
+     * @author: li
+     * @date: 2018/6/15 21:46
+     * @param: [oldpassword, newpassword, repassword, session]
+     * @return: org.springframework.web.servlet.ModelAndView
+     */
+    @RequestMapping(value = "/adminalterpass")
+    public ModelAndView alteradminpass(String oldpassword,String newpassword,String repassword,HttpSession session) throws Exception {
+        ModelAndView modelAndView = new ModelAndView();
+        Manager manager = (Manager) session.getAttribute("manager");
+        if (!newpassword.equals(repassword)) {
+            modelAndView.addObject("rePassErro", "<span class='help-inline' style='color: #ff0000;margin-top:15px;margin-left:60px;font-size:18px;'>两次密码不一致!</span>");
+            modelAndView.setViewName("alteradminpass");
+        } else if (!oldpassword.equals(manager.getPassword())) {
+            modelAndView.addObject("oldPassErro", "<span class='help-inline' style='color: #ff0000;margin-top:15px;margin-left:60px;font-size:18px;'>旧密码错误！</span>");
+            modelAndView.setViewName("alteradminpass");
+        } else if (oldpassword.equals(manager.getPassword()) && newpassword.equals(repassword) && !oldpassword.equals(newpassword)) {
+            adminService.alterManagerPassWord(manager.getName(),newpassword);
+            modelAndView.addObject("success", "<span class='help-inline' style='color: #ff0000;margin-top:15px;margin-left:60px;font-size:18px;'>修改成功！</span>");
+            modelAndView.setViewName("alteradminpass");
+        } else {
+            modelAndView.addObject("error", "<span class='help-inline' style='color: #ff0000;margin-top:15px;margin-left:60px;font-size:18px;'>新密码不能与原密码相同！</span>");
+            modelAndView.setViewName("alteradminpass");
+        }
+        return modelAndView;
 
     }
 

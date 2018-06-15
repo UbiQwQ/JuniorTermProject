@@ -45,7 +45,7 @@
             <div id="navbar-menu">
                 <ul class="nav navbar-nav navbar-right">
                     <li class="dropdown">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown"><img src="../../statics/images/cat.jpg" class="img-circle" alt="Avatar"> <span>Inverseli</span> <i class="icon-submenu lnr lnr-chevron-down"></i></a>
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown"><img src="../../statics/images/cat.jpg" class="img-circle" alt="Avatar"> <span>${manager.name}</span> <i class="icon-submenu lnr lnr-chevron-down"></i></a>
                         <ul class="dropdown-menu">
                             <li><a href="#"><i class="lnr lnr-user"></i> <span>我的信息</span></a></li>
                             <li><a href="#"><i class="lnr lnr-envelope"></i> <span>我的邮件</span></a></li>
@@ -67,15 +67,15 @@
                         <a href="#subPages" data-toggle="collapse" class="collapsed"><i class="lnr lnr-user"></i> <span>管理功能</span> <i class="icon-submenu lnr lnr-chevron-left"></i></a>
                         <div id="subPages" class="collapse ">
                             <ul class="nav">
-                                <li><a href="${pageContext.request.contextPath }/admin/usermanager?page=1">管理用户</a></li>
-                                <li><a href="${pageContext.request.contextPath }/admin/travelsmanager?page=1"><span>管理游记</span></a></li>
+                                <li><a href="${pageContext.request.contextPath}/admin/usermanager?page=1"><span>管理用户</span></a></li>
+                                <li><a  href="${pageContext.request.contextPath}/admin/travelsmanager?page=1"><span>管理游记</span></a></li>
                             </ul>
                         </div>
                     </li>
-                    <li><a href="javascript:turnpage('/adminpass')" class=""><i class="lnr lnr-pencil"></i> <span>修改密码</span></a></li>
+                    <li><a href="${pageContext.request.contextPath}/adminpass" class=""><i class="lnr lnr-pencil"></i> <span>修改密码</span></a></li>
                     <li><a href="#" class=""><i class="lnr lnr-cog"></i> <span>管理网站信息</span></a></li>
                     <li><a href="#" class=""><i class="lnr lnr-alarm"></i> <span>审核团游申请</span></a></li>
-                    <li><a href="javascript:turnpage('/admin/query')" class=""><i class="lnr lnr-dice"></i> <span>查询功能</span></a></li>
+                    <li><a href="${pageContext.request.contextPath}/admin/query" class=""><i class="lnr lnr-dice"></i> <span>查询功能</span></a></li>
                     <li><a href="${pageContext.request.contextPath}/admin/admindeblocking?page=1" class=""><i class="lnr lnr-pointer-right"></i> <span>解冻用户</span></a></li>
                     <li><a href="${pageContext.request.contextPath}/admin/logout" class=""><i class="lnr lnr-exit"></i> <span>注销</span></a></li>
                 </ul>
@@ -86,7 +86,7 @@
     <!-- MAIN -->
     <!-- MAIN CONTENT -->
 
-    <div class="main" id="aaaa">
+    <div class="main">
         <div class="table-responsive" style="margin-left: 10px;margin-top: 15px;">
             <div style="height: 460px;">
                 <table class="table table-bordered table-striped table-hover table-condensed">
@@ -184,22 +184,6 @@
         return false;
     }
 
-    function turnpage(url) {
-        var url = url;
-        document.getElementById("aaaa").innerHTML = "";
-        $.ajax({
-            type:'post',
-            url:url,
-            dataType:'html',
-            success: function(msg) {
-                //这里是ajax提交成功后，程序返回的数据处理函数。msg是返回的数据，数据类型在dataType参数里定义！
-                document.getElementById("aaaa").innerHTML = msg;
-            },
-            error: function() {
-                alert('对不起失败了');
-            }
-        })
-    }
 </script>
 </body>
 

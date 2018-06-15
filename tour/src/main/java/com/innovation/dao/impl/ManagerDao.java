@@ -32,4 +32,13 @@ public class ManagerDao implements IManagerDao {
         Manager manager = ht.get(Manager.class,name);
         return manager;
     }
+
+    @Override
+    public void alterManagerPassWord(String name,String newpassword) throws Exception {
+        Manager manager = ht.get(Manager.class,name);
+        manager.setPassword(newpassword);
+        ht.update(manager);
+    }
+
+
 }

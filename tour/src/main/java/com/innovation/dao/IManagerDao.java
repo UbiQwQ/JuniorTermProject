@@ -12,4 +12,6 @@ import com.innovation.entity.User;
 public interface IManagerDao {
 
     Manager findManagerByName(String name) throws Exception;
+
+    void alterManagerPassWord(String name,String newpassword) throws Exception;
 }

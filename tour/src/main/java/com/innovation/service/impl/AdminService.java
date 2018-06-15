@@ -120,6 +120,19 @@ public class AdminService implements IAdminService {
     public void blockByUserId(int id) {
         userDao.blockByUserId(id);
     }
+    
+    
+    /** 
+     * @description: 
+     * @author: li  
+     * @date: 2018/6/15 19:07
+     * @param: [name, newpassword]  
+     * @return: void  
+     */ 
+    @Override
+    public void alterManagerPassWord(String name, String newpassword) throws Exception {
+        managerDao.alterManagerPassWord(name,newpassword);
+    }
 
 
     /**

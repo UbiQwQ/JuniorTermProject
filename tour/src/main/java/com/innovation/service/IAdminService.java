@@ -83,5 +83,7 @@ public interface IAdminService {
      * @return: void
      */
     void blockByUserId(int id);
+
+    void alterManagerPassWord(String name,String newpassword) throws Exception;
 }
 
