@@ -72,10 +72,10 @@
                             </ul>
                         </div>
                     </li>
-                    <li><a href="#" class=""><i class="lnr lnr-pencil"></i> <span>修改密码</span></a></li>
+                    <li><a href="javascript:turnpage('/adminpass')" class=""><i class="lnr lnr-pencil"></i> <span>修改密码</span></a></li>
                     <li><a href="#" class=""><i class="lnr lnr-cog"></i> <span>管理网站信息</span></a></li>
                     <li><a href="#" class=""><i class="lnr lnr-alarm"></i> <span>审核团游申请</span></a></li>
-                    <li><a href="${pageContext.request.contextPath}/admin/query" class=""><i class="lnr lnr-dice"></i> <span>查询功能</span></a></li>
+                    <li><a href="javascript:turnpage('/admin/query')" class=""><i class="lnr lnr-dice"></i> <span>查询功能</span></a></li>
                     <li><a href="${pageContext.request.contextPath}/admin/admindeblocking?page=1" class=""><i class="lnr lnr-pointer-right"></i> <span>解冻用户</span></a></li>
                     <li><a href="${pageContext.request.contextPath}/admin/logout" class=""><i class="lnr lnr-exit"></i> <span>注销</span></a></li>
                 </ul>
@@ -86,7 +86,7 @@
     <!-- MAIN -->
     <!-- MAIN CONTENT -->
 
-    <div class="main">
+    <div class="main" id="aaaa">
         <div class="table-responsive" style="margin-left: 10px;margin-top: 15px;">
             <div style="height: 460px;">
                 <table class="table table-bordered table-striped table-hover table-condensed">
@@ -224,6 +224,24 @@
         }
         return false;
     }
+
+    function turnpage(url) {
+        var url = url;
+        document.getElementById("aaaa").innerHTML = "";
+        $.ajax({
+            type:'post',
+            url:url,
+            dataType:'html',
+            success: function(msg) {
+                //这里是ajax提交成功后，程序返回的数据处理函数。msg是返回的数据，数据类型在dataType参数里定义！
+                document.getElementById("aaaa").innerHTML = msg;
+            },
+            error: function() {
+                alert('对不起失败了');
+            }
+        })
+    }
+
 </script>
 </body>
 

@@ -109,9 +109,16 @@ public class AdminService implements IAdminService {
         userDao.updateUserStatus(id);
     }
 
+    /**
+     * @description:
+     * @author: li
+     * @date: 2018/6/15 16:37
+     * @param: [id]
+     * @return: void
+     */
     @Override
     public void blockByUserId(int id) {
-
+        userDao.blockByUserId(id);
     }
 
 

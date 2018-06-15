@@ -24,6 +24,10 @@
     <link rel="stylesheet" href="../../statics/css/adminmain.css">
     <!-- GOOGLE FONTS -->
     <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700" rel="stylesheet">
+    <script src="../../statics/js/main.js"></script>
+    <style>
+        .main{width: auto;height: auto;}
+    </style>
 
 </head>
 
@@ -67,15 +71,15 @@
                         <a href="#subPages" data-toggle="collapse" class="collapsed"><i class="lnr lnr-user"></i> <span>管理功能</span> <i class="icon-submenu lnr lnr-chevron-left"></i></a>
                         <div id="subPages" class="collapse ">
                             <ul class="nav">
-                                <li><a href="${pageContext.request.contextPath }/admin/usermanager?page=1" class="">管理用户</a></li>
-                                <li><a href="${pageContext.request.contextPath }/admin/travelsmanager?page=1"><span>管理游记</span></a></li>
+                                <li><a href="${pageContext.request.contextPath}/admin/usermanager?page=1"><span>管理用户</span></a></li>
+                                <li><a  href="${pageContext.request.contextPath}/admin/travelsmanager?page=1"><span>管理游记</span></a></li>
                             </ul>
                         </div>
                     </li>
-                    <li><a href="#" class=""><i class="lnr lnr-pencil"></i> <span>修改密码</span></a></li>
+                    <li><a href="javascript:turnpage('adminpass')" class=""><i class="lnr lnr-pencil"></i> <span>修改密码</span></a></li>
                     <li><a href="${pageContext.request.contextPath}/admin/block" class=""><i class="lnr lnr-cog"></i> <span>test管理网站信息</span></a></li>
                     <li><a href="#" class=""><i class="lnr lnr-alarm"></i> <span>审核团游申请</span></a></li>
-                    <li><a href="${pageContext.request.contextPath}/admin/query" class=""><i class="lnr lnr-dice"></i> <span>查询功能</span></a></li>
+                    <li><a href="javascript:turnpage('admin/query')" class=""><i class="lnr lnr-dice"></i> <span>查询功能</span></a></li>
                     <li><a href="${pageContext.request.contextPath}/admin/admindeblocking?page=1" class=""><i class="lnr lnr-pointer-right"></i> <span>解冻用户</span></a></li>
                     <li><a href="${pageContext.request.contextPath}/admin/logout" class=""><i class="lnr lnr-exit"></i> <span>注销</span></a></li>
                 </ul>
@@ -86,7 +90,7 @@
     <!-- MAIN -->
         <!-- MAIN CONTENT -->
 
-    <div class="main">
+    <div class="main" id="aaaa">
         <div class="main-text" style="margin-top: 60px;">
             <h2 style="text-align: center;">This page for Administrators</h2><br/>
             <div class="jumbotron">
@@ -114,6 +118,25 @@
 <!-- Javascript -->
 <script src="../../statics/js/jquery.min.js"></script>
 <script src="../../statics/js/bootstrap.min.js"></script>
+<script>
+    function turnpage(url) {
+        var url = url;
+        document.getElementById("aaaa").innerHTML = "";
+        $.ajax({
+            type:'post',
+            url:url,
+            dataType:'html',
+            success: function(msg) {
+                //这里是ajax提交成功后，程序返回的数据处理函数。msg是返回的数据，数据类型在dataType参数里定义！
+                document.getElementById("aaaa").innerHTML = msg;
+            },
+            error: function() {
+                alert('对不起失败了');
+            }
+        })
+    }
+
+</script>
 
 </body>
 

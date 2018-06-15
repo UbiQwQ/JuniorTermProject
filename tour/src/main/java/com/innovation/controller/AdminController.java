@@ -317,4 +317,11 @@ public class AdminController {
         return "redirect:/admin/usermanager?page="+page;
     }
 
+
+    @RequestMapping(value = "/adminpass")
+    public String alteradminpass() {
+        return "alteradminpass";
+
+    }
+
 }
