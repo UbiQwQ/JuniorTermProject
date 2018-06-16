@@ -51,8 +51,8 @@
     <div class="lpHome-main">
         <div class="menu">
             <ul>
-                <li class="cur"><a href="#"><em class="ico1"></em>我的游记</a></li>
-                <li ><a href="https://home.leiphone.com/comment"><em class="ico2"></em>我的评论</a></li>
+                <li ><a href="https://home.leiphone.com/notices"><em class="ico1"></em>我的游记</a></li>
+                <li class="cur" ><a href="https://home.leiphone.com/comment"><em class="ico2"></em>我的评论</a></li>
                 <li ><a href="https://home.leiphone.com/collect"><em class="ico3"></em>我的收藏</a></li>
                 <li ><a href="https://home.leiphone.com/activity"><em class="ico4"></em>我的活动</a></li>
                 <li ><a href="https://home.leiphone.com/orderCenter"><em class="ico5"></em>订单中心</a></li>
@@ -61,28 +61,30 @@
         </div>
         <div class="mainCnt">
             <div class="title clr">
-                我的游记
+                我的评论
             </div>
-            <div class="myCmt-main myCollect-main">
+            <div class="myCmt-main">
                 <ul>
-                    <c:forEach items="${travels}" var="travel">
-                        <li>
-                            <div class="hdTit">
-                                <a href="/lookTravel?travelId=${travel.travelsId}" target="_blank">《${travel.title}》</a>
-                            </div>
-
-                            <div class="dataMsg clr">
-                                <span class='time'>${travel.postTime}</span>
-                                <a href="/lookTravel?travelId=${travel.travelsId}" class="look">查看</a>
-                                <a href="/regretTravel?travelId=${travel.travelsId}" class="canCollect">删除游记</a>
-                            </div>
-                        </li>
+                    <c:forEach items="${comment}" var="comment">
+                    <li>
+                        <div class="hdTit">
+                            <a href="/lookTravel?travelId=${travel.travelsId}" target="_blank">《${comment.travelsTitle}》</a>
+                        </div>
+                        <div class="des">
+                                ${comment.content}
+                        </div>
+                        <div class="dataMsg clr">
+                            <span class='time'>${comment.postTime}</span>
+                            <a onclick="return confirm('确认删除？');" href="/comment/delete?id=224490" class="del">删除</a>
+                        </div>
+                    </li>
                     </c:forEach>
                 </ul>
                 <div class="h_pages">
                 </div>
             </div>
-        </div></div>
+        </div>
+    </div>
     <!-- e = 主体内容 -->
 </body>
 </html>

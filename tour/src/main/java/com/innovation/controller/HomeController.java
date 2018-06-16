@@ -1,9 +1,17 @@
 package com.innovation.controller;
 
+import com.innovation.entity.Travels;
+import com.innovation.entity.User;
+import com.innovation.service.impl.TravelsService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.servlet.ModelAndView;
+
+import javax.servlet.http.HttpSession;
+import java.util.List;
 
 /**
  * @author Innovation
@@ -12,6 +20,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 // 注解标注此类为springmvc的controller，url映射为"/home"
 @Controller
 public class HomeController {
+
+    @Autowired
+    TravelsService travelsService;
+
     //添加一个日志器
     private static final Logger logger = LoggerFactory.getLogger(HomeController.class);
 
@@ -120,7 +132,7 @@ public class HomeController {
         //输出日志
         logger.info("the travels.jsp page");
         //返回login.jsp视图
-        return "travels";
+        return "travels_list";
     }
 
     /**
@@ -146,11 +158,19 @@ public class HomeController {
      * @date: 2018/6/11 22:41
      */
     @RequestMapping("/personal")
-    public String personal(){
+    public ModelAndView personal(HttpSession userSession){
+        ModelAndView modelAndView = new ModelAndView();
+        User user = (User) userSession.getAttribute("sessionUser");
+        logger.info(user.getUserName());
+        List<Travels> travels = travelsService.findTravelsByUserID(user.getId());
+
+        modelAndView.setViewName("personal");
+
+        modelAndView.addObject("travels",travels);
         //输出日志
         logger.info("the personal.jsp page");
         //返回personal.jsp视图
-        return "personal";
+        return modelAndView;
     }
     /**
      * 功能描述:跳转到管理员登录页面

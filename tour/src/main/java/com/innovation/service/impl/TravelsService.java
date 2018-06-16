@@ -39,7 +39,8 @@ public class TravelsService implements ITravelsService {
 
     @Override
     public Travels findTravelsById(int id) throws Exception {
-        return null;
+        Travels travel = travelsDao.findTravelsById(id);
+        return travel;
     }
 
     @Override
@@ -51,6 +52,16 @@ public class TravelsService implements ITravelsService {
     public List<Travels> findTravelsByCityID(int cityId) {
         return null;
     }
+
+    @Override
+    public List<Travels> findTravelsByUserID(int userId) {
+        List<Travels> travelsByUserID = travelsDao.findTravelsByUserID(userId);
+        if(travelsByUserID != null){
+            return travelsByUserID;
+        }
+        return null;
+    }
+
 
     @Override
     public boolean saveTravels(Travels travels) throws Exception {

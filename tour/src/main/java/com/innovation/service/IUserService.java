@@ -1,5 +1,7 @@
 package com.innovation.service;
 
+import com.innovation.entity.User;
+
 /**
  * @Auther: Innovation
  * @Date: 2018/5/23 17:00
@@ -7,6 +9,9 @@ package com.innovation.service;
  * @Description:
  */
 public interface IUserService {
+
+
+    public User findUserById(int userId) throws Exception;
 
     /**
      * 功能描述: 绑定用户手机号

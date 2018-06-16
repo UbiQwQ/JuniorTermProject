@@ -67,7 +67,8 @@ public class TravelsDao implements ITravelsDao {
 
     @Override
     public Travels findTravelsById(int id) throws Exception {
-        return null;
+        Travels travel = ht.get(Travels.class,id);
+        return travel;
     }
 
     @Override
@@ -77,6 +78,15 @@ public class TravelsDao implements ITravelsDao {
 
     @Override
     public List<Travels> findTravelsByCityID(int cityId) {
+        return null;
+    }
+
+    @Override
+    public List<Travels> findTravelsByUserID(int userId) {
+        List<Travels> travels = (List<Travels>) ht.find("from Travels where userId=?", userId);
+        if(travels != null){
+            return travels;
+        }
         return null;
     }
 

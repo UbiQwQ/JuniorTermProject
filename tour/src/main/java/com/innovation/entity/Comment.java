@@ -4,6 +4,7 @@ import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import java.sql.Timestamp;
 
 /**
  * @Auther: Innovation
@@ -16,6 +17,9 @@ public class Comment {
     private int commentId;
     private int travelsId;
     private int userId;
+    private String content;
+    private String travelsTitle;
+    private Timestamp postTime;
 
     @Id
     @Column(name = "commentId")
@@ -67,5 +71,35 @@ public class Comment {
         result = 31 * result + travelsId;
         result = 31 * result + userId;
         return result;
+    }
+
+    @Basic
+    @Column(name = "content")
+    public String getContent() {
+        return content;
+    }
+
+    public void setContent(String content) {
+        this.content = content;
+    }
+
+    @Basic
+    @Column(name = "travelsTitle")
+    public String getTravelsTitle() {
+        return travelsTitle;
+    }
+
+    public void setTravelsTitle(String travelsTitle) {
+        this.travelsTitle = travelsTitle;
+    }
+
+    @Basic
+    @Column(name = "postTime")
+    public Timestamp getPostTime() {
+        return postTime;
+    }
+
+    public void setPostTime(Timestamp postTime) {
+        this.postTime = postTime;
     }
 }

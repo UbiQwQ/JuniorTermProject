@@ -1,6 +1,9 @@
 package com.innovation.service.impl;
 
+import com.innovation.dao.impl.UserDao;
+import com.innovation.entity.User;
 import com.innovation.service.IUserService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 /**
@@ -11,6 +14,15 @@ import org.springframework.stereotype.Service;
  */
 @Service
 public class UserService implements IUserService {
+
+    @Autowired
+    UserDao userDao;
+
+    @Override
+    public User findUserById(int userId) throws Exception {
+        User user = userDao.findUserById(userId);
+        return user;
+    }
 
     @Override
     public void bindPhone(String userName, String phone) throws Exception {

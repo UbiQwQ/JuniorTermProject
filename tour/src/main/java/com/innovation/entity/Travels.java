@@ -21,6 +21,7 @@ public class Travels {
     private String title;
     private String content;
     private Timestamp postTime;
+    private int userId;
 
     @Id
     @Column(name = "travelsId")
@@ -84,5 +85,15 @@ public class Travels {
         result = 31 * result + (content != null ? content.hashCode() : 0);
         result = 31 * result + (postTime != null ? postTime.hashCode() : 0);
         return result;
+    }
+
+    @Basic
+    @Column(name = "userId")
+    public int getUserId() {
+        return userId;
+    }
+
+    public void setUserId(int userId) {
+        this.userId = userId;
     }
 }
