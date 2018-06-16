@@ -39,7 +39,7 @@
                     <a class="edit-btn" href="https://home.leiphone.com/info/index">
                         <em></em>修改资料
                     </a>
-                    <a class="edit-btn" href="https://home.leiphone.com/info/index">
+                    <a class="edit-btn" href="/travelsPostPage">
                         <em></em>发布游记
                     </a>
                 </div>

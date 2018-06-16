@@ -186,5 +186,12 @@ public class HomeController {
         //返回managerlogin.jsp视图
         return "login_manager";
     }
-    
+
+    @RequestMapping("/travelsPostPage")
+    public String travelsPostPage(){
+        //输出日志
+        logger.info("the travels_post.jsp page");
+        //返回managerlogin.jsp视图
+        return "travels_post";
+    }
 }
