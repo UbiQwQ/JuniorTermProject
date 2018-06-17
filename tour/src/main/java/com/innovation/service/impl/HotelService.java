@@ -30,8 +30,8 @@ public class HotelService implements IHotelService {
     }
 
     @Override
-    public List<Hotel> findAll(int offset, int length) {
-        return null;
+    public List<Hotel> findAllHotel() {
+        return hotelDao.findAllHotel();
     }
 
     @Override

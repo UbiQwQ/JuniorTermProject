@@ -55,7 +55,7 @@
                     <li><a href="/hotel">酒店</a></li>
                     <li><a href="#gallery">景点</a></li>
                     <li><a href="/food">美食</a></li>
-                    <li><a href="/travels">游记</a></li>
+                    <li><a href="/travels?page=1">游记</a></li>
                     <li><a href="#team">团队</a></li>
                     <li><a href="#contact">联系</a></li>
                     <c:if test="${empty sessionUser}">

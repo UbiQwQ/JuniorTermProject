@@ -11,7 +11,7 @@
 <html>
 <head>
     <meta charset="UTF-8"/>
-    <title>人工智能_人工智能技术_应用_AI人工智能_最新进展 | 雷锋网</title>
+    <title>游记列表 | 驴行网</title>
     <meta itemprop="image" content="https://www.leiphone.com/resWeb/images/common/metaLogo.jpg" />
     <link rel="dns-prefetch" href="https://www.leiphone.com">
     <link rel="dns-prefetch" href="https://home.leiphone.com">
@@ -173,26 +173,28 @@
                 <div class="list">
                     <ul class="clr">
 
-                        <%--<c:forEach items="${travels}" var="travle">--%>
+                        <c:forEach items="${travels}" var="travle">
                             <li>
                                 <div class="box">
                                     <div class="img">
-                                        <a href="https://www.leiphone.com/category/ai" date-category="132" class='sort rgzn'>人工智能</a>
+                                        <a href="https://www.leiphone.com/category/ai" date-category="132" class='sort rgzn'>旅行游记</a>
                                         <a href="https://www.leiphone.com/news/201806/UWOi5uIPcwuMZmTi.html"  target="_blank">
-                                            <img class='lazy' data-original="https://static.leiphone.com/uploads/new/article/pic/201806/5b24ce3a59f97.jpg?imageMogr2/thumbnail/!480x290r/gravity/Center/crop/480x290/quality/90" src="https://www.leiphone.com/resWeb/images/article/miss-main-pic.jpg" title="ASSIA | 中国自动化学会「深度与宽度强化学习」智能自动化学科前沿讲习班（二）" alt="" />
+                                            <img class='lazy' data-original="https://static.leiphone.com/uploads/new/article/pic/201806/5b24ce3a59f97.jpg?imageMogr2/thumbnail/!480x290r/gravity/Center/crop/480x290/quality/90" title="ASSIA | 中国自动化学会「深度与宽度强化学习」智能自动化学科前沿讲习班（二）" alt="" />
                                         </a>
                                     </div>
                                     <div class="word">
                                         <h3>
-                                            <a href="https://www.leiphone.com/news/201806/UWOi5uIPcwuMZmTi.html" target="_blank" title="ASSIA | 中国自动化学会「深度与宽度强化学习」智能自动化学科前沿讲习班（二）" class="headTit">
-                                                ASSIA | 中国自动化学会「深度与宽度强化学习」智能自动化学科前沿讲习班（二）                			</a>
+                                            <a href="/lookTravel?travelId=${travle.travelsId}" target="_blank" title="ASSIA | 中国自动化学会「深度与宽度强化学习」智能自动化学科前沿讲习班（二）" class="headTit">
+                                                ${travle.title}
+                                            </a>
                                         </h3>
                                         <div class="des">
-                                            中国自动化学会围绕「深度与宽度强化学习」这一主题，在中科院自动化所成功举办第 5 期智能自动化学科前沿讲习班			</div>
+                                            ${travle.content}
+                                        </div>
                                         <div class="msg clr">
                                             <a href="https://www.leiphone.com/author/liufukang383" target="_blank" class="aut" rel="nofollow">
-                                                <img src="https://www.leiphone.com/uploads/new/avatar/author_avatar/17_100_100.jpg" width="50" height="50" alt=""/>sanman				</a>
-                                            <div class="time">4小时前</div>
+                                                <img src="https://www.leiphone.com/uploads/new/avatar/author_avatar/17_100_100.jpg" width="50" height="50" alt=""/>sanma</a>
+                                            <div class="time">${travle.postTime}</div>
                                             <div class="tags">
                                                 <em></em>
                                             </div>
@@ -200,12 +202,12 @@
                                     </div>
                                 </div>
                             </li>
-                        <%--</c:forEach>--%>
+                        </c:forEach>
 
 
 
                     </ul>
-                    <div class="lph-page"><a class="next" href="https://www.leiphone.com/category/ai/page/2"><em></em></a><div class="pages"><span class="cur">1</span><a href="https://www.leiphone.com/category/ai/page/2">2</a><a href="https://www.leiphone.com/category/ai/page/3">3</a><a href="https://www.leiphone.com/category/ai/page/4">4</a><a href="https://www.leiphone.com/category/ai/page/5">5</a><span>...</span><a href="https://www.leiphone.com/category/ai/page/191">191</a></div></div>                </div>
+                    <div class="lph-page"><div class="pages"><a href="${pageContext.request.contextPath}/travels?page=1">1</a><a href="${pageContext.request.contextPath}/travels?page=2">2</a><a href="${pageContext.request.contextPath}/travels?page=3">3</a><a href="${pageContext.request.contextPath}/travels?page=4">4</a><a href="${pageContext.request.contextPath}/travels?page=5">5</a><span>...</span><a href="https://www.leiphone.com/category/ai/page/191">${allPage}</a></div></div></div>
             </div>
         </div>
         <div class="lph-right">
