@@ -1,13 +1,7 @@
 package com.innovation.controller;
 
-import com.innovation.entity.Comment;
-import com.innovation.entity.Travels;
-import com.innovation.entity.User;
-import com.innovation.service.impl.CommentService;
-import com.innovation.entity.Hotel;
-import com.innovation.service.impl.AdminService;
-import com.innovation.service.impl.HotelService;
-import com.innovation.service.impl.TravelsService;
+import com.innovation.entity.*;
+import com.innovation.service.impl.*;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -29,8 +23,12 @@ public class HomeController {
 
     @Autowired
     TravelsService travelsService;
+
     @Autowired
     CommentService commentService;
+
+    @Autowired
+    FoodService foodService;
 
     @Autowired
     HotelService hotelService;
@@ -125,9 +123,11 @@ public class HomeController {
      * @date: 2018/6/6 22:18
      */
     @RequestMapping("/food")
-    public String food(){
+    public String food(Model model){
         //输出日志
         logger.info("the food.jsp page");
+        List<Food> foodList = foodService.findAllFood();
+        model.addAttribute("foodlist",foodList);
         //返回login.jsp视图
         return "food";
     }

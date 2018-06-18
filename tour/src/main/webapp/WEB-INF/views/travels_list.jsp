@@ -207,7 +207,7 @@
 
 
                     </ul>
-                    <div class="lph-page"><div class="pages"><a href="${pageContext.request.contextPath}/travels?page=1">1</a><a href="${pageContext.request.contextPath}/travels?page=2">2</a><a href="${pageContext.request.contextPath}/travels?page=3">3</a><a href="${pageContext.request.contextPath}/travels?page=4">4</a><a href="${pageContext.request.contextPath}/travels?page=5">5</a><span>...</span><a href="https://www.leiphone.com/category/ai/page/191">${allPage}</a></div></div></div>
+                    <div class="lph-page"><div class="pages"><a href="${pageContext.request.contextPath}/travels?page=1">1</a><a href="${pageContext.request.contextPath}/travels?page=2">2</a></div></div></div>
             </div>
         </div>
         <div class="lph-right">

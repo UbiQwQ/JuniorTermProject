@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50639
 File Encoding         : 65001
 
-Date: 2018-06-17 17:09:36
+Date: 2018-06-18 13:01:58
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -94,11 +94,20 @@ CREATE TABLE `food` (
   `description` varchar(255) DEFAULT NULL COMMENT '食物描述',
   `cityId` int(11) NOT NULL COMMENT '食物所属城市',
   PRIMARY KEY (`foodId`) USING BTREE
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 ROW_FORMAT=DYNAMIC;
+) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8 ROW_FORMAT=DYNAMIC;
 
 -- ----------------------------
 -- Records of food
 -- ----------------------------
+INSERT INTO `food` VALUES ('1', '牛羊肉泡馍', '20.00', '\"中华名小吃\"', '1');
+INSERT INTO `food` VALUES ('2', '金线油塔', '30.00', '\"中华名小吃\"', '1');
+INSERT INTO `food` VALUES ('3', '小笼荷叶卤面', '20.00', '\"中华名小吃\"', '1');
+INSERT INTO `food` VALUES ('4', '眼镜山野摆汤面', '20.00', '\"中华名小吃\"', '1');
+INSERT INTO `food` VALUES ('5', '老乾州浇汤挂面', '30.00', '\"中华名小吃\"', '1');
+INSERT INTO `food` VALUES ('6', '榆馨牌砂锅羊肉扁食', '80.00', '\"中华名小吃\"', '1');
+INSERT INTO `food` VALUES ('7', '屈崔氏药膳罐罐鸡', '100.00', '\"中华名小吃\"', '1');
+INSERT INTO `food` VALUES ('8', '小元地软素包', '20.00', '\"中华名小吃\"', '1');
+INSERT INTO `food` VALUES ('9', '乾州馇酥', '30.00', '\"中华名小吃\"', '1');
 
 -- ----------------------------
 -- Table structure for hotel

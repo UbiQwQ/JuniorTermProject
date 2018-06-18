@@ -1,5 +1,6 @@
 package com.innovation.service.impl;
 
+import com.innovation.dao.impl.FoodDao;
 import com.innovation.entity.Food;
 import com.innovation.service.IFoodService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,11 +19,18 @@ import java.util.List;
 public class FoodService implements IFoodService {
 
     @Autowired
-    HibernateTemplate ht;
+    FoodDao foodDao;
 
+    /**
+     * @description: findAllFood
+     * @author: li
+     * @date: 2018/6/18 12:34
+     * @param: []
+     * @return: java.util.List<com.innovation.entity.Food>
+     */
     @Override
-    public List<Food> findAll(int offset, int length) {
-        return null;
+    public List<Food> findAllFood() {
+        return foodDao.findAllFood();
     }
 
     @Override
