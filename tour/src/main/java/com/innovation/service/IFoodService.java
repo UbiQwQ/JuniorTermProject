@@ -13,7 +13,7 @@ import java.util.List;
 public interface IFoodService {
 
     //查找美食
-    public List<Food> findAll(final int offset, final int length);
+    public List<Food> findAllFood();
     public Food findFoodById(int id) throws Exception;
     public Food findFoodByName(String foodName) throws Exception;
     public List<Food> findFoodByCityID(int cityId);

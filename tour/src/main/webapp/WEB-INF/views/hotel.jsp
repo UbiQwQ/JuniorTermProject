@@ -184,7 +184,7 @@
                                     </div>
                                     <div class="word">
                                         <h3>
-                                            <a href="/lookTravel?travelId=${travle.travelsId}" target="_blank" title="ASSIA | 中国自动化学会「深度与宽度强化学习」智能自动化学科前沿讲习班（二）" class="headTit">
+                                            <a href="#" target="_blank" title="ASSIA | 中国自动化学会「深度与宽度强化学习」智能自动化学科前沿讲习班（二）" class="headTit">
                                                     ${hotel.name}
                                             </a>
                                         </h3>

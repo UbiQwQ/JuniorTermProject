@@ -23,8 +23,12 @@ public class HomeController {
 
     @Autowired
     TravelsService travelsService;
+
     @Autowired
     CommentService commentService;
+
+    @Autowired
+    FoodService foodService;
 
     @Autowired
     HotelService hotelService;
@@ -121,9 +125,11 @@ public class HomeController {
      * @date: 2018/6/6 22:18
      */
     @RequestMapping("/food")
-    public String food(){
+    public String food(Model model){
         //输出日志
         logger.info("the food.jsp page");
+        List<Food> foodList = foodService.findAllFood();
+        model.addAttribute("foodlist",foodList);
         //返回login.jsp视图
         return "food";
     }

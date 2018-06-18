@@ -25,9 +25,17 @@ public class FoodDao implements IFoodDao {
         return 0;
     }
 
+    /**
+     * @description: foodList
+     * @author: li
+     * @date: 2018/6/18 12:32
+     * @param: []
+     * @return: java.util.List<com.innovation.entity.Food>
+     */
     @Override
-    public List<Food> findAll(int offset, int length) {
-        return null;
+    public List<Food> findAllFood() {
+        List<Food> foodList = (List<Food>) ht.find("from com.innovation.entity.Food");
+        return foodList;
     }
 
     @Override
