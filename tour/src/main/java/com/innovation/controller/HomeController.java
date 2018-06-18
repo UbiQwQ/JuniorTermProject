@@ -1,13 +1,7 @@
 package com.innovation.controller;
 
-import com.innovation.entity.Comment;
-import com.innovation.entity.Travels;
-import com.innovation.entity.User;
-import com.innovation.service.impl.CommentService;
-import com.innovation.entity.Hotel;
-import com.innovation.service.impl.AdminService;
-import com.innovation.service.impl.HotelService;
-import com.innovation.service.impl.TravelsService;
+import com.innovation.entity.*;
+import com.innovation.service.impl.*;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -34,6 +28,8 @@ public class HomeController {
 
     @Autowired
     HotelService hotelService;
+    @Autowired
+    CollectService collectService;
 
     //添加一个日志器
     private static final Logger logger = LoggerFactory.getLogger(HomeController.class);
@@ -237,11 +233,21 @@ public class HomeController {
     }
 
     @RequestMapping("/personalCollectPage")
-    public String personalCollectPage(){
+    public ModelAndView personalCollectPage(HttpSession userSession){
+
+        ModelAndView modelAndView = new ModelAndView();
+        User user = (User) userSession.getAttribute("sessionUser");
+        logger.info(user.getUserName());
+        List<Collect> collects = collectService.findCollectsByUserID(user.getId());
+
+        modelAndView.setViewName("personal_collect");
+
+        modelAndView.addObject("collects",collects);
+
         //输出日志
         logger.info("the personal_collect.jsp page");
         //返回managerlogin.jsp视图
-        return "personal_collect";
+        return modelAndView;
     }
 
     @RequestMapping("/personalActivityPage")
