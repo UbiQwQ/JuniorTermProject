@@ -56,6 +56,7 @@
                 <li ><a href="/personalCollectPage"><em class="ico3"></em>我的收藏</a></li>
                 <li ><a href="/personalOrderPage"><em class="ico5"></em>订单中心</a></li>
                 <li ><a href="/personalSettingPage"><em class="ico6"></em>账户设置</a></li>
+                <li ><a href="/personalAvatarPage"><em class="ico6"></em>修改头像</a></li>
             </ul>
         </div>
         <div class="mainCnt">

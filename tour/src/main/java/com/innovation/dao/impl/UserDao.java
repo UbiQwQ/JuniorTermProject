@@ -224,4 +224,8 @@ public class UserDao implements IUserDao {
     public int activateUser(String email) throws Exception {
         return 0;
     }
+    @Override
+    public void updateUser(User user) {
+        ht.update(user);
+    }
 }

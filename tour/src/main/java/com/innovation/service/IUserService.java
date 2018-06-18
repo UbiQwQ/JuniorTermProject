@@ -43,4 +43,5 @@ public interface IUserService {
      */
     public void resetPassWord(String userName,String newPassword) throws Exception;
 
+    void updateUser(User user);
 }

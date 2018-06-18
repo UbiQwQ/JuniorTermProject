@@ -8,11 +8,15 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
+import java.io.File;
 import java.io.IOException;
 import java.util.List;
+import java.util.UUID;
 
 /**
  * @Auther: Innovation
@@ -159,4 +163,63 @@ public class PersonalController {
         return modelAndView;
     }
 
+
+
+    @RequestMapping("/personalAvatarPage")
+    public String personalSettingPage(){
+        //输出日志
+        logger.info("the personal_avatar.jsp page");
+        //返回managerlogin.jsp视图
+        return "personal_avatar";
+    }
+
+
+    @RequestMapping("/avatarSetting")
+    public ModelAndView avatarSetting(MultipartFile avatar, HttpSession session) throws Exception {
+
+        ModelAndView modelAndView = new ModelAndView();
+        String orginFilename = avatar.getOriginalFilename();//拿到图片原始名称
+        //上传图片
+        if(avatar != null && orginFilename != null && orginFilename.length() > 0){
+            //存储图片的物理路径
+            String avatarPath = "E:\\Documents\\GitHub\\JuniorTermProject\\image\\";
+            //新的图片名称
+            String newFilename = UUID.randomUUID() + orginFilename.substring(orginFilename.lastIndexOf("."));
+            //新的图片
+            File newFile = new File(avatarPath + newFilename);
+
+            //将内存中的数据写入磁盘
+            avatar.transferTo(newFile);
+
+            //如果上传成功，要将图片名称写到filePath中
+            modelAndView.addObject("filePath", newFilename);
+            User user = (User) session.getAttribute("sessionUser");
+            user.setAvatar("pic/"+newFilename);
+            userService.updateUser(user);
+        }
+
+        modelAndView.setViewName("personal_avatar");
+
+//        itemsService.updateItems(id, itemsCustom);
+
+        //我们也可以不使用注解，而直接使用model将pojo数据回显到页面
+        //model.addAttribute("items", itemsCustom);
+        //model.addAttribute("id", id);
+
+        return modelAndView;
+    }
+
+
+    @RequestMapping("/personalSetting")
+    public String personalSetting(String nickname, String phone,HttpSession session){
+
+        User user = (User) session.getAttribute("sessionUser");
+        user.setUserName(nickname);
+        user.setPhone(phone);
+        userService.updateUser(user);
+        //输出日志
+        logger.info("the personal_set.jsp page");
+        //返回managerlogin.jsp视图
+        return "personal_set";
+    }
 }

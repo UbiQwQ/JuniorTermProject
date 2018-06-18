@@ -38,4 +38,9 @@ public class UserService implements IUserService {
     public void resetPassWord(String userName, String newPassword) throws Exception {
 
     }
+
+    @Override
+    public void updateUser(User user) {
+        userDao.updateUser(user);
+    }
 }

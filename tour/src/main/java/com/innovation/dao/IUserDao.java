@@ -37,4 +37,5 @@ public interface IUserDao {
     //激活邮箱
     public int activateUser(String email) throws Exception;
 
+    void updateUser(User user);
 }

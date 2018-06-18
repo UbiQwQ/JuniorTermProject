@@ -50,32 +50,70 @@
             <li ><a href="/personalCollectPage"><em class="ico3"></em>我的收藏</a></li>
             <li ><a href="/personalOrderPage"><em class="ico5"></em>订单中心</a></li>
             <li class="cur"><a href="#"><em class="ico6"></em>账户设置</a></li>
+            <li ><a href="/personalAvatarPage"><em class="ico6"></em>修改头像</a></li>
         </ul>
     </div>
     <div class="mainCnt">
         <div class="title clr">
-            我的订单
+            账户设置
         </div>
-        <div class="myCmt-main myCollect-main">
-            <ul>
-                <c:forEach items="${travels}" var="travel">
-                    <li>
-                        <div class="hdTit">
-                            <a href="/lookTravel?travelId=${travel.travelsId}" target="_blank">《${travel.title}》</a>
-                        </div>
+        <div class="setComon-box set-basicMsg">
+            <form id="article-edit-form" action="/personalSetting" method="post">
+                <input type="hidden" name="CSRF_TOKEN" value="5d4d5610beb48e578022a17628d413bdbabf2322">
+                <div class="row">
+                    <div class="row-name">
+                        昵称：
+                    </div>
+                    <div class="row-cnt">
+                        <input type="text" name="nickname" value=${sessionUser.userName}><span>2至14个字符</span>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="row-name">
+                        手机号：
+                    </div>
+                    <div class="row-cnt">
+                        <input type="text"  name="phone" value=""/>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="row-name">
+                        年龄：
+                    </div>
+                    <div class="row-cnt">
+                        <input type="text"   name="weixin" value=""/>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="row-name">
+                        Q Q：
+                    </div>
+                    <div class="row-cnt">
+                        <input type="text"   name="qq" value=""/>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="row-name">
+                        个人签名：
+                    </div>
+                    <div class="row-cnt">
+                        <textarea placeholder="不超过30字" name="description"></textarea>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="row-name">
+                        &nbsp;
+                    </div>
+                    <div class="row-cnt">
+                        <input type="submit" value="保   存" />
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
 
-                        <div class="dataMsg clr">
-                            <span class='time'>${travel.postTime}</span>
-                            <a href="/lookTravel?travelId=${travel.travelsId}" class="look">查看</a>
-                            <a href="/regretTravel?travelId=${travel.travelsId}" class="canCollect">删除游记</a>
-                        </div>
-                    </li>
-                </c:forEach>
-            </ul>
-            <div class="h_pages">
-            </div>
-        </div>
-    </div></div>
+    </div>
+</div>
 <!-- e = 主体内容 -->
 </body>
 </html>
