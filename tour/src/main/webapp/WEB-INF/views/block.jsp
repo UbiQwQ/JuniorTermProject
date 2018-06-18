@@ -30,6 +30,9 @@
             <button class="btn btn-primary btn-sm" data-toggle="modal"  data-target="#addUserModal">
                 填写邮件信息发送邮件，申请解冻
             </button>
+            <button onclick="out('/logout')" class="btn btn-primary btn-sm">
+                不解冻，直接注销该用户
+            </button>
         </span>
     </div>
 </div>
@@ -73,5 +76,11 @@
         </div>
     </form>
 </div>
+<script>
+    function out(url) {
+        var url = url;
+        window.location.href=url;
+    }
+</script>
 </body>
 </html>

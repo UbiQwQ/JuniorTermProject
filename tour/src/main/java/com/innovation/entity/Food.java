@@ -19,6 +19,18 @@ public class Food {
     private BigDecimal price;
     private String description;
     private int cityId;
+    private String avatar;
+
+
+    @Basic
+    @Column(name = "avatar")
+    public String getAvatar() {
+        return avatar;
+    }
+
+    public void setAvatar(String avatar) {
+        this.avatar = avatar;
+    }
 
     @Id
     @Column(name = "foodId")

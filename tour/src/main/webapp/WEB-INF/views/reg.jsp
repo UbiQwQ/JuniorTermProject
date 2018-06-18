@@ -49,8 +49,9 @@
             </li>
             <li>
                 <label for="rePassWord">确认密码:</label>
-                <input type="password"  id="rePassWord" placeholder="*******" required pattern="^[0-9a-zA-Z!@#$^]{6,18}$"/>
+                <input type="password"  name="rePassWord" id="rePassWord" placeholder="*******" required pattern="^[0-9a-zA-Z!@#$^]{6,18}$"/>
                 <span class="form_hint">正确格式为：6~18个字符</span>
+                ${repassinfo}
             </li>
             <li>
                 <label for="captcha">验证码:</label>
@@ -60,7 +61,7 @@
             </li>
             <li >
                 <input class="submit" type="submit" value="注册">
-                <a class="help-inline" href="login">我已经有账号，现在登录</a>
+                <a class="help-inline" href="/loginpage">我已经有账号，现在登录</a>
             </li>
         </ul>
     </form>

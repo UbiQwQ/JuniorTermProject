@@ -69,7 +69,7 @@ public class UserController {
      * @date: 2018/5/23 17:42
      */
     @RequestMapping("/signin")
-    public ModelAndView signin(String userName, String password, String email, String captcha,
+    public ModelAndView signin(String userName, String password,String rePassWord, String email, String captcha,
                                HttpSession httpSession,HttpServletRequest request) throws Exception {
         ModelAndView modelAndView = new ModelAndView();
 
@@ -78,6 +78,13 @@ public class UserController {
         if (!isCaptcha) {
             modelAndView.addObject("info",
                     "<span class='help-inline' style='color: #ff0000'>验证码不正确！</span>");
+            modelAndView.setViewName("reg");
+            return modelAndView;
+        }
+        //两次输入密码不一致
+        if(!(password.equals(rePassWord))){
+            modelAndView.addObject("repassinfo",
+                    "<span class='help-inline' style='color: #ff0000'>两次输入密码不一致！</span>");
             modelAndView.setViewName("reg");
             return modelAndView;
         }
@@ -121,8 +128,11 @@ public class UserController {
 
         if (result == 2) {
             // 如果是2，那么登录成功，返回index
-            modelAndView.setViewName("redirect:index.jsp");
-
+            if(user.getStatus()== 0) {
+                modelAndView.setViewName("block");
+            } else {
+                modelAndView.setViewName("redirect:index.jsp");
+            }
             // 设置session
             httpSession.setAttribute("sessionUser",user);
             httpSession.setAttribute("userName",user.getUserName());

@@ -14,4 +14,6 @@ public interface IBookService {
     List<Book> findBooksByUserID(int id);
 
     void deleteBookByBookId(int bookId);
+
+    void bookHotel(int HotelId,int UserId,String HotelName);
 }

@@ -30,4 +30,16 @@ public class BookService implements IBookService {
     public void deleteBookByBookId(int bookId) {
         bookDao.deleteBookByBookId(bookId);
     }
+    
+    /** 
+     * @description: bookHotel
+     * @author: li  
+     * @date: 2018/6/18 19:24
+     * @param: [HotelId, UserId, HotelName]  
+     * @return: void  
+     */ 
+    @Override
+    public void bookHotel(int HotelId, int UserId, String HotelName) {
+        bookDao.bookHotel(HotelId,UserId,HotelName);
+    }
 }

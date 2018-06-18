@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.http.HttpSession;
@@ -291,5 +292,24 @@ public class HomeController {
         logger.info("the personal_set.jsp page");
         //返回managerlogin.jsp视图
         return "personal_set";
+    }
+
+    /**
+     * @description: bookHotel
+     * @author: li
+     * @date: 2018/6/18 19:25
+     * @param: [hotelId, session, hotelname]
+     * @return: java.lang.String
+     */
+    @RequestMapping(value = "/bookHotel")
+    public String bookHotel(User user1, @RequestParam("name") String name, @RequestParam("hotelId") int hotelId, HttpSession session) {
+        User user = (User) session.getAttribute("sessionUser");
+        System.out.println("hotelId"+hotelId);
+        System.out.println("user.getId()"+user.getId());
+        System.out.println("user1.getId()"+user1.getId());
+        System.out.println("name"+name);
+        bookService.bookHotel(hotelId,user.getId(),name);
+        return "redirect:/hotel";
+
     }
 }

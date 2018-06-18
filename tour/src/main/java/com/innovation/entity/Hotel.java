@@ -19,6 +19,9 @@ public class Hotel {
     private BigDecimal price;
     private String description;
     private int cityId;
+    private String avatar;
+
+
 
     @Id
     @Column(name = "hotelId")
@@ -68,6 +71,16 @@ public class Hotel {
 
     public void setCityId(int cityId) {
         this.cityId = cityId;
+    }
+
+    @Basic
+    @Column(name = "avatar")
+    public String getAvatar() {
+        return avatar;
+    }
+
+    public void setAvatar(String avatar) {
+        this.avatar = avatar;
     }
 
     @Override

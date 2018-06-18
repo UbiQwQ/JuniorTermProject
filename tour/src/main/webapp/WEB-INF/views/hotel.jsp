@@ -179,7 +179,7 @@
                                     <div class="img">
                                         <a href="https://www.leiphone.com/category/ai" date-category="132" class='sort rgzn'>酒店</a>
                                         <a href="https://www.leiphone.com/news/201806/UWOi5uIPcwuMZmTi.html"  target="_blank">
-                                            <img class='lazy' data-original="https://static.leiphone.com/uploads/new/article/pic/201806/5b24ce3a59f97.jpg?imageMogr2/thumbnail/!480x290r/gravity/Center/crop/480x290/quality/90" title="ASSIA | 中国自动化学会「深度与宽度强化学习」智能自动化学科前沿讲习班（二）" alt="" />
+                                            <img src=${hotel.avatar} class='lazy' data-original="https://static.leiphone.com/uploads/new/article/pic/201806/5b24ce3a59f97.jpg?imageMogr2/thumbnail/!480x290r/gravity/Center/crop/480x290/quality/90" title="ASSIA | 中国自动化学会「深度与宽度强化学习」智能自动化学科前沿讲习班（二）" alt="" />
                                         </a>
                                     </div>
                                     <div class="word">
@@ -197,7 +197,7 @@
                                             </a>
                                             <div class="time" style="color: #ff7315;font-size: 18px;">￥${hotel.price}/晚</div>
                                             <div class="tags">
-                                                <button style="height:40px;width:120px;background:#ff7315; color:#f2f2f2;font-size:15px;border-radius: 10px;border: none;">预定此酒店</button>
+                                                <button onclick="bookHotel('/bookHotel?hotelId=${hotel.hotelId}&name=${hotel.name}')" style="height:40px;width:120px;background:#ff7315; color:#f2f2f2;font-size:15px;border-radius: 10px;border: none;">预定此酒店</button>
                                             </div>
                                         </div>
                                     </div>
@@ -208,7 +208,8 @@
 
 
                     </ul>
-                    <div class="lph-page"><div class="pages"><a href="${pageContext.request.contextPath}/travels?page=1">1</a><a href="${pageContext.request.contextPath}/travels?page=2">2</a><a href="${pageContext.request.contextPath}/travels?page=3">3</a><a href="${pageContext.request.contextPath}/travels?page=4">4</a><a href="${pageContext.request.contextPath}/travels?page=5">5</a><span>...</span><a href="https://www.leiphone.com/category/ai/page/191">${allPage}</a></div></div></div>
+                    <div class="lph-page"><div class="pages"><a href="${pageContext.request.contextPath}/travels?page=1">1</a></div></div></div>
+
             </div>
         </div>
         <div class="lph-right">
@@ -414,6 +415,10 @@
         'https://www.leiphone.com/resWeb/js/list/list',
         'https://www.leiphone.com/resWeb/js/common/com_banner'
     ]);
+    function bookHotel(url) {
+        var url = url;
+        window.location.href = url;
+    }
 </script>
 <!-- js END -->
 

@@ -5,6 +5,7 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import java.sql.Timestamp;
+import java.util.Date;
 
 /**
  * @Auther: Innovation
@@ -18,7 +19,7 @@ public class Book {
     private int hotelId;
     private int userId;
     private String hotelName;
-    private Timestamp postTime;
+    private Date postTime;
 
     @Id
     @Column(name = "bookId")
@@ -84,11 +85,11 @@ public class Book {
 
     @Basic
     @Column(name = "postTime")
-    public Timestamp getPostTime() {
+    public Date getPostTime() {
         return postTime;
     }
 
-    public void setPostTime(Timestamp postTime) {
+    public void setPostTime(Date postTime) {
         this.postTime = postTime;
     }
 }
