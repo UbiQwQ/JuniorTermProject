@@ -4,6 +4,7 @@ import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import java.sql.Timestamp;
 
 /**
  * @Auther: Innovation
@@ -16,6 +17,8 @@ public class Book {
     private int bookId;
     private int hotelId;
     private int userId;
+    private String hotelName;
+    private Timestamp postTime;
 
     @Id
     @Column(name = "bookId")
@@ -67,5 +70,25 @@ public class Book {
         result = 31 * result + hotelId;
         result = 31 * result + userId;
         return result;
+    }
+
+    @Basic
+    @Column(name = "hotelName")
+    public String getHotelName() {
+        return hotelName;
+    }
+
+    public void setHotelName(String hotelName) {
+        this.hotelName = hotelName;
+    }
+
+    @Basic
+    @Column(name = "postTime")
+    public Timestamp getPostTime() {
+        return postTime;
+    }
+
+    public void setPostTime(Timestamp postTime) {
+        this.postTime = postTime;
     }
 }

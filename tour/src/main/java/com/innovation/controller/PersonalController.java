@@ -1,10 +1,8 @@
 package com.innovation.controller;
 
-import com.innovation.entity.Collect;
-import com.innovation.entity.Comment;
-import com.innovation.entity.Travels;
-import com.innovation.entity.User;
+import com.innovation.entity.*;
 import com.innovation.service.impl.*;
+import net.bytebuddy.asm.Advice;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -34,6 +32,8 @@ public class PersonalController {
     CommentService commentService;
     @Autowired
     CollectService collectService;
+    @Autowired
+    BookService bookService;
 
     //添加一个日志器
     private static final Logger logger = LoggerFactory.getLogger(PersonalController.class);
@@ -139,6 +139,24 @@ public class PersonalController {
         return modelAndView;
     }
 
+    @RequestMapping("/regretOrder")
+    public ModelAndView regretOrder(HttpSession userSession,int bookId) throws Exception {
+        ModelAndView modelAndView = new ModelAndView();
 
+        bookService.deleteBookByBookId(bookId);
+
+        // 设置信息和视图名称
+        User user = (User) userSession.getAttribute("sessionUser");
+        List<Book> books = bookService.findBooksByUserID(user.getId());
+
+        modelAndView.setViewName("personal_order");
+
+        modelAndView.addObject("orders",books);
+
+        //输出日志文件
+        logger.info("the personal_order jsp pages");
+        //返回视图
+        return modelAndView;
+    }
 
 }

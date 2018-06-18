@@ -34,6 +34,8 @@ public class HomeController {
     HotelService hotelService;
     @Autowired
     CollectService collectService;
+    @Autowired
+    BookService bookService;
 
     //添加一个日志器
     private static final Logger logger = LoggerFactory.getLogger(HomeController.class);
@@ -265,11 +267,22 @@ public class HomeController {
     }
 
     @RequestMapping("/personalOrderPage")
-    public String personalOrderPage(){
+    public ModelAndView personalOrderPage(HttpSession userSession){
+
+        ModelAndView modelAndView = new ModelAndView();
+        User user = (User) userSession.getAttribute("sessionUser");
+        logger.info(user.getUserName());
+        List<Book> books = bookService.findBooksByUserID(user.getId());
+
+        modelAndView.setViewName("personal_order");
+
+        modelAndView.addObject("orders",books);
+
+
         //输出日志
         logger.info("the personal_order.jsp page");
         //返回managerlogin.jsp视图
-        return "personal_order";
+        return modelAndView;
     }
 
     @RequestMapping("/personalSettingPage")
