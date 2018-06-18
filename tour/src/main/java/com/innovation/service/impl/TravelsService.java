@@ -1,11 +1,9 @@
 package com.innovation.service.impl;
 
 import com.innovation.dao.impl.TravelsDao;
-import com.innovation.entity.Comment;
 import com.innovation.entity.Travels;
 import com.innovation.service.ITravelsService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.orm.hibernate5.HibernateTemplate;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -65,8 +63,8 @@ public class TravelsService implements ITravelsService {
 
 
     @Override
-    public boolean saveTravels(Travels travels) throws Exception {
-        return false;
+    public void saveTravels(Travels travels) throws Exception {
+        travelsDao.saveTravels(travels);
     }
     /** 
      * @description: 
@@ -87,7 +85,7 @@ public class TravelsService implements ITravelsService {
     }
 
     @Override
-    public boolean updateTravels(Travels travels) throws Exception {
-        return false;
+    public void updateTravels(Travels travels) throws Exception {
+        travelsDao.updateTravels(travels);
     }
 }

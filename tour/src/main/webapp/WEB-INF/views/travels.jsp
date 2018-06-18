@@ -81,6 +81,69 @@
         }
     </script>
 
+
+
+    <script type="text/javascript">
+        var dzResult = '${dzResult}' ;
+        var num='${expertInfo.dznum }';
+        $(document).ready(function() {
+            if('${loginCustomer}' != null && '${loginCustomer}' != ""){
+                if(dzResult==true || dzResult == 'true'){ //已赞
+                    document.getElementById('zan').src='<ph:root/>/s/images/index/zan.png';
+                }else{
+                    document.getElementById('zan').src='<ph:root/>/s/images/index/zan1.png';
+                }
+            }else{
+                document.getElementById('zan').src='<ph:root/>/s/images/index/zan1.png';
+            }
+        });
+
+        function consult(){
+            if('${loginCustomer}' != null && '${loginCustomer}' != ""){
+                openJsWidow("立即咨询","<ph:root/>/f/department/consult/${channel.id}.html?id=${expertInfo.id}",600,680);
+            }else{
+                openJsWidow("登录","<ph:root/>/u/showLoginMin",700,400);
+            }
+        }
+
+        function collect(){
+            if('${loginCustomer}' != null && '${loginCustomer}' != ""){
+                if(dzResult==true || dzResult == 'true'){ //已赞
+                    dianzan('${expertInfo.id}',0);
+                }else {
+                    dianzan('${expertInfo.id}',1);
+                }
+            }else{
+                openJsWidow("登录","<ph:root/>/u/showLoginMin",700,400);
+            }
+        }
+
+        function dianzan(id,flag){
+            $.ajax({
+                url:'<ph:root/>/f/department/dianzan',
+                type:'post',
+                data:{id:id,flag:flag},
+                dataType:'json',
+                success:function(result){
+                    if(result == 0){
+                        if(flag == 1){
+                            dzResult = true;
+                            document.getElementById('zan').src='<ph:root/>/s/images/index/zan.png';
+                            num=num*1+1;
+                            document.getElementById('zanNum').innerText=num;
+                        }else if(flag ==0){
+                            dzResult = false;
+                            document.getElementById('zan').src='<ph:root/>/s/images/index/zan1.png';
+                            num=num*1-1;
+                            document.getElementById('zanNum').innerText=num;
+                        }
+                    }
+                }
+            });
+        }
+    </script>
+
+
 </head>
 <body>
 
@@ -144,7 +207,7 @@
                     <!-- 分享 -->
                     <div class="pageActive clr">
                         <div class="mark-like-btn ">
-                            <a class="collect collect-no" href="javascript:;"><i></i><span>0</span>人收藏</a>
+                            <a class="collect collect-no" onclick=""><i></i><span>${collectNum}</span>人收藏</a>
                         </div>
                         <!-- Baidu Button BEGIN -->
                         <div  class="bdsharebuttonbox"  data-tag="share_177016">

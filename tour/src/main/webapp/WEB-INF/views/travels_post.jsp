@@ -32,81 +32,86 @@
 
 
 
-
-<div data-pagelet id="topic" class="" data-controller="/js/note/ControllerTopic">
+<form action="/postTravel" enctype="multipart/form-data" method="post">
+<div data-pagelet id="topic" class="" >
     <div class="set_index" id="_j_cover_box">
-        <div class="set_bg _j_toppiccnt">
-        </div>
-        <div class="fully_loading">
-            <p vtip="头图加载中...">头图加载中...</p>
-            <img src="http://images.mafengwo.net/images/post/new_notes/fully_loading_v2.gif" alt="loading">
-        </div>
+        <%--<div class="set_bg _j_toppiccnt">--%>
+        <%--</div>--%>
+        <%--<div class="fully_loading">--%>
+            <%--<p vtip="头图加载中...">头图加载中...</p>--%>
+            <%--<img src="http://images.mafengwo.net/images/post/new_notes/fully_loading_v2.gif" alt="loading">--%>
+        <%--</div>--%>
         <div class="set_page">
-            <a role="button" class="set_add  _j_uploaderattop _j_upload_toppic" id="_j_upload_toppic"></a>
+            <%--<a role="button" class="set_add  _j_uploaderattop _j_upload_toppic" id="_j_upload_toppic"></a>--%>
+            <input type='file' class="set_add  _j_uploaderattop _j_upload_toppic" id="_j_upload_toppic" name="image" />
             <h2>设置游记头图</h2>
             <p>图片建议选择尺寸大于1680px的高清大图，如相机原图</p>
             <div class="clear"></div>
         </div>
         <div class="set_title ">
-            <input type="text" id="_j_title"  placeholder="填写游记标题" maxlength="48" />
+            <input type="text" id="_j_title"  placeholder="填写游记标题" maxlength="48" name="title" />
             <span>可输入<strong>48</strong>字</span>
             <div class="clear"></div>
         </div>
-        <div class="set_btn" id="_j_cover_do">
-            <a role="button" title="设置头图" class="a_set _j_addtoppiclabel"><i></i><span>设置头图</span></a>
-            <ul>
-                <li id="_j_change_cover_cnt"><a role="button" title="更换头图" class="a_change _j_upload_toppic" id="_j_change_toppic"><i></i><span>重新上传头图</span></a></li>
-                <li><a role="button" title="重新编辑头图" class="a_change _j_reposition_cover" data-fileid="" data-url="" data-size="[]"><i></i><span>重新编辑头图</span></a></li>
-                <li>
-                    <a role="button" title="" class="a_add  _j_addtopvideo"><i></i><span id="_j_video_switch">添加头图视频</span><strong>NEW</strong></a>
-                    <a role="button" id="_js_topic_video_upbtn" title="" ></a>
-                </li>
-                <li class="_j_topvideo_delete"><a role="button" title="" class="a_delete delete_video" id="_j_delete_video"><i></i><span>删除头图视频</span></a></li>
-            </ul>
-        </div>
-        <div class="loading_video _j_load_v">
-            <h3>视频正在上传...</h3>
-            <div class="loading_bar"><span></span></div>
-            <a role="button" class="cancel_up _j_cover_cancel" id="_j_upload_top_video_cancel" title="取消上传">取消上传</a>
-            <div class="clear"></div>
-            <div class="loading_num"></div>
-        </div>
-        <div class="video_up_success" id="video_up_success" vid="0">
-            <div class="trans_success hide">
-                <i></i>
-                <p>视频处理成功！发布后即可观看</p>
-            </div>
-            <div class="trans_wait ">
-                <i class="vus2"></i>
-                <p>视频处理中</p>
-            </div>
-            <div class="trans_del hide">
-                <i class="vus2"></i>
-                <p>视频未通过审核</p>
-            </div>
-        </div>
+        <%--<div class="set_btn" id="_j_cover_do">--%>
+            <%--<a role="button" title="设置头图" class="a_set _j_addtoppiclabel"><i></i><span>设置头图</span></a>--%>
+            <%--<ul>--%>
+                <%--<li id="_j_change_cover_cnt"><a role="button" title="更换头图" class="a_change _j_upload_toppic" id="_j_change_toppic"><i></i><span>重新上传头图</span></a></li>--%>
+                <%--<li><a role="button" title="重新编辑头图" class="a_change _j_reposition_cover" data-fileid="" data-url="" data-size="[]"><i></i><span>重新编辑头图</span></a></li>--%>
+                <%--<li>--%>
+                    <%--<a role="button" title="" class="a_add  _j_addtopvideo"><i></i><span id="_j_video_switch">添加头图视频</span><strong>NEW</strong></a>--%>
+                    <%--<a role="button" id="_js_topic_video_upbtn" title="" ></a>--%>
+                <%--</li>--%>
+                <%--<li class="_j_topvideo_delete"><a role="button" title="" class="a_delete delete_video" id="_j_delete_video"><i></i><span>删除头图视频</span></a></li>--%>
+            <%--</ul>--%>
+        <%--</div>--%>
+        <%--<div class="loading_video _j_load_v">--%>
+            <%--<h3>视频正在上传...</h3>--%>
+            <%--<div class="loading_bar"><span></span></div>--%>
+            <%--<a role="button" class="cancel_up _j_cover_cancel" id="_j_upload_top_video_cancel" title="取消上传">取消上传</a>--%>
+            <%--<div class="clear"></div>--%>
+            <%--<div class="loading_num"></div>--%>
+        <%--</div>--%>
+        <%--<div class="video_up_success" id="video_up_success" vid="0">--%>
+            <%--<div class="trans_success hide">--%>
+                <%--<i></i>--%>
+                <%--<p>视频处理成功！发布后即可观看</p>--%>
+            <%--</div>--%>
+            <%--<div class="trans_wait ">--%>
+                <%--<i class="vus2"></i>--%>
+                <%--<p>视频处理中</p>--%>
+            <%--</div>--%>
+            <%--<div class="trans_del hide">--%>
+                <%--<i class="vus2"></i>--%>
+                <%--<p>视频未通过审核</p>--%>
+            <%--</div>--%>
+        <%--</div>--%>
     </div>
 
 </div>
 <div class="container clearfix">
-    <div data-pagelet id="pagelet-block-aff85942fb4f9db6c1ebed4c707b4821" class=" content" data-controller="/js/note/ControllerEditContent" data-controller_data="{&quot;id&quot;:&quot;333371879&quot;}">
-        <div class="block-loading loading_backward"></div>
-        <div class="_j_content_box"></div>
-        <div class="block-loading loading_forward"></div>
+    <%--<div data-pagelet id="pagelet-block-aff85942fb4f9db6c1ebed4c707b4821" class=" content" data-controller="/js/note/ControllerEditContent" data-controller_data="{&quot;id&quot;:&quot;333371879&quot;}">--%>
+        <%--<div class="block-loading loading_backward"></div>--%>
+        <%--<div class="_j_content_box"></div>--%>
+        <%--<div class="block-loading loading_forward"></div>--%>
 
-    </div>
+    <%--</div>--%>
+        <textarea rows="10" cols="120" name="content" placeholder="游记内容...">
+        </textarea>
 
     <div class="clear"></div>
     <div class="action-ft">
         <div class="action-wrap">
             <div class="item-btn _js_actionBtn">
-                <a class="btn-publish _j_btn_publish" role="button">发表游记</a>
+                <button class="btn-publish _j_btn_publish" role="button" type="submit" >发表游记</button>
             </div>
         </div>
     </div>
 
 
 </div>
+
+</form>
 
 
 <link href="http://css.mafengwo.net/css/mfw-toolbar.css?1493174418" rel="stylesheet" type="text/css"/>

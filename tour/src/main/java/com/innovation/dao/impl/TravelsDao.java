@@ -2,7 +2,6 @@ package com.innovation.dao.impl;
 
 import com.innovation.dao.ITravelsDao;
 import com.innovation.entity.Travels;
-import com.innovation.entity.User;
 import org.hibernate.HibernateException;
 import org.hibernate.Session;
 import org.hibernate.query.Query;
@@ -91,8 +90,8 @@ public class TravelsDao implements ITravelsDao {
     }
 
     @Override
-    public boolean saveTravels(Travels travels) throws Exception {
-        return false;
+    public void saveTravels(Travels travels) throws Exception {
+        ht.save(travels);
     }
     /** 
      * @description: 
@@ -115,7 +114,7 @@ public class TravelsDao implements ITravelsDao {
     }
 
     @Override
-    public boolean updateTravels(Travels travels) throws Exception {
-        return false;
+    public void updateTravels(Travels travels) throws Exception {
+        ht.update(travels);
     }
 }

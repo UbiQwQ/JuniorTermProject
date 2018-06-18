@@ -22,8 +22,8 @@ public interface ITravelsDao {
     List<Travels> findTravelsByUserID(int cityId);
 
     //插入更新和删除
-    public boolean saveTravels(Travels travels) throws Exception;
+    public void saveTravels(Travels travels) throws Exception;
     public String deleteTravelsById(int id) throws Exception;
-    public boolean updateTravels(Travels travels) throws Exception;
+    public void updateTravels(Travels travels) throws Exception;
 
 }

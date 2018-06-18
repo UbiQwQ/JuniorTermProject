@@ -23,7 +23,7 @@ public interface ITravelsService {
     List<Travels> findTravelsByUserID(int userId);
 
     //插入更新和删除
-    public boolean saveTravels(Travels travels) throws Exception;
+    public void saveTravels(Travels travels) throws Exception;
     public void deleteTravelsById(int id) throws Exception;
-    public boolean updateTravels(Travels travels) throws Exception;
+    public void updateTravels(Travels travels) throws Exception;
 }

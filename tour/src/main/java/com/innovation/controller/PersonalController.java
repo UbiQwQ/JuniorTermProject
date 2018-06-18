@@ -71,12 +71,16 @@ public class PersonalController {
         int userId  = travel.getUserId();
         User user= userService.findUserById(userId);
 
+        List<Collect> collects = collectService.findCollectsByTravleId(travelId);
+        int collectNum = collects.size();
+
         // 设置信息和视图名称
 
         modelAndView.setViewName("travels");
 
         modelAndView.addObject("travel",travel);
         modelAndView.addObject("user",user);
+        modelAndView.addObject("collectNum",collectNum);
 
         //输出日志文件
         logger.info("the travels jsp pages");

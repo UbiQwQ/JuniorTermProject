@@ -22,7 +22,7 @@ public class Travels {
     private String content;
     private Timestamp postTime;
     private int userId;
-
+    private String img;
 
     @Id
     @Column(name = "travelsId")
@@ -96,5 +96,15 @@ public class Travels {
 
     public void setUserId(int userId) {
         this.userId = userId;
+    }
+
+    @Basic
+    @Column(name = "img")
+    public String getImg() {
+        return img;
+    }
+
+    public void setImg(String img) {
+        this.img = img;
     }
 }

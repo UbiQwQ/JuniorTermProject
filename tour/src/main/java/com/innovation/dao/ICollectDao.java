@@ -1,6 +1,8 @@
 package com.innovation.dao;
 
-import org.springframework.stereotype.Repository;
+import com.innovation.entity.Collect;
+
+import java.util.List;
 
 /**
  * @Auther: Innovation
@@ -11,4 +13,9 @@ import org.springframework.stereotype.Repository;
 
 public interface ICollectDao {
 
+    List<Collect> findCollectsByUserID(int id);
+
+    void deleteCollectByCollectId(int collectId);
+
+    List<Collect> findCollectsByTravleId(int travelId);
 }

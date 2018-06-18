@@ -30,4 +30,10 @@ public class CollectService implements ICollectService {
     public void deleteCollectByCollectId(int collectId) {
         collectDao.deleteCollectByCollectId(collectId);
     }
+
+    @Override
+    public List<Collect> findCollectsByTravleId(int travelId) {
+        List<Collect> collects =  collectDao.findCollectsByTravleId(travelId);
+        return collects;
+    }
 }

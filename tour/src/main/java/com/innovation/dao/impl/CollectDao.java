@@ -18,14 +18,19 @@ import java.util.List;
 public class CollectDao implements ICollectDao {
     @Autowired
     HibernateTemplate ht;
-
+    @Override
     public List<Collect> findCollectsByUserID(int id) {
         List<Collect> collects = (List<Collect>) ht.find("from Collect where userId=?",id);
         return collects;
     }
-
+    @Override
     public void deleteCollectByCollectId(int collectId) {
         Collect collect = ht.get(Collect.class, collectId);
         ht.delete(collect);
+    }
+    @Override
+    public List<Collect> findCollectsByTravleId(int travelId) {
+        List<Collect> collects = (List<Collect>) ht.find("from Collect where travelsId=?",travelId);
+        return collects;
     }
 }

@@ -15,4 +15,6 @@ public interface ICollectService {
     List<Collect> findCollectsByUserID(int id);
 
     void deleteCollectByCollectId(int collectId);
+
+    List<Collect> findCollectsByTravleId(int travelId);
 }
