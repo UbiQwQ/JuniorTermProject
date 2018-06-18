@@ -1,7 +1,9 @@
 package com.innovation.controller;
 
+import com.innovation.entity.Comment;
 import com.innovation.entity.Travels;
 import com.innovation.entity.User;
+import com.innovation.service.impl.CommentService;
 import com.innovation.service.impl.TravelsService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -23,6 +25,8 @@ public class HomeController {
 
     @Autowired
     TravelsService travelsService;
+    @Autowired
+    CommentService commentService;
 
     //添加一个日志器
     private static final Logger logger = LoggerFactory.getLogger(HomeController.class);
@@ -193,5 +197,37 @@ public class HomeController {
         logger.info("the travels_post.jsp page");
         //返回managerlogin.jsp视图
         return "travels_post";
+    }
+
+    @RequestMapping("/personalCollectPage")
+    public String personalCollectPage(){
+        //输出日志
+        logger.info("the personal_collect.jsp page");
+        //返回managerlogin.jsp视图
+        return "personal_collect";
+    }
+
+    @RequestMapping("/personalActivityPage")
+    public String personalActivityPage(){
+        //输出日志
+        logger.info("the personal_activity.jsp page");
+        //返回managerlogin.jsp视图
+        return "personal_activity";
+    }
+
+    @RequestMapping("/personalOrderPage")
+    public String personalOrderPage(){
+        //输出日志
+        logger.info("the personal_order.jsp page");
+        //返回managerlogin.jsp视图
+        return "personal_order";
+    }
+
+    @RequestMapping("/personalSettingPage")
+    public String personalSettingPage(){
+        //输出日志
+        logger.info("the personal_set.jsp page");
+        //返回managerlogin.jsp视图
+        return "personal_set";
     }
 }
