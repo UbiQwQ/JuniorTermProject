@@ -4,11 +4,15 @@ import com.innovation.entity.Comment;
 import com.innovation.entity.Travels;
 import com.innovation.entity.User;
 import com.innovation.service.impl.CommentService;
+import com.innovation.entity.Hotel;
+import com.innovation.service.impl.AdminService;
+import com.innovation.service.impl.HotelService;
 import com.innovation.service.impl.TravelsService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -27,6 +31,9 @@ public class HomeController {
     TravelsService travelsService;
     @Autowired
     CommentService commentService;
+
+    @Autowired
+    HotelService hotelService;
 
     //添加一个日志器
     private static final Logger logger = LoggerFactory.getLogger(HomeController.class);
@@ -100,9 +107,11 @@ public class HomeController {
      * @date: 2018/6/6 22:18
      */
     @RequestMapping("/hotel")
-    public String hotel(){
+    public String hotel(Model model){
         //输出日志
         logger.info("the hotel.jsp page");
+        List<Hotel> hotels = hotelService.findAllHotel();
+        model.addAttribute("hotels", hotels);
         //返回login.jsp视图
         return "hotel";
     }
@@ -132,12 +141,40 @@ public class HomeController {
      * @date: 2018/6/6 22:18
      */
     @RequestMapping("/travels")
-    public String travels(){
+    public String travels(int page,Model model){
+        //数据库中总数量
+        int allRows;
+        //总共有多少页
+        int allPage;
+        //第一条记录的索引
+        int offset;
+        //每页的记录数量
+        int pageSize = 4;
+        allRows = travelsService.queryTravelsRows();
+        if (page==1) {
+            offset = 0;
+        } else {
+            offset = (page - 1) * pageSize;
+        }
+        //计算总页数
+        if (allRows % pageSize == 0) {
+            allPage = allRows / pageSize;
+        } else {
+            allPage = allRows / pageSize + 1;
+        }
+        List<Travels> travelslist = travelsService.findAllTravels(offset, pageSize);
+        model.addAttribute("travels", travelslist);
+        model.addAttribute("allPage",allPage);
+        model.addAttribute("page", page);
+        if (travelslist != null) {
+            return "travels_list";
+        }
+        return "error";
         //输出日志
-        logger.info("the travels.jsp page");
+//        logger.info("the travels.jsp page");
         //返回login.jsp视图
-        return "travels_list";
     }
+
 
     /**
      * 功能描述: 跳转到城市信息页面

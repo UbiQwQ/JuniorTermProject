@@ -15,7 +15,7 @@ public interface IHotelDao {
     //查询Hotel表总行数
     public int queryRows();
     //查找酒店
-    public List<Hotel> findAll(final int offset, final int length);
+    public List<Hotel> findAllHotel();
     public Hotel findHotelById(int id) throws Exception;
     public List<Hotel> findHotelByName(String hotelName) throws Exception;
     public List<Hotel> findHotelByCityID(int cityId);

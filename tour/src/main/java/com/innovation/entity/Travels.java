@@ -23,6 +23,7 @@ public class Travels {
     private Timestamp postTime;
     private int userId;
 
+
     @Id
     @Column(name = "travelsId")
     public int getTravelsId() {

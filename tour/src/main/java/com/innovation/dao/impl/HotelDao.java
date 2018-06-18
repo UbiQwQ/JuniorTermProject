@@ -26,8 +26,9 @@ public class HotelDao implements IHotelDao {
     }
 
     @Override
-    public List<Hotel> findAll(int offset, int length) {
-        return null;
+    public List<Hotel> findAllHotel() {
+        List<Hotel> hotel = (List<Hotel>) ht.find("from com.innovation.entity.Hotel");
+        return hotel;
     }
 
     @Override
