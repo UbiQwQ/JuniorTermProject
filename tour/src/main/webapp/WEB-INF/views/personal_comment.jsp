@@ -51,12 +51,11 @@
     <div class="lpHome-main">
         <div class="menu">
             <ul>
-                <li ><a href="https://home.leiphone.com/notices"><em class="ico1"></em>我的游记</a></li>
-                <li class="cur" ><a href="https://home.leiphone.com/comment"><em class="ico2"></em>我的评论</a></li>
-                <li ><a href="https://home.leiphone.com/collect"><em class="ico3"></em>我的收藏</a></li>
-                <li ><a href="https://home.leiphone.com/activity"><em class="ico4"></em>我的活动</a></li>
-                <li ><a href="https://home.leiphone.com/orderCenter"><em class="ico5"></em>订单中心</a></li>
-                <li ><a href="https://home.leiphone.com/info/index"><em class="ico6"></em>账户设置</a></li>
+                <li ><a href="/personal"><em class="ico1"></em>我的游记</a></li>
+                <li class="cur"><a href="#"><em class="ico2"></em>我的评论</a></li>
+                <li ><a href="/personalCollectPage"><em class="ico3"></em>我的收藏</a></li>
+                <li ><a href="/personalOrderPage"><em class="ico5"></em>订单中心</a></li>
+                <li ><a href="/personalSettingPage"><em class="ico6"></em>账户设置</a></li>
             </ul>
         </div>
         <div class="mainCnt">
@@ -65,10 +64,10 @@
             </div>
             <div class="myCmt-main">
                 <ul>
-                    <c:forEach items="${comment}" var="comment">
+                    <c:forEach items="${comments}" var="comment">
                     <li>
                         <div class="hdTit">
-                            <a href="/lookTravel?travelId=${travel.travelsId}" target="_blank">《${comment.travelsTitle}》</a>
+                            <a href="/lookTravel?travelId=${comment.travelsId}" target="_blank">《${comment.travelsTitle}》</a>
                         </div>
                         <div class="des">
                                 ${comment.content}

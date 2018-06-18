@@ -1,6 +1,7 @@
 package com.innovation.service.impl;
 
 import com.innovation.dao.impl.TravelsDao;
+import com.innovation.entity.Comment;
 import com.innovation.entity.Travels;
 import com.innovation.service.ITravelsService;
 import org.springframework.beans.factory.annotation.Autowired;

@@ -83,37 +83,6 @@
 
 </head>
 <body>
-<!-- 顶栏广告位 -->
-<div class="top-banner">
-    <a href="https://www.leiphone.com/banner/updateClickNum/id/1348" target="_blank" title="GAIR">
-        <img src="https://static.leiphone.com/uploads/new/banner/5b2096dd37765.jpg" alt="GAIR">
-    </a>
-    <em class="closeBanner"></em>
-</div>
-
-<div class="explorer" id="low-explorer">
-    <div class="inner">
-        <em class="warn ico"></em>
-        <span>您正在使用IE低版浏览器，为了您的雷锋网账号安全和更好的产品体验，强烈建议使用更快更安全的浏览器</span>
-        <span class="ico exp-ico1"></span>
-        <span class="ico exp-ico2"></span>
-        <span class="ico exp-ico3"></span>
-        <span class="ico exp-ico4"></span>
-        <span class="ico exp-ico5"></span>
-    </div>
-</div>
-<!--[if lte IE 8]>
-<script>
-    (function(){var e=['abbr', 'article', 'aside', 'audio', 'canvas', 'datalist', 'details', 'dialog', 'eventsource', 'figure', 'footer', 'header', 'hgroup', 'mark', 'menu', 'meter', 'nav', 'output', 'progress', 'section', 'time', 'video'];for(var i = e.length; i--;) document.createElement(e[i])})()
-
-    //低版本浏览器
-    document.getElementById("low-explorer").style.display = 'block';
-
-</script>
-<![endif]-->
-
-
-
 
 
 <link rel="stylesheet" type="text/css" href="https://www.leiphone.com/resCommon/css/artCont_web_admin.css">

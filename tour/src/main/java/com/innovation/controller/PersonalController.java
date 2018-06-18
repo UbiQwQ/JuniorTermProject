@@ -81,8 +81,8 @@ public class PersonalController {
     }
 
 
-    @RequestMapping("/myComment")
-    public ModelAndView comment(HttpSession userSession){
+    @RequestMapping("/personalCommentPage")
+    public ModelAndView personalCommentPage(HttpSession userSession){
         ModelAndView modelAndView = new ModelAndView();
         User user = (User) userSession.getAttribute("sessionUser");
         logger.info(user.getUserName());
@@ -90,8 +90,8 @@ public class PersonalController {
 
         modelAndView.setViewName("personal_comment");
 
-//        modelAndView.addObject("comments",comments);
-        userSession.setAttribute("sessionComments",comments);
+        modelAndView.addObject("comments",comments);
+//        userSession.setAttribute("sessionComments",comments);
         //输出日志
         logger.info("the personal_comment.jsp page");
         //返回personal.jsp视图
