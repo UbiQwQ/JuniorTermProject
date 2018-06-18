@@ -69,12 +69,13 @@
                         <div class="hdTit">
                             <a href="/lookTravel?travelId=${comment.travelsId}" target="_blank">《${comment.travelsTitle}》</a>
                         </div>
+
                         <div class="des">
                                 ${comment.content}
                         </div>
                         <div class="dataMsg clr">
                             <span class='time'>${comment.postTime}</span>
-                            <a onclick="return confirm('确认删除？');" href="/comment/delete?id=224490" class="del">删除</a>
+                            <a href="/regretComment?commentId=${comment.commentId}" class="del">删除</a>
                         </div>
                     </li>
                     </c:forEach>

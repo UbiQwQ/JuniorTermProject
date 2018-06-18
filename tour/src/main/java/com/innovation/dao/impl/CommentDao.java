@@ -20,13 +20,19 @@ public class CommentDao implements ICommentDao {
     @Autowired
     private HibernateTemplate ht;
 
+    @Override
     public Comment findCommentById(int id) {
         Comment comment = ht.get(Comment.class,id);
         return comment;
     }
-
+    @Override
     public List<Comment> findCommentByUserId(int userId) {
         List<Comment> comments = (List<Comment>) ht.find("from Comment where userId=?",userId);
         return comments;
+    }
+    @Override
+    public void deleteCommentByCommentId(int commentId) {
+        Comment comment = ht.get(Comment.class,commentId);
+        ht.delete(comment);
     }
 }

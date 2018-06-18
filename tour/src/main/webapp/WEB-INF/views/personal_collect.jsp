@@ -64,17 +64,19 @@
         </div>
         <div class="myCmt-main myCollect-main">
             <ul>
-                <c:forEach items="${travels}" var="travel">
+                <c:forEach items="${collects}" var="collect">
                     <li>
                         <div class="hdTit">
-                            <a href="/lookTravel?travelId=${travel.travelsId}" target="_blank">《${travel.title}》</a>
+                            <a href="/lookTravel?travelId=${collect.travelsId}" target="_blank">《${collect.travelTitle}》</a>
+                            &nbsp;
+                            <a href="/regretCollect?collectId=${collect.collectId}" class="canCollect">取消收藏</a>
                         </div>
 
-                        <div class="dataMsg clr">
-                            <span class='time'>${travel.postTime}</span>
-                            <a href="/lookTravel?travelId=${travel.travelsId}" class="look">查看</a>
-                            <a href="/regretTravel?travelId=${travel.travelsId}" class="canCollect">删除游记</a>
-                        </div>
+                        <%--<div class="dataMsg clr">--%>
+                            <%--<span class='time'>${collect.}</span>--%>
+                            <%--<a href="/lookTravel?travelId=${collect.travelsId}" class="look">查看</a>--%>
+                            <%--<a href="/regretCollect?collectId=${collect.collectId}" class="canCollect">取消收藏</a>--%>
+                        <%--</div>--%>
                     </li>
                 </c:forEach>
             </ul>

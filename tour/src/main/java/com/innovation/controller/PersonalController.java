@@ -1,12 +1,10 @@
 package com.innovation.controller;
 
+import com.innovation.entity.Collect;
 import com.innovation.entity.Comment;
 import com.innovation.entity.Travels;
 import com.innovation.entity.User;
-import com.innovation.service.impl.CommentService;
-import com.innovation.service.impl.HotelService;
-import com.innovation.service.impl.TravelsService;
-import com.innovation.service.impl.UserService;
+import com.innovation.service.impl.*;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -34,6 +32,8 @@ public class PersonalController {
     HotelService hotelService;
     @Autowired
     CommentService commentService;
+    @Autowired
+    CollectService collectService;
 
     //添加一个日志器
     private static final Logger logger = LoggerFactory.getLogger(PersonalController.class);
@@ -98,6 +98,46 @@ public class PersonalController {
         return modelAndView;
     }
 
+    @RequestMapping("/regretComment")
+    public ModelAndView regretComment(HttpSession userSession,int commentId) throws Exception {
+        ModelAndView modelAndView = new ModelAndView();
+
+        commentService.deleteCommentByCommentId(commentId);
+
+        // 设置信息和视图名称
+        User user = (User) userSession.getAttribute("sessionUser");
+        List<Comment> comments = commentService.findCommentByUserId(user.getId());
+
+        modelAndView.setViewName("personal_comment");
+
+        modelAndView.addObject("comments",comments);
+
+        //输出日志文件
+        logger.info("the city jsp pages");
+        //返回视图
+        return modelAndView;
+    }
+
+
+    @RequestMapping("/regretCollect")
+    public ModelAndView regretCollect(HttpSession userSession,int collectId) throws Exception {
+        ModelAndView modelAndView = new ModelAndView();
+
+        collectService.deleteCollectByCollectId(collectId);
+
+        // 设置信息和视图名称
+        User user = (User) userSession.getAttribute("sessionUser");
+        List<Collect> collects = collectService.findCollectsByUserID(user.getId());
+
+        modelAndView.setViewName("personal_collect");
+
+        modelAndView.addObject("collects",collects);
+
+        //输出日志文件
+        logger.info("the personal_collect jsp pages");
+        //返回视图
+        return modelAndView;
+    }
 
 
 

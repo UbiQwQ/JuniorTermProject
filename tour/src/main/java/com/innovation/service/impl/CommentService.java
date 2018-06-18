@@ -24,9 +24,13 @@ public class CommentService implements ICommentService {
         Comment comment = commentDao.findCommentById(id);
         return comment;
     }
-
+    @Override
     public List<Comment> findCommentByUserId(int userId) {
         List<Comment> comments = commentDao.findCommentByUserId(userId);
         return comments;
+    }
+    @Override
+    public void deleteCommentByCommentId(int commentId) {
+        commentDao.deleteCommentByCommentId(commentId);
     }
 }

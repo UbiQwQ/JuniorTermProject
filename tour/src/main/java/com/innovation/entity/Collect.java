@@ -16,6 +16,7 @@ public class Collect {
     private int collectId;
     private int travelsId;
     private int userId;
+    private String travelTitle;
 
     @Id
     @Column(name = "collectId")
@@ -67,5 +68,15 @@ public class Collect {
         result = 31 * result + travelsId;
         result = 31 * result + userId;
         return result;
+    }
+
+    @Basic
+    @Column(name = "travelTitle")
+    public String getTravelTitle() {
+        return travelTitle;
+    }
+
+    public void setTravelTitle(String travelTitle) {
+        this.travelTitle = travelTitle;
     }
 }
